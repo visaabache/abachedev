@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <defs><linearGradient id="l-hero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e40af"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+  <rect width="800" height="1200" fill="#f8fafc"/>
+  <!-- top bar -->
+  <rect width="800" height="36" fill="#0f172a"/>
+  <text x="48" y="23" font-family="Arial" font-size="12" fill="#cbd5e1">📍 Serving the whole city</text>
+  <text x="752" y="23" font-family="Arial" font-size="12" font-weight="700" fill="#facc15" text-anchor="end">24/7 Emergency: (555) 012-3456</text>
+  <!-- nav -->
+  <rect y="36" width="800" height="68" fill="#fff"/>
+  <rect x="48" y="52" width="36" height="36" rx="10" fill="#facc15"/><path d="M58 78 l10 -10 m-3 -6 a7 7 0 1 0 9 9 l8 8" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="94" y="77" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a">Bright<tspan fill="#2563eb">Fix</tspan></text>
+  <g font-family="Arial" font-size="14" fill="#475569"><text x="330" y="76">Services</text><text x="408" y="76">Pricing</text><text x="476" y="76">Reviews</text><text x="550" y="76">Areas</text></g>
+  <rect x="624" y="52" width="128" height="38" rx="10" fill="#2563eb"/><text x="688" y="76" font-family="Arial" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Book Online</text>
+  <!-- hero -->
+  <rect y="104" width="800" height="420" fill="url(#l-hero)"/>
+  <circle cx="700" cy="180" r="160" fill="#3b82f6" opacity=".35"/>
+  <rect x="48" y="150" width="200" height="30" rx="15" fill="#1e3a8a"/><text x="148" y="170" font-family="Arial" font-size="12" font-weight="700" fill="#facc15" text-anchor="middle">⚡ SAME-DAY SERVICE</text>
+  <text font-family="Arial, sans-serif" font-size="46" font-weight="800" fill="#fff"><tspan x="46" y="240">Fast, reliable</tspan><tspan x="46" y="294">home repairs.</tspan></text>
+  <rect x="48" y="320" width="300" height="9" rx="4.5" fill="#93c5fd" opacity=".6"/><rect x="48" y="340" width="240" height="9" rx="4.5" fill="#93c5fd" opacity=".6"/>
+  <rect x="48" y="380" width="160" height="52" rx="12" fill="#facc15"/><text x="128" y="412" font-family="Arial" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">📞 Call Now</text>
+  <rect x="222" y="380" width="160" height="52" rx="12" fill="none" stroke="#fff" stroke-width="2"/><text x="302" y="412" font-family="Arial" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Free Estimate</text>
+  <g font-family="Arial" font-size="13" fill="#dbeafe"><text x="48" y="478">✓ Licensed &amp; insured</text><text x="210" y="478">✓ Upfront pricing</text></g>
+  <!-- house + tools illustration -->
+  <path d="M470 440 v-130 l120 -90 l120 90 v130z" fill="#fff"/><path d="M450 318 l140 -108 l140 108" stroke="#facc15" stroke-width="14" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="560" y="360" width="60" height="80" rx="6" fill="#1e40af"/><rect x="496" y="330" width="44" height="40" rx="4" fill="#bfdbfe"/><rect x="640" y="330" width="44" height="40" rx="4" fill="#bfdbfe"/>
+  <rect x="610" y="420" width="160" height="80" rx="16" fill="#facc15"/><text x="690" y="454" font-family="Arial" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle">4.9 ★</text><text x="690" y="478" font-family="Arial" font-size="11" fill="#0f172a" text-anchor="middle">customer rating</text>
+  <!-- services -->
+  <text x="400" y="600" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle">What we fix</text>
+  <rect x="370" y="616" width="60" height="4" rx="2" fill="#facc15"/>
+  <g font-family="Arial, sans-serif">
+    <rect x="48" y="650" width="224" height="200" rx="18" fill="#fff" stroke="#e2e8f0"/><circle cx="96" cy="706" r="28" fill="#dbeafe"/><path d="M88 694 q8 10 0 20 q16 -4 16 -14 q0 -12 -8 -18 q2 8 -8 12z" fill="#2563eb"/>
+    <text x="72" y="770" font-size="17" font-weight="700" fill="#0f172a">Plumbing</text><rect x="72" y="786" width="170" height="7" rx="3.5" fill="#cbd5e1"/><rect x="72" y="802" width="140" height="7" rx="3.5" fill="#cbd5e1"/>
+    <rect x="288" y="650" width="224" height="200" rx="18" fill="#fff" stroke="#e2e8f0"/><circle cx="336" cy="706" r="28" fill="#fef9c3"/><path d="M340 690 l-12 18 h10 l-4 16 l14 -20 h-10z" fill="#ca8a04"/>
+    <text x="312" y="770" font-size="17" font-weight="700" fill="#0f172a">Electrical</text><rect x="312" y="786" width="170" height="7" rx="3.5" fill="#cbd5e1"/><rect x="312" y="802" width="130" height="7" rx="3.5" fill="#cbd5e1"/>
+    <rect x="528" y="650" width="224" height="200" rx="18" fill="#fff" stroke="#e2e8f0"/><circle cx="576" cy="706" r="28" fill="#dcfce7"/><rect x="564" y="696" width="24" height="20" rx="3" fill="none" stroke="#16a34a" stroke-width="3"/><path d="M560 698 l16 -10 l16 10" stroke="#16a34a" stroke-width="3" fill="none"/>
+    <text x="552" y="770" font-size="17" font-weight="700" fill="#0f172a">Renovation</text><rect x="552" y="786" width="170" height="7" rx="3.5" fill="#cbd5e1"/><rect x="552" y="802" width="150" height="7" rx="3.5" fill="#cbd5e1"/>
+  </g>
+  <!-- reviews + map -->
+  <rect x="48" y="890" width="400" height="230" rx="18" fill="#0f172a"/>
+  <text x="80" y="936" font-family="Arial" font-size="18" fill="#facc15">★★★★★</text>
+  <rect x="80" y="958" width="320" height="9" rx="4.5" fill="#334155"/><rect x="80" y="978" width="290" height="9" rx="4.5" fill="#334155"/><rect x="80" y="998" width="240" height="9" rx="4.5" fill="#334155"/>
+  <circle cx="102" cy="1062" r="22" fill="#2563eb"/><rect x="136" y="1050" width="110" height="9" rx="4.5" fill="#e2e8f0"/><rect x="136" y="1068" width="80" height="7" rx="3.5" fill="#475569"/>
+  <rect x="464" y="890" width="288" height="230" rx="18" fill="#dbeafe"/>
+  <path d="M464 960 h288 M464 1040 h288 M560 890 v230 M670 890 v230" stroke="#fff" stroke-width="10"/>
+  <path d="M480 1110 q80 -120 260 -150" stroke="#93c5fd" stroke-width="16" fill="none"/>
+  <path d="M608 1010 c-22 -30 -30 -44 -30 -58 a30 30 0 0 1 60 0 c0 14 -8 28 -30 58z" fill="#ef4444"/><circle cx="608" cy="952" r="11" fill="#fff"/>
+  <rect y="1150" width="800" height="50" fill="#facc15"/>
+  <text x="400" y="1181" font-family="Arial" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">Need help today? Call (555) 012-3456</text>
+</svg>

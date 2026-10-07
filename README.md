@@ -9,7 +9,7 @@ A fast, responsive, single-page website for offering website design & developmen
 - **Tech marquee**: scrolling strip of tools and platforms
 - **Services**: design, development, e-commerce, SEO, redesigns, maintenance
 - **Process**: the 4 steps from discovery to launch
-- **Portfolio**: sample website styles by industry (swap in your real projects)
+- **Portfolio**: six full-page website design concepts (restaurant, shop, portfolio, local business, startup, blog). Hovering scrolls through the page; clicking opens it full size with a "Get a site like this" button. The designs live in `assets/work/`. Swap in screenshots of real client projects as you complete them (any tall image works).
 - **Pricing**: Starter / Business / E-commerce packages
 - **FAQ**
 - **Contact**: a project inquiry form

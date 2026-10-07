@@ -336,3 +336,46 @@ form.addEventListener("submit", async (e) => {
     }, 4000);
   }
 })();
+
+// Portfolio design lightbox
+(function lightbox() {
+  const box = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const title = document.getElementById("lightbox-title");
+  const scroller = box.querySelector(".lightbox-scroll");
+  let lastTrigger = null;
+
+  function open(trigger) {
+    lastTrigger = trigger;
+    img.src = trigger.dataset.full;
+    img.alt = trigger.querySelector("img").alt;
+    title.textContent = trigger.dataset.title;
+    box.hidden = false;
+    scroller.scrollTop = 0;
+    document.body.classList.add("no-scroll");
+    document.getElementById("lightbox-close").focus();
+  }
+
+  function close() {
+    box.hidden = true;
+    document.body.classList.remove("no-scroll");
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.querySelectorAll(".work-thumb").forEach((btn) =>
+    btn.addEventListener("click", () => open(btn))
+  );
+  document.getElementById("lightbox-close").addEventListener("click", close);
+  box.addEventListener("click", (e) => {
+    if (e.target === box) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+  document.getElementById("lightbox-cta").addEventListener("click", () => {
+    const style = title.textContent.split(" — ")[1] || "this";
+    document.getElementById("message").value = `Hi! I'd like a website in the style of your "${style}" design.`;
+    lastTrigger = null;
+    close();
+  });
+})();

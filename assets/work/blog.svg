@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <defs>
+    <linearGradient id="b-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c28b"/><stop offset=".6" stop-color="#f4a261"/><stop offset="1" stop-color="#e76f51"/></linearGradient>
+    <linearGradient id="b-sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8dadc"/><stop offset="1" stop-color="#e9f5f2"/></linearGradient>
+    <linearGradient id="b-sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#264653"/><stop offset="1" stop-color="#2a9d8f"/></linearGradient>
+    <clipPath id="b-c1"><rect x="48" y="196" width="704" height="330" rx="20"/></clipPath>
+  </defs>
+  <rect width="800" height="1200" fill="#fbf7ef"/>
+  <!-- header -->
+  <text x="400" y="70" font-family="Georgia, serif" font-size="34" font-style="italic" fill="#2f5d50" text-anchor="middle">Wander Notes</text>
+  <text x="400" y="96" font-family="Arial" font-size="11" fill="#8a8170" text-anchor="middle" letter-spacing="3">TRAVEL · FOOD · SLOW LIVING</text>
+  <rect x="48" y="122" width="704" height="1" fill="#e6dfd0"/>
+  <g font-family="Arial" font-size="13" fill="#5a5345" text-anchor="middle"><text x="250" y="152">Destinations</text><text x="350" y="152">Guides</text><text x="430" y="152">Food</text><text x="510" y="152">About</text></g>
+  <rect x="48" y="170" width="704" height="1" fill="#e6dfd0"/>
+  <!-- featured image -->
+  <g clip-path="url(#b-c1)">
+    <rect x="48" y="196" width="704" height="330" fill="url(#b-sky)"/>
+    <circle cx="560" cy="330" r="48" fill="#ffe8b3"/>
+    <path d="M48 450 L170 330 L250 400 L360 290 L470 410 L560 350 L680 440 L752 400 V526 H48z" fill="#b5523b"/>
+    <path d="M48 490 L150 420 L260 470 L380 400 L500 480 L620 430 L752 480 V526 H48z" fill="#7a3426"/>
+    <path d="M330 300 l30 -10 l30 10 l-8 8 l-22 -6 l-22 6z" fill="#fff" opacity=".7"/>
+  </g>
+  <rect x="72" y="220" width="96" height="28" rx="14" fill="#fbf7ef"/><text x="120" y="239" font-family="Arial" font-size="11" font-weight="700" fill="#2f5d50" text-anchor="middle" letter-spacing="1">FEATURED</text>
+  <text x="48" y="574" font-family="Arial" font-size="12" fill="#c46a3a" letter-spacing="2">MOROCCO · 8 MIN READ</text>
+  <text font-family="Georgia, serif" font-size="36" fill="#1f2a26"><tspan x="46" y="620">48 Hours in the Atlas Mountains</tspan></text>
+  <rect x="48" y="644" width="560" height="9" rx="4.5" fill="#ddd4c2"/><rect x="48" y="664" width="480" height="9" rx="4.5" fill="#ddd4c2"/>
+  <circle cx="66" cy="712" r="18" fill="#2f5d50"/><rect x="94" y="702" width="100" height="8" rx="4" fill="#5a5345"/><rect x="94" y="718" width="70" height="7" rx="3.5" fill="#c9bfa9"/>
+  <!-- posts -->
+  <text x="48" y="796" font-family="Georgia, serif" font-size="24" fill="#1f2a26">Latest stories</text>
+  <rect x="48" y="812" width="704" height="1" fill="#e6dfd0"/>
+  <g font-family="Georgia, serif">
+    <rect x="48" y="836" width="220" height="150" rx="14" fill="url(#b-sky2)"/><path d="M48 940 q55 -30 110 0 t110 0 v46 h-220z" fill="#2a9d8f"/><path d="M48 960 q55 -20 110 0 t110 0 v26 h-220z" fill="#1d7a70"/><circle cx="210" cy="880" r="18" fill="#fff"/>
+    <text x="48" y="1014" font-family="Arial" font-size="11" fill="#c46a3a" letter-spacing="1">COAST</text><text x="48" y="1040" font-size="17" fill="#1f2a26">Essaouira by the sea</text><rect x="48" y="1054" width="190" height="7" rx="3.5" fill="#ddd4c2"/>
+    <rect x="290" y="836" width="220" height="150" rx="14" fill="#e9c46a"/><circle cx="400" cy="912" r="50" fill="#fbf7ef"/><path d="M362 912 h76 l-10 30 h-56z" fill="#c46a3a"/><path d="M370 912 q30 -50 60 0z" fill="#e76f51"/><rect x="396" y="852" width="8" height="18" rx="4" fill="#7a3426"/>
+    <text x="290" y="1014" font-family="Arial" font-size="11" fill="#c46a3a" letter-spacing="1">FOOD</text><text x="290" y="1040" font-size="17" fill="#1f2a26">The perfect tagine</text><rect x="290" y="1054" width="180" height="7" rx="3.5" fill="#ddd4c2"/>
+    <rect x="532" y="836" width="220" height="150" rx="14" fill="url(#b-sky3)"/><circle cx="700" cy="870" r="14" fill="#f1faee"/><g fill="#f1faee"><circle cx="570" cy="870" r="2"/><circle cx="610" cy="856" r="1.5"/><circle cx="650" cy="880" r="2"/><circle cx="590" cy="900" r="1.5"/></g><path d="M532 986 l70 -60 l40 30 l50 -50 l60 80z" fill="#1a3a44"/>
+    <text x="532" y="1014" font-family="Arial" font-size="11" fill="#c46a3a" letter-spacing="1">DESERT</text><text x="532" y="1040" font-size="17" fill="#1f2a26">A night under stars</text><rect x="532" y="1054" width="170" height="7" rx="3.5" fill="#ddd4c2"/>
+  </g>
+  <!-- newsletter -->
+  <rect x="48" y="1090" width="704" height="90" rx="18" fill="#2f5d50"/>
+  <text x="80" y="1142" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#fbf7ef">Join 5,000 slow travellers</text>
+  <rect x="420" y="1114" width="190" height="42" rx="21" fill="#3f7465"/><rect x="580" y="1114" width="140" height="42" rx="21" fill="#e9c46a"/>
+  <text x="650" y="1140" font-family="Arial" font-size="13" font-weight="700" fill="#1f2a26" text-anchor="middle">Subscribe</text>
+</svg>

@@ -180,32 +180,50 @@
         <div class="section-head">
           <p class="eyebrow">Portfolio</p>
           <h2>Website styles I can build for you</h2>
-          <p>Sample concepts by industry. Replace these with your own client projects as you complete them.</p>
+          <p>Design concepts by industry. Hover to scroll through a page, click to see it full size.</p>
         </div>
         <div class="grid cards-3">
           <article class="work-card">
-            <div class="work-thumb thumb-1"><span>Restaurant</span></div>
-            <div class="work-info"><h3>Restaurant &amp; Café</h3><p>Menu, gallery, online reservations</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/restaurant.svg" data-title="Olive &amp; Thyme — Restaurant &amp; Café" aria-label="View the Restaurant &amp; Café design full size">
+              <img src="assets/work/restaurant.svg" alt="Restaurant &amp; Café website design concept: Olive &amp; Thyme" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Restaurant &amp; Café</h3><p>Menu, gallery, online reservations</p></div>
           </article>
           <article class="work-card">
-            <div class="work-thumb thumb-2"><span>Store</span></div>
-            <div class="work-info"><h3>Online Shop</h3><p>Product catalog, cart, secure checkout</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/shop.svg" data-title="Nordic — Online Shop" aria-label="View the Online Shop design full size">
+              <img src="assets/work/shop.svg" alt="Online Shop website design concept: Nordic" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Online Shop</h3><p>Product catalog, cart, secure checkout</p></div>
           </article>
           <article class="work-card">
-            <div class="work-thumb thumb-3"><span>Portfolio</span></div>
-            <div class="work-info"><h3>Creative Portfolio</h3><p>Showcase work, about page, contact</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/portfolio.svg" data-title="Studio Mira — Creative Portfolio" aria-label="View the Creative Portfolio design full size">
+              <img src="assets/work/portfolio.svg" alt="Creative Portfolio website design concept: Studio Mira" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Creative Portfolio</h3><p>Showcase work, about page, contact</p></div>
           </article>
           <article class="work-card">
-            <div class="work-thumb thumb-4"><span>Services</span></div>
-            <div class="work-info"><h3>Local Business</h3><p>Services, reviews, booking, maps</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/local.svg" data-title="BrightFix — Local Business" aria-label="View the Local Business design full size">
+              <img src="assets/work/local.svg" alt="Local Business website design concept: BrightFix" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Local Business</h3><p>Services, reviews, booking, maps</p></div>
           </article>
           <article class="work-card">
-            <div class="work-thumb thumb-5"><span>Startup</span></div>
-            <div class="work-info"><h3>Startup Landing Page</h3><p>Product launch, sign-ups, analytics</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/startup.svg" data-title="Flowly — Startup Landing Page" aria-label="View the Startup Landing Page design full size">
+              <img src="assets/work/startup.svg" alt="Startup Landing Page website design concept: Flowly" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Startup Landing Page</h3><p>Product launch, sign-ups, analytics</p></div>
           </article>
           <article class="work-card">
-            <div class="work-thumb thumb-6"><span>Blog</span></div>
-            <div class="work-info"><h3>Blog &amp; Personal Brand</h3><p>Articles, newsletter, social links</p></div>
+            <button type="button" class="work-thumb" data-full="assets/work/blog.svg" data-title="Wander Notes — Blog &amp; Personal Brand" aria-label="View the Blog &amp; Personal Brand design full size">
+              <img src="assets/work/blog.svg" alt="Blog &amp; Personal Brand website design concept: Wander Notes" loading="lazy" width="800" height="1200">
+              <span class="work-view">View design</span>
+            </button>
+            <div class="work-info"><span class="work-tag">Concept</span><h3>Blog &amp; Personal Brand</h3><p>Articles, newsletter, social links</p></div>
           </article>
         </div>
       </div>
@@ -352,6 +370,19 @@
       <a href="#top" class="muted small">Back to top ↑</a>
     </div>
   </footer>
+
+  <!-- ============ DESIGN LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <div class="lightbox-inner">
+      <div class="lightbox-bar">
+        <span class="lightbox-dots"><i></i><i></i><i></i></span>
+        <p id="lightbox-title"></p>
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+      </div>
+      <div class="lightbox-scroll"><img id="lightbox-img" alt=""></div>
+      <div class="lightbox-foot"><span>Like this style?</span><a href="#contact" class="btn btn-small" id="lightbox-cta">Get a site like this</a></div>
+    </div>
+  </div>
 
   <!-- ============ WHATSAPP ============ -->
   <div class="wa" id="wa">
