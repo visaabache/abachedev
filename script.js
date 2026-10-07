@@ -9,7 +9,7 @@ const CONFIG = {
   // Your WhatsApp number in international format, digits only — no "+", spaces
   // or leading zeros (e.g. "212612345678" for +212 6 12 34 56 78).
   // While empty, the WhatsApp buttons take visitors to the contact form instead.
-  whatsappNumber: "",
+  whatsappNumber: "212677047171",
 };
 
 // Footer year

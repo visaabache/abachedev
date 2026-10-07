@@ -20,7 +20,7 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mo
 ## Customize
 1. **Email**: set to `contact@abachedev.com` in `CONFIG` in `script.js` (and in `index.html`).
 2. **Receive form messages directly (optional)**: create a free form at [formspree.io](https://formspree.io), then paste its endpoint into `formEndpoint` in `script.js`. If you leave it empty, the form opens the visitor's email app with the message pre-filled.
-3. **WhatsApp**: set `whatsappNumber` in `CONFIG` in `script.js`, in international format with digits only (e.g. `212612345678`). Until it's set, the WhatsApp buttons send visitors to the contact form.
+3. **WhatsApp**: `whatsappNumber` in `CONFIG` in `script.js` is set to `212677047171` (+212 677-047171). Use international format, digits only.
 4. **Prices & text**: edit `index.html`.
 5. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.
 
