@@ -1,9 +1,12 @@
 # AbacheDev — Website Creator Service
 
+Live at **[abachedev.com](https://abachedev.com)** · Contact: **contact@abachedev.com**
+
 A fast, responsive, single-page website for offering website design & development services.
 
 ## Sections
-- **Hero**: your headline and calls to action
+- **Hero**: animated background (drifting gradient glows, moving grid, interactive particle network), rotating headline word, 3D-tilting website mockup, cursor spotlight
+- **Tech marquee**: scrolling strip of tools and platforms
 - **Services**: design, development, e-commerce, SEO, redesigns, maintenance
 - **Process**: the 4 steps from discovery to launch
 - **Portfolio**: sample website styles by industry (swap in your real projects)
@@ -11,10 +14,10 @@ A fast, responsive, single-page website for offering website design & developmen
 - **FAQ**
 - **Contact**: a project inquiry form
 
-Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mode automatically.
+Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mode automatically, and turns animations off for visitors who've asked their device for reduced motion.
 
 ## Customize
-1. **Your email**: open `script.js` and set `contactEmail` in `CONFIG`.
+1. **Email**: set to `contact@abachedev.com` in `CONFIG` in `script.js` (and in `index.html`).
 2. **Receive form messages directly (optional)**: create a free form at [formspree.io](https://formspree.io), then paste its endpoint into `formEndpoint` in `script.js`. If you leave it empty, the form opens the visitor's email app with the message pre-filled.
 3. **Prices & text**: edit `index.html`.
 4. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.
@@ -31,4 +34,9 @@ python3 -m http.server 8000
 1. Push this repo to GitHub.
 2. Go to **Settings → Pages**.
 3. Under "Build and deployment", choose **Deploy from a branch**, select your branch and the `/ (root)` folder, then click **Save**.
-4. Your site will be live at `https://<your-username>.github.io/abachedev/` within a minute or two.
+4. Under **Custom domain**, enter `abachedev.com` (the `CNAME` file in this repo already contains it) and tick **Enforce HTTPS** once it's available.
+5. At your domain registrar, add these DNS records:
+   - `A` records for `@` pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - a `CNAME` record for `www` pointing to `visaabache.github.io`
+
+DNS changes can take up to 24 hours to take effect.

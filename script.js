@@ -1,7 +1,7 @@
 // ===== Site settings — edit these =====
 const CONFIG = {
   // The email address that receives project inquiries.
-  contactEmail: "your-email@example.com",
+  contactEmail: "contact@abachedev.com",
   // Optional: paste a Formspree endpoint (https://formspree.io/f/xxxx) to receive
   // form submissions directly in your inbox. Leave empty to open the visitor's
   // email app with the message pre-filled instead.
@@ -38,6 +38,153 @@ document.querySelectorAll("[data-package]").forEach((btn) =>
   })
 );
 
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Scroll progress bar + header shadow
+const progress = document.querySelector(".scroll-progress");
+const header = document.querySelector(".site-header");
+let scrollTicking = false;
+function onScroll() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+  header.classList.toggle("scrolled", window.scrollY > 10);
+  scrollTicking = false;
+}
+window.addEventListener("scroll", () => {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    requestAnimationFrame(onScroll);
+  }
+}, { passive: true });
+onScroll();
+
+// Rotating headline word
+const rotatorWord = document.getElementById("rotator-word");
+const words = ["customers.", "clients.", "sales.", "attention.", "growth."];
+let wordIndex = 0;
+if (!reduceMotion) {
+  setInterval(() => {
+    rotatorWord.classList.add("out");
+    setTimeout(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      rotatorWord.textContent = words[wordIndex];
+      rotatorWord.classList.remove("out");
+      rotatorWord.classList.add("in");
+      void rotatorWord.offsetWidth; // restart transition from the "in" position
+      rotatorWord.classList.remove("in");
+    }, 350);
+  }, 2600);
+}
+
+// Hero: 3D tilt on the mockup and a cursor spotlight
+const hero = document.querySelector(".hero");
+const tilt = document.getElementById("tilt");
+const finePointer = window.matchMedia("(pointer: fine)").matches;
+if (finePointer && !reduceMotion) {
+  hero.addEventListener("pointermove", (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    hero.style.setProperty("--mx", `${x * 100}%`);
+    hero.style.setProperty("--my", `${y * 100}%`);
+    tilt.style.transform = `rotateY(${(x - 0.5) * 14}deg) rotateX(${(0.5 - y) * 10}deg)`;
+  });
+  hero.addEventListener("pointerleave", () => {
+    tilt.style.transform = "";
+  });
+}
+
+// Hero: animated particle network background
+(function particles() {
+  const canvas = document.getElementById("hero-canvas");
+  const ctx = canvas.getContext("2d");
+  const mouse = { x: -9999, y: -9999 };
+  let w, h, dpr, dots = [], running = false, visible = true;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.round(Math.min(70, (w * h) / 16000));
+    dots = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.6 + 0.8,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const link = 130;
+    for (let i = 0; i < dots.length; i++) {
+      const a = dots[i];
+      a.x += a.vx;
+      a.y += a.vy;
+      if (a.x < 0 || a.x > w) a.vx *= -1;
+      if (a.y < 0 || a.y > h) a.vy *= -1;
+
+      // gently push dots away from the cursor
+      const mdx = a.x - mouse.x, mdy = a.y - mouse.y;
+      const md = Math.hypot(mdx, mdy);
+      if (md < 120 && md > 0) {
+        a.x += (mdx / md) * 1.2;
+        a.y += (mdy / md) * 1.2;
+      }
+
+      ctx.beginPath();
+      ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(99, 102, 241, 0.55)";
+      ctx.fill();
+
+      for (let j = i + 1; j < dots.length; j++) {
+        const b = dots[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < link) {
+          ctx.strokeStyle = `rgba(99, 102, 241, ${0.18 * (1 - d / link)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    if (running) requestAnimationFrame(draw);
+  }
+
+  function start() {
+    if (!running && visible && !document.hidden) {
+      running = true;
+      requestAnimationFrame(draw);
+    }
+  }
+  function stop() { running = false; }
+
+  resize();
+  if (reduceMotion) { draw(); return; }
+  start();
+
+  window.addEventListener("resize", resize);
+  hero.addEventListener("pointermove", (e) => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
+  document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      visible ? start() : stop();
+    }).observe(hero);
+  }
+})();
+
 // Reveal-on-scroll animation
 const revealEls = document.querySelectorAll(".card, .steps li, .work-card, .price-card, .faq details, .section-head");
 if ("IntersectionObserver" in window) {
@@ -45,14 +192,20 @@ if ("IntersectionObserver" in window) {
     (entries) =>
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          io.unobserve(entry.target);
+          const el = entry.target;
+          el.classList.add("visible");
+          io.unobserve(el);
+          // drop the stagger delay once revealed so hover effects respond instantly
+          setTimeout(() => (el.style.transitionDelay = ""), 1100);
         }
       }),
     { threshold: 0.12 }
   );
   revealEls.forEach((el) => {
     el.classList.add("reveal");
+    // stagger siblings in the same grid
+    const index = Array.prototype.indexOf.call(el.parentElement.children, el);
+    el.style.transitionDelay = `${Math.min(index, 5) * 80}ms`;
     io.observe(el);
   });
 }
