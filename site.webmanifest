@@ -1,0 +1,14 @@
+{
+  "name": "AbacheDev — Web Design & Development",
+  "short_name": "AbacheDev",
+  "description": "Fast, mobile-friendly, SEO-ready websites for small businesses, online stores and startups.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/logo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

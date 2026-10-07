@@ -43,13 +43,15 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## Publish for free with GitHub Pages
-1. Push this repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Under "Build and deployment", choose **Deploy from a branch**, select your branch and the `/ (root)` folder, then click **Save**.
-4. Under **Custom domain**, enter `abachedev.com` (the `CNAME` file in this repo already contains it) and tick **Enforce HTTPS** once it's available.
-5. At your domain registrar, add these DNS records:
-   - `A` records for `@` pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - a `CNAME` record for `www` pointing to `visaabache.github.io`
+## SEO
+- Keyword-focused title, meta description, H1 and section headings ("web design", "website development", "website pricing"…)
+- Structured data (JSON-LD): `ProfessionalService` with contact details, service area and priced offers, plus `WebSite`, `WebPage` and `FAQPage` (generated from the visible FAQ — keep them in sync if you edit questions)
+- Open Graph and Twitter cards with a 1200×630 share image (`assets/og-image.png`)
+- `robots.txt`, `sitemap.xml`, `site.webmanifest`, `favicon.ico`, Apple touch icon, canonical URL and a branded `404.html` (marked `noindex`)
+- Performance: non-blocking web fonts, deferred script, no layout shift; Lighthouse scores 100 for SEO, Accessibility and Best Practices, and 92–100 for Performance
+- `_headers` sets security headers and cache rules on Cloudflare
 
-DNS changes can take up to 24 hours to take effect.
+**After launch:** add the site to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters), submit `https://abachedev.com/sitemap.xml`, and create a Google Business Profile. When you edit the page, update `<lastmod>` in `sitemap.xml`.
+
+## Deploy
+Planned: Cloudflare (Workers static assets) via Wrangler. `_headers` and `404.html` are picked up automatically by Cloudflare.

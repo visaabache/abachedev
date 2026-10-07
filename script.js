@@ -190,7 +190,7 @@ if (finePointer && !reduceMotion) {
 })();
 
 // Reveal-on-scroll animation
-const revealEls = document.querySelectorAll(".card, .steps li, .work-card, .price-card, .faq details, .section-head");
+const revealEls = document.querySelectorAll(".card, .steps li, .work-card, .price-card, .faq details, .section-head, .why-list li, .why-copy");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) =>
@@ -287,7 +287,7 @@ form.addEventListener("submit", async (e) => {
     wa.classList.toggle("open", open);
     panel.hidden = !open;
     toggleBtn.setAttribute("aria-expanded", String(open));
-    toggleBtn.setAttribute("aria-label", open ? "Close WhatsApp chat" : "Chat on WhatsApp");
+    document.getElementById("wa-toggle-label").textContent = open ? "Close WhatsApp chat" : "Chat on WhatsApp";
     if (open) {
       wa.classList.add("seen");
       wa.classList.remove("hint");
