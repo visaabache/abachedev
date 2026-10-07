@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found | AbacheDev</title>
+  <title>Page not found · Page introuvable | AbacheDev</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,8 @@
     .nf .logo { justify-content: center; margin-bottom: 36px; }
     .nf .nf-code { margin: 0 0 12px; max-width: none; color: transparent; font-size: clamp(5rem, 18vw, 9rem); font-weight: 800; line-height: 1; letter-spacing: -.04em; }
     .nf p { color: var(--muted); font-size: 1.1rem; margin: 12px auto 28px; max-width: 420px; }
+    .nf .nf-fr { margin-top: -16px; font-size: 1rem; }
+    .nf-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   </style>
 </head>
 <body>
@@ -25,7 +27,11 @@
       <p class="nf-code gradient-text">&lt;404/&gt;</p>
       <h1>This page doesn't exist</h1>
       <p>The link may be broken or the page may have moved. Let's get you back on track.</p>
-      <a href="/" class="btn">Back to homepage</a>
+      <p lang="fr" class="nf-fr">Cette page n’existe pas ou a été déplacée.</p>
+      <div class="nf-actions">
+        <a href="/" class="btn">Back to homepage</a>
+        <a href="/fr/" class="btn btn-ghost" lang="fr">Accueil en français</a>
+      </div>
     </div>
   </main>
 </body>

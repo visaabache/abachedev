@@ -12,6 +12,40 @@ const CONFIG = {
   whatsappNumber: "212677047171",
 };
 
+// ===== Translations — the page's <html lang> picks the set =====
+const STRINGS = {
+  en: {
+    words: ["customers.", "clients.", "sales.", "attention.", "growth."],
+    formInvalid: "Please fill in your name, a valid email and a message.",
+    formSending: "Sending…",
+    formSent: "Thanks! Your message was sent — I'll reply within 24 hours.",
+    formError: (email) => `Something went wrong. Please email me at ${email}.`,
+    mailSubject: (pkg) => `Website project inquiry — ${pkg}`,
+    mailBody: (d) => `Name: ${d.name}\nEmail: ${d.email}\nPackage: ${d.package}\n\n${d.message}`,
+    mailOpening: "Opening your email app to send the message…",
+    waDefault: "Hi AbacheDev! I'm interested in a website.",
+    waOpen: "Chat on WhatsApp",
+    waClose: "Close WhatsApp chat",
+    styleRequest: (style) => `Hi! I'd like a website in the style of your "${style}" design.`,
+  },
+  fr: {
+    words: ["clients.", "ventes.", "résultats.", "contacts.", "opportunités."],
+    formInvalid: "Veuillez indiquer votre nom, une adresse e-mail valide et un message.",
+    formSending: "Envoi en cours…",
+    formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
+    formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email}.`,
+    mailSubject: (pkg) => `Demande de projet de site web — ${pkg}`,
+    mailBody: (d) => `Nom : ${d.name}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
+    mailOpening: "Ouverture de votre application e-mail…",
+    waDefault: "Bonjour AbacheDev ! Je suis intéressé(e) par la création d'un site web.",
+    waOpen: "Discuter sur WhatsApp",
+    waClose: "Fermer la discussion WhatsApp",
+    styleRequest: (style) => `Bonjour ! J'aimerais un site web dans le style de votre design « ${style} ».`,
+  },
+};
+const LANG = document.documentElement.lang.slice(0, 2) in STRINGS ? document.documentElement.lang.slice(0, 2) : "en";
+const T = STRINGS[LANG];
+
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -64,7 +98,7 @@ onScroll();
 
 // Rotating headline word
 const rotatorWord = document.getElementById("rotator-word");
-const words = ["customers.", "clients.", "sales.", "attention.", "growth."];
+const words = T.words;
 let wordIndex = 0;
 if (!reduceMotion) {
   setInterval(() => {
@@ -234,14 +268,14 @@ form.addEventListener("submit", async (e) => {
     if (!ok) valid = false;
   });
   if (!valid) {
-    setStatus("Please fill in your name, a valid email and a message.", "err");
+    setStatus(T.formInvalid, "err");
     return;
   }
 
   const data = Object.fromEntries(new FormData(form));
 
   if (CONFIG.formEndpoint) {
-    setStatus("Sending…");
+    setStatus(T.formSending);
     try {
       const res = await fetch(CONFIG.formEndpoint, {
         method: "POST",
@@ -250,17 +284,17 @@ form.addEventListener("submit", async (e) => {
       });
       if (!res.ok) throw new Error(res.statusText);
       form.reset();
-      setStatus("Thanks! Your message was sent — I'll reply within 24 hours.", "ok");
+      setStatus(T.formSent, "ok");
     } catch {
-      setStatus(`Something went wrong. Please email me at ${CONFIG.contactEmail}.`, "err");
+      setStatus(T.formError(CONFIG.contactEmail), "err");
     }
     return;
   }
 
-  const subject = `Website project inquiry — ${data.package}`;
-  const body = `Name: ${data.name}\nEmail: ${data.email}\nPackage: ${data.package}\n\n${data.message}`;
+  const subject = T.mailSubject(data.package);
+  const body = T.mailBody(data);
   window.location.href = `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  setStatus("Opening your email app to send the message…", "ok");
+  setStatus(T.mailOpening, "ok");
 });
 
 // WhatsApp chat widget
@@ -269,7 +303,7 @@ form.addEventListener("submit", async (e) => {
   const toggleBtn = document.getElementById("wa-toggle");
   const panel = document.getElementById("wa-panel");
   const input = document.getElementById("wa-text");
-  const defaultMsg = "Hi AbacheDev! I'm interested in a website.";
+  const defaultMsg = T.waDefault;
 
   function openChat(message) {
     const text = encodeURIComponent((message || "").trim() || defaultMsg);
@@ -287,7 +321,7 @@ form.addEventListener("submit", async (e) => {
     wa.classList.toggle("open", open);
     panel.hidden = !open;
     toggleBtn.setAttribute("aria-expanded", String(open));
-    document.getElementById("wa-toggle-label").textContent = open ? "Close WhatsApp chat" : "Chat on WhatsApp";
+    document.getElementById("wa-toggle-label").textContent = open ? T.waClose : T.waOpen;
     if (open) {
       wa.classList.add("seen");
       wa.classList.remove("hint");
@@ -374,8 +408,23 @@ form.addEventListener("submit", async (e) => {
   });
   document.getElementById("lightbox-cta").addEventListener("click", () => {
     const style = title.textContent.split(" — ")[1] || "this";
-    document.getElementById("message").value = `Hi! I'd like a website in the style of your "${style}" design.`;
+    document.getElementById("message").value = T.styleRequest(style);
     lastTrigger = null;
     close();
+  });
+})();
+
+// Suggest the French version to French-speaking visitors on the English page
+(function langSuggest() {
+  const bar = document.getElementById("lang-suggest");
+  if (!bar) return;
+  let dismissed = false;
+  try { dismissed = localStorage.getItem("lang-suggest-dismissed") === "1"; } catch {}
+  const prefersFrench = (navigator.languages || [navigator.language]).some((l) => /^fr\b/i.test(l || ""));
+  if (dismissed || !prefersFrench) return;
+  bar.hidden = false;
+  document.getElementById("lang-suggest-close").addEventListener("click", () => {
+    bar.hidden = true;
+    try { localStorage.setItem("lang-suggest-dismissed", "1"); } catch {}
   });
 })();
