@@ -27,6 +27,9 @@ const STRINGS = {
     waOpen: "Chat on WhatsApp",
     waClose: "Close WhatsApp chat",
     styleRequest: (style) => `Hi! I'd like a website in the style of your "${style}" design.`,
+    suggest: "This site is also available in English.",
+    suggestCta: "View in English",
+    suggestClose: "Close",
   },
   fr: {
     words: ["clients.", "ventes.", "résultats.", "contacts.", "opportunités."],
@@ -41,9 +44,14 @@ const STRINGS = {
     waOpen: "Discuter sur WhatsApp",
     waClose: "Fermer la discussion WhatsApp",
     styleRequest: (style) => `Bonjour ! J'aimerais un site web dans le style de votre design « ${style} ».`,
+    suggest: "Ce site existe aussi en français.",
+    suggestCta: "Voir en français",
+    suggestClose: "Fermer",
   },
+  ar: "__AR_STRINGS__",
 };
-const LANG = document.documentElement.lang.slice(0, 2) in STRINGS ? document.documentElement.lang.slice(0, 2) : "en";
+const PAGE_LANG = document.documentElement.lang.slice(0, 2);
+const LANG = typeof STRINGS[PAGE_LANG] === "object" ? PAGE_LANG : "fr";
 const T = STRINGS[LANG];
 
 // Footer year
@@ -414,17 +422,53 @@ form.addEventListener("submit", async (e) => {
   });
 })();
 
-// Suggest the French version to French-speaking visitors on the English page
+// Suggest another language version when the visitor's browser prefers it
 (function langSuggest() {
   const bar = document.getElementById("lang-suggest");
   if (!bar) return;
-  let dismissed = false;
-  try { dismissed = localStorage.getItem("lang-suggest-dismissed") === "1"; } catch {}
-  const prefersFrench = (navigator.languages || [navigator.language]).some((l) => /^fr\b/i.test(l || ""));
-  if (dismissed || !prefersFrench) return;
-  bar.hidden = false;
-  document.getElementById("lang-suggest-close").addEventListener("click", () => {
+  const switchLinks = document.querySelectorAll(".lang-switch a[hreflang]");
+
+  // Picking a language with the switch counts as a choice: stop suggesting
+  switchLinks.forEach((link) =>
+    link.addEventListener("click", () => {
+      try { localStorage.setItem("lang-choice", link.hreflang); } catch {}
+    })
+  );
+
+  let skip = false;
+  try { skip = !!localStorage.getItem("lang-choice") || localStorage.getItem("lang-suggest-dismissed") === "1"; } catch {}
+  if (skip) return;
+
+  // First supported language in the browser's preference order
+  const preferred = (navigator.languages || [navigator.language])
+    .map((l) => (l || "").slice(0, 2).toLowerCase())
+    .find((l) => typeof STRINGS[l] === "object");
+  if (!preferred || preferred === LANG) return;
+  const target = document.querySelector(`.lang-switch a[hreflang="${preferred}"]`);
+  if (!target) return;
+
+  const t = STRINGS[preferred];
+  bar.lang = preferred;
+  bar.dir = preferred === "ar" ? "rtl" : "ltr";
+  bar.innerHTML = "";
+  const text = document.createElement("span");
+  text.textContent = t.suggest;
+  const cta = document.createElement("a");
+  cta.className = "btn btn-small";
+  cta.href = target.getAttribute("href");
+  cta.hreflang = preferred;
+  cta.textContent = t.suggestCta;
+  cta.addEventListener("click", () => {
+    try { localStorage.setItem("lang-choice", preferred); } catch {}
+  });
+  const close = document.createElement("button");
+  close.type = "button";
+  close.setAttribute("aria-label", t.suggestClose);
+  close.textContent = "×";
+  close.addEventListener("click", () => {
     bar.hidden = true;
     try { localStorage.setItem("lang-suggest-dismissed", "1"); } catch {}
   });
+  bar.append(text, cta, close);
+  bar.hidden = false;
 })();
