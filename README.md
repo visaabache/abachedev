@@ -13,14 +13,27 @@ A fast, responsive, single-page website for offering website design & developmen
 - **Pricing**: Starter / Business / E-commerce packages
 - **FAQ**
 - **Contact**: a project inquiry form
+- **WhatsApp button**: floating chat toggle with quick-message options that opens a WhatsApp chat with you
 
 Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mode automatically, and turns animations off for visitors who've asked their device for reduced motion.
 
 ## Customize
 1. **Email**: set to `contact@abachedev.com` in `CONFIG` in `script.js` (and in `index.html`).
 2. **Receive form messages directly (optional)**: create a free form at [formspree.io](https://formspree.io), then paste its endpoint into `formEndpoint` in `script.js`. If you leave it empty, the form opens the visitor's email app with the message pre-filled.
-3. **Prices & text**: edit `index.html`.
-4. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.
+3. **WhatsApp**: set `whatsappNumber` in `CONFIG` in `script.js`, in international format with digits only (e.g. `212612345678`). Until it's set, the WhatsApp buttons send visitors to the contact form.
+4. **Prices & text**: edit `index.html`.
+5. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.
+
+## Logo
+The `<A>` mark: an HTML anchor tag built around the "A" of Abache, with a blinking cyan text cursor as the crossbar.
+
+| File | Use |
+| --- | --- |
+| `assets/logo-mark.svg` | Icon (scales to any size) |
+| `assets/logo.svg` | Icon + wordmark |
+| `assets/logo-512.png` | Social media profile picture, app icon |
+| `assets/logo-wide.png` | Email signatures, documents, banners (transparent background) |
+| `assets/favicon.svg` | Browser tab icon |
 
 ## Preview locally
 Open `index.html` in your browser, or run:

@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AbacheDev logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" role="img" aria-label="AbacheDev">
   <defs>
-    <linearGradient id="ad-bg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="ad-bg2" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#4f46e5"/>
       <stop offset=".55" stop-color="#7c3aed"/>
       <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#ad-bg)"/>
+  <rect width="64" height="64" rx="16" fill="url(#ad-bg2)"/>
   <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
     <path d="M17 23 L9 32 L17 41" stroke-width="4.5" opacity=".75"/>
     <path d="M47 23 L55 32 L47 41" stroke-width="4.5" opacity=".75"/>
     <path d="M23 47 L32 17 L41 47" stroke-width="5.5"/>
   </g>
   <rect x="26" y="35" width="12" height="4.5" rx="2.25" fill="#67e8f9"/>
+  <text x="80" y="43" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5" fill="#0f172a">Abache<tspan fill="#4f46e5">Dev</tspan></text>
 </svg>

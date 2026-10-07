@@ -6,6 +6,10 @@ const CONFIG = {
   // form submissions directly in your inbox. Leave empty to open the visitor's
   // email app with the message pre-filled instead.
   formEndpoint: "",
+  // Your WhatsApp number in international format, digits only — no "+", spaces
+  // or leading zeros (e.g. "212612345678" for +212 6 12 34 56 78).
+  // While empty, the WhatsApp buttons take visitors to the contact form instead.
+  whatsappNumber: "",
 };
 
 // Footer year
@@ -258,3 +262,77 @@ form.addEventListener("submit", async (e) => {
   window.location.href = `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   setStatus("Opening your email app to send the message…", "ok");
 });
+
+// WhatsApp chat widget
+(function whatsapp() {
+  const wa = document.getElementById("wa");
+  const toggleBtn = document.getElementById("wa-toggle");
+  const panel = document.getElementById("wa-panel");
+  const input = document.getElementById("wa-text");
+  const defaultMsg = "Hi AbacheDev! I'm interested in a website.";
+
+  function openChat(message) {
+    const text = encodeURIComponent((message || "").trim() || defaultMsg);
+    if (CONFIG.whatsappNumber) {
+      window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${text}`, "_blank", "noopener");
+    } else {
+      // No number configured yet: fall back to the contact form
+      setOpen(false);
+      document.getElementById("message").value = decodeURIComponent(text);
+      document.getElementById("contact").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    }
+  }
+
+  function setOpen(open) {
+    wa.classList.toggle("open", open);
+    panel.hidden = !open;
+    toggleBtn.setAttribute("aria-expanded", String(open));
+    toggleBtn.setAttribute("aria-label", open ? "Close WhatsApp chat" : "Chat on WhatsApp");
+    if (open) {
+      wa.classList.add("seen");
+      wa.classList.remove("hint");
+      try { sessionStorage.setItem("wa-seen", "1"); } catch {}
+      if (finePointer) setTimeout(() => input.focus(), 50);
+    }
+  }
+
+  toggleBtn.addEventListener("click", () => setOpen(panel.hidden));
+  document.getElementById("wa-close").addEventListener("click", () => setOpen(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !panel.hidden) {
+      setOpen(false);
+      toggleBtn.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!panel.hidden && !wa.contains(e.target)) setOpen(false);
+  });
+
+  document.querySelectorAll("#wa-quick button").forEach((btn) =>
+    btn.addEventListener("click", () => openChat(btn.dataset.msg))
+  );
+  document.getElementById("wa-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    openChat(input.value);
+    input.value = "";
+  });
+  document.querySelectorAll(".wa-link").forEach((link) =>
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(true);
+    })
+  );
+
+  // Gently point out the button once per visit
+  let seen = false;
+  try { seen = sessionStorage.getItem("wa-seen") === "1"; } catch {}
+  if (seen) {
+    wa.classList.add("seen");
+  } else {
+    setTimeout(() => {
+      if (panel.hidden) wa.classList.add("hint");
+      setTimeout(() => wa.classList.remove("hint"), 4000);
+    }, 4000);
+  }
+})();
