@@ -19,12 +19,12 @@ const CONFIG = {
 const STRINGS = {
   en: {
     words: ["customers.", "clients.", "sales.", "attention.", "growth."],
-    formInvalid: "Please fill in your name, a valid email and a message.",
+    formInvalid: "Please fill in your name, a message, and a valid WhatsApp number or email.",
     formSending: "Sending…",
     formSent: "Thanks! Your message was sent — I'll reply within 24 hours.",
     formError: (email) => `Something went wrong. Please email me at ${email} or message me on WhatsApp.`,
     mailSubject: (pkg) => `Website project inquiry — ${pkg}`,
-    mailBody: (d) => `Name: ${d.name}\nEmail: ${d.email}\nPackage: ${d.package}\n\n${d.message}`,
+    mailBody: (d) => `Name: ${d.name}\nPhone / WhatsApp: ${d.phone}\nEmail: ${d.email}\nPackage: ${d.package}\n\n${d.message}`,
     mailOpening: "Opening your email app to send the message…",
     waDefault: "Hi AbacheDev! I'm interested in a website.",
     waOpen: "Chat on WhatsApp",
@@ -36,12 +36,12 @@ const STRINGS = {
   },
   fr: {
     words: ["clients.", "ventes.", "résultats.", "contacts.", "opportunités."],
-    formInvalid: "Veuillez indiquer votre nom, une adresse e-mail valide et un message.",
+    formInvalid: "Veuillez indiquer votre nom, un message et un numéro WhatsApp ou un e-mail valide.",
     formSending: "Envoi en cours…",
     formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
     formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email} ou sur WhatsApp.`,
     mailSubject: (pkg) => `Demande de projet de site web — ${pkg}`,
-    mailBody: (d) => `Nom : ${d.name}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
+    mailBody: (d) => `Nom : ${d.name}\nTéléphone / WhatsApp : ${d.phone}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
     mailOpening: "Ouverture de votre application e-mail…",
     waDefault: "Bonjour AbacheDev ! Je suis intéressé(e) par la création d'un site web.",
     waOpen: "Discuter sur WhatsApp",
@@ -53,12 +53,12 @@ const STRINGS = {
   },
   ar: {
     words: ["المزيد من العملاء.", "مبيعات أكثر.", "فرصًا جديدة.", "اهتمامًا أكبر.", "نموًا مستمرًا."],
-    formInvalid: "يُرجى إدخال اسمك وبريد إلكتروني صالح ورسالتك.",
+    formInvalid: "يُرجى إدخال اسمك ورسالتك، مع رقم واتساب أو بريد إلكتروني صالح.",
     formSending: "جارٍ الإرسال…",
     formSent: "شكرًا! تم إرسال رسالتك — سأردّ عليك خلال 24 ساعة.",
     formError: (email) => `حدث خطأ ما. راسلني على ${email} أو عبر واتساب.`,
     mailSubject: (pkg) => `استفسار عن مشروع موقع إلكتروني — ${pkg}`,
-    mailBody: (d) => `الاسم: ${d.name}\nالبريد الإلكتروني: ${d.email}\nالباقة: ${d.package}\n\n${d.message}`,
+    mailBody: (d) => `الاسم: ${d.name}\nالهاتف / واتساب: ${d.phone}\nالبريد الإلكتروني: ${d.email}\nالباقة: ${d.package}\n\n${d.message}`,
     mailOpening: "جارٍ فتح تطبيق البريد الإلكتروني لإرسال الرسالة…",
     waDefault: "مرحبًا AbacheDev! أرغب في إنشاء موقع إلكتروني.",
     waOpen: "تحدّث معي على واتساب",
@@ -284,22 +284,39 @@ function setStatus(msg, type) {
   statusEl.className = `form-status ${type || ""}`;
 }
 
+// Phone number → WhatsApp format (digits with country code). Moroccan numbers
+// written as 06…, 07… or 6…/7… get the 212 prefix. Returns "" if it isn't a number.
+function waNumber(raw) {
+  let d = String(raw || "").replace(/\D/g, "");
+  if (d.startsWith("00")) d = d.slice(2);
+  if (d.length === 10 && d.startsWith("0")) d = "212" + d.slice(1);
+  else if (d.length === 9 && /^[5-7]/.test(d)) d = "212" + d;
+  return d.length >= 9 && d.length <= 15 ? d : "";
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const fields = ["name", "email", "message"].map((id) => document.getElementById(id));
-  let valid = true;
-  fields.forEach((f) => {
-    const ok = f.value.trim() !== "" && f.checkValidity();
-    f.classList.toggle("invalid", !ok);
-    if (!ok) valid = false;
-  });
-  if (!valid) {
+  // Name and message are required, plus at least one way to reply: WhatsApp/phone or email
+  const get = (id) => document.getElementById(id);
+  const name = get("name"), message = get("message"), email = get("email"), phone = get("phone");
+  const emailOk = email.value.trim() !== "" && email.checkValidity();
+  const phoneOk = waNumber(phone.value) !== "";
+  const checks = [
+    [name, name.value.trim() !== ""],
+    [message, message.value.trim() !== ""],
+    [email, emailOk || (email.value.trim() === "" && phoneOk)],
+    [phone, phoneOk || (phone.value.trim() === "" && emailOk)],
+  ];
+  checks.forEach(([el, ok]) => el.classList.toggle("invalid", !ok));
+  if (!checks.every(([, ok]) => ok)) {
     setStatus(T.formInvalid, "err");
     return;
   }
 
   const data = Object.fromEntries(new FormData(form));
+  const wa = waNumber(data.phone);
+  data.whatsapp = wa ? `https://wa.me/${wa}` : "";
 
   if (CONFIG.formEndpoint || CONFIG.sheetEndpoint) {
     const submit = form.querySelector('button[type="submit"]');

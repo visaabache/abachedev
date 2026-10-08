@@ -172,7 +172,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="../styles.css?v=2026100802">
+  <link rel="stylesheet" href="../styles.css?v=2026100803">
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -531,8 +531,13 @@
             <input id="name" name="name" type="text" autocomplete="name" dir="auto" required>
           </div>
           <div class="field">
+            <label for="phone">الهاتف / واتساب</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" aria-describedby="contact-hint">
+          </div>
+          <div class="field">
             <label for="email">البريد الإلكتروني</label>
-            <input id="email" name="email" type="email" autocomplete="email" dir="ltr" required>
+            <input id="email" name="email" type="email" autocomplete="email" dir="ltr" aria-describedby="contact-hint">
+            <p class="field-hint" id="contact-hint">يكفي رقم واتساب أو بريد إلكتروني.</p>
           </div>
           <div class="field">
             <label for="package">الباقة</label>
@@ -638,6 +643,6 @@
     <span class="wa-tip" aria-hidden="true">تحدّث معي</span>
   </div>
 
-  <script src="../script.js?v=2026100802" defer></script>
+  <script src="../script.js?v=2026100803" defer></script>
 </body>
 </html>
