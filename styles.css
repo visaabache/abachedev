@@ -338,8 +338,9 @@ body.no-scroll { overflow: hidden; }
 .price-card { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px 30px; display: flex; flex-direction: column; }
 .price-card.featured { border: 2px solid var(--primary); box-shadow: 0 20px 40px rgba(79,70,229,.18); transform: scale(1.03); }
 .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: .78rem; font-weight: 700; padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
-.price { font-size: 2.8rem; font-weight: 800; margin: 6px 0 2px; }
-.price span { font-size: 1.4rem; vertical-align: top; position: relative; top: 10px; margin-right: 2px; color: var(--muted); }
+.price { font-size: 2.8rem; font-weight: 800; margin: 6px 0 2px; white-space: nowrap; }
+.price .cur { font-size: 1.15rem; font-weight: 700; color: var(--muted); margin-inline-start: 6px; }
+.price-alt { color: var(--muted); font-size: .9rem; font-weight: 600; margin: -2px 0 4px; }
 .price-note { color: var(--muted); margin-bottom: 22px; }
 .price-card ul { display: grid; gap: 10px; margin-bottom: 28px; flex: 1; }
 .price-card li::before { content: "✓"; color: var(--primary); font-weight: 800; margin-inline-end: 10px; }
