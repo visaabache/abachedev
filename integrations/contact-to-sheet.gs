@@ -1,19 +1,18 @@
 /**
- * AbacheDev contact form → Google Sheet
+ * AbacheDev contact form → Google Sheet ("AbacheDev — Leads")
  *
  * Setup (once):
- * 1. Open the "AbacheDev — Leads" Google Sheet → Extensions → Apps Script.
- * 2. Replace the code in Code.gs with this file and click Save.
- * 3. Deploy → New deployment → type "Web app".
- *      Execute as: Me      Who has access: Anyone
- *    Click Deploy, allow the permissions, and copy the Web app URL (…/exec).
- * 4. Paste that URL into sheetEndpoint in script.js.
- *
- * Every form submission then becomes a new row (in a tab named "Leads" if there is one, otherwise the first tab).
+ * 1. Paste this file into the Apps Script editor (replace everything) and click Save.
+ * 2. Select "setup" in the toolbar and click Run — approve the permissions Google asks for.
+ *    The Execution log should say: Connected to "AbacheDev — Leads" → tab "Leads".
+ * 3. Deploy → New deployment → type "Web app" — Execute as: Me, Who has access: Anyone → Deploy.
+ * 4. Copy the Web app URL (…/exec) into sheetEndpoint in script.js.
  */
+const SPREADSHEET_ID = '1Pt1LpkSsVsvTrgPUzCgytM64fx1k2bbu6aAW8fueI3k';
 const SHEET_NAME = 'Leads';
 const HEADERS = ['Date', 'Name', 'Email', 'Package', 'Message', 'Language', 'Page'];
 
+// Receives each form submission from the website
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
@@ -21,10 +20,7 @@ function doPost(e) {
     const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (data._gotcha) return json({ ok: true }); // spam bot filled the hidden field
 
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
-    if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
-    if (sheet.getFrozenRows() === 0) sheet.setFrozenRows(1);
+    const sheet = getSheet();
     sheet.appendRow([
       new Date(),
       clean(data.name),
@@ -40,6 +36,25 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+}
+
+// Opening the Web app URL in a browser shows this — a quick way to check the deployment
+function doGet() {
+  return json({ ok: true, message: 'AbacheDev contact form endpoint is running.' });
+}
+
+// Run once from the editor to grant permissions and check the connection
+function setup() {
+  const sheet = getSheet();
+  Logger.log('Connected to "' + sheet.getParent().getName() + '" → tab "' + sheet.getName() + '"');
+}
+
+function getSheet() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+  if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
+  if (sheet.getFrozenRows() === 0) sheet.setFrozenRows(1);
+  return sheet;
 }
 
 // Keep text as text: a value starting with = + - @ would otherwise run as a spreadsheet formula
