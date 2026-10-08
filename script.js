@@ -20,6 +20,8 @@ const STRINGS = {
   en: {
     words: ["customers.", "clients.", "sales.", "attention.", "growth."],
     formInvalid: "Please fill in your name, a message, and a valid WhatsApp number or email.",
+    phoneInvalid: "Please check the WhatsApp number — outside Morocco, include your country code (e.g. +33).",
+    emailInvalid: "Please check the email address.",
     formSending: "Sending…",
     formSent: "Thanks! Your message was sent — I'll reply within 24 hours.",
     formError: (email) => `Something went wrong. Please email me at ${email} or message me on WhatsApp.`,
@@ -37,6 +39,8 @@ const STRINGS = {
   fr: {
     words: ["clients.", "ventes.", "résultats.", "contacts.", "opportunités."],
     formInvalid: "Veuillez indiquer votre nom, un message et un numéro WhatsApp ou un e-mail valide.",
+    phoneInvalid: "Vérifiez le numéro WhatsApp — hors du Maroc, ajoutez l’indicatif (ex. +33).",
+    emailInvalid: "Vérifiez l’adresse e-mail.",
     formSending: "Envoi en cours…",
     formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
     formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email} ou sur WhatsApp.`,
@@ -54,6 +58,8 @@ const STRINGS = {
   ar: {
     words: ["المزيد من العملاء.", "مبيعات أكثر.", "فرصًا جديدة.", "اهتمامًا أكبر.", "نموًا مستمرًا."],
     formInvalid: "يُرجى إدخال اسمك ورسالتك، مع رقم واتساب أو بريد إلكتروني صالح.",
+    phoneInvalid: "يُرجى التحقق من رقم واتساب، مع إضافة رمز الدولة إذا كنت خارج المغرب (مثل ⁦+33⁩).",
+    emailInvalid: "يُرجى التحقق من البريد الإلكتروني.",
     formSending: "جارٍ الإرسال…",
     formSent: "شكرًا! تم إرسال رسالتك — سأردّ عليك خلال 24 ساعة.",
     formError: (email) => `حدث خطأ ما. راسلني على ${email} أو عبر واتساب.`,
@@ -285,14 +291,25 @@ function setStatus(msg, type) {
 }
 
 // Phone number → WhatsApp format (digits with country code). Moroccan numbers
-// written as 06…, 07… or 6…/7… get the 212 prefix. Returns "" if it isn't a number.
+// written as 06…, 07… or 6…/7… get the 212 prefix; Arabic-Indic digits are accepted;
+// "(0)" and a trunk 0 after +212/+33 are dropped. Returns "" if it isn't a usable number.
+// Same rules as waNumber() in integrations/contact-to-sheet.gs.
 function waNumber(raw) {
-  let d = String(raw || "").replace(/\D/g, "");
+  let d = String(raw || "")
+    .replace(/[\u0660-\u0669\u06f0-\u06f9]/g, (c) => String(c.charCodeAt(0) & 15))
+    .replace(/\(0\)/g, "")
+    .replace(/\D/g, "");
   if (d.startsWith("00")) d = d.slice(2);
   if (d.length === 10 && d.startsWith("0")) d = "212" + d.slice(1);
   else if (d.length === 9 && /^[5-7]/.test(d)) d = "212" + d;
+  d = d.replace(/^(212|33)0/, "$1");
+  if (d.startsWith("0")) return "";
+  if (d.startsWith("212") && !/^212[5-8]\d{8}$/.test(d)) return "";
   return d.length >= 9 && d.length <= 15 ? d : "";
 }
+
+// Same rule as isEmail() in integrations/contact-to-sheet.gs (requires a domain ending like .com)
+const EMAIL_RE = /^[^\s@<>()"',;:]+@[^\s@<>()"',;:]+\.[A-Za-z]{2,}$/;
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -300,17 +317,28 @@ form.addEventListener("submit", async (e) => {
   // Name and message are required, plus at least one way to reply: WhatsApp/phone or email
   const get = (id) => document.getElementById(id);
   const name = get("name"), message = get("message"), email = get("email"), phone = get("phone");
-  const emailOk = email.value.trim() !== "" && email.checkValidity();
+  const emailOk = email.value.trim() !== "" && email.checkValidity() && EMAIL_RE.test(email.value.trim());
   const phoneOk = waNumber(phone.value) !== "";
+  const phoneTyped = phone.value.trim() !== "", emailTyped = email.value.trim() !== "";
+  // In screen order. Only blame a contact field that was filled in wrongly, or both when both are empty.
   const checks = [
     [name, name.value.trim() !== ""],
+    [phone, phoneOk || (!phoneTyped && (emailOk || emailTyped))],
+    [email, emailOk || (!emailTyped && (phoneOk || phoneTyped))],
     [message, message.value.trim() !== ""],
-    [email, emailOk || (email.value.trim() === "" && phoneOk)],
-    [phone, phoneOk || (phone.value.trim() === "" && emailOk)],
   ];
-  checks.forEach(([el, ok]) => el.classList.toggle("invalid", !ok));
-  if (!checks.every(([, ok]) => ok)) {
-    setStatus(T.formInvalid, "err");
+  checks.forEach(([el, ok]) => {
+    el.classList.toggle("invalid", !ok);
+    if (ok) el.removeAttribute("aria-invalid");
+    else el.setAttribute("aria-invalid", "true");
+  });
+  const firstBad = checks.find(([, ok]) => !ok);
+  if (firstBad) {
+    const msg = phoneTyped && !phoneOk ? T.phoneInvalid
+      : emailTyped && !emailOk ? T.emailInvalid
+      : T.formInvalid;
+    setStatus(msg, "err");
+    firstBad[0].focus();
     return;
   }
 
