@@ -48,7 +48,23 @@ const STRINGS = {
     suggestCta: "Voir en français",
     suggestClose: "Fermer",
   },
-  ar: "__AR_STRINGS__",
+  ar: {
+    words: ["المزيد من العملاء.", "مبيعات أكثر.", "فرصًا جديدة.", "اهتمامًا أكبر.", "نموًا مستمرًا."],
+    formInvalid: "يُرجى إدخال اسمك وبريد إلكتروني صالح ورسالتك.",
+    formSending: "جارٍ الإرسال…",
+    formSent: "شكرًا! تم إرسال رسالتك — سأردّ عليك خلال 24 ساعة.",
+    formError: (email) => `حدث خطأ ما. راسلني على ${email}.`,
+    mailSubject: (pkg) => `استفسار عن مشروع موقع إلكتروني — ${pkg}`,
+    mailBody: (d) => `الاسم: ${d.name}\nالبريد الإلكتروني: ${d.email}\nالباقة: ${d.package}\n\n${d.message}`,
+    mailOpening: "جارٍ فتح تطبيق البريد الإلكتروني لإرسال الرسالة…",
+    waDefault: "مرحبًا AbacheDev! أرغب في إنشاء موقع إلكتروني.",
+    waOpen: "تحدّث معي على واتساب",
+    waClose: "إغلاق محادثة واتساب",
+    styleRequest: (style) => `مرحبًا! أرغب في موقع بأسلوب تصميم «${style}».`,
+    suggest: "هذا الموقع متوفر أيضًا باللغة العربية.",
+    suggestCta: "تصفّح بالعربية",
+    suggestClose: "إغلاق",
+  },
 };
 const PAGE_LANG = document.documentElement.lang.slice(0, 2);
 const LANG = typeof STRINGS[PAGE_LANG] === "object" ? PAGE_LANG : "fr";
