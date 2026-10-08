@@ -6,6 +6,9 @@ const CONFIG = {
   // submission to the email address set on the form in your Formspree account.
   // Leave empty to open the visitor's email app with the message pre-filled instead.
   formEndpoint: "https://formspree.io/f/xyekwdae",
+  // Optional: Google Apps Script web app URL (https://script.google.com/macros/s/…/exec)
+  // that saves every submission as a row in a Google Sheet — see integrations/contact-to-sheet.gs.
+  sheetEndpoint: "",
   // Your WhatsApp number in international format, digits only — no "+", spaces
   // or leading zeros (e.g. "212612345678" for +212 6 12 34 56 78).
   // While empty, the WhatsApp buttons take visitors to the contact form instead.
@@ -298,22 +301,32 @@ form.addEventListener("submit", async (e) => {
 
   const data = Object.fromEntries(new FormData(form));
 
-  if (CONFIG.formEndpoint) {
+  if (CONFIG.formEndpoint || CONFIG.sheetEndpoint) {
     const submit = form.querySelector('button[type="submit"]');
     submit.disabled = true;
     setStatus(T.formSending);
+    const payload = { ...data, language: LANG, page: location.href, _subject: T.mailSubject(data.package) };
     try {
-      const res = await fetch(CONFIG.formEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...data,
-          language: LANG,
-          page: location.href,
-          _subject: T.mailSubject(data.package),
-        }),
-      });
-      if (!res.ok) throw new Error(res.statusText);
+      // Google Sheet copy: Apps Script can't answer CORS, so send as a simple request and don't wait on it
+      const toSheet = CONFIG.sheetEndpoint
+        ? fetch(CONFIG.sheetEndpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload),
+          })
+        : null;
+      if (CONFIG.formEndpoint) {
+        const res = await fetch(CONFIG.formEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(res.statusText);
+        toSheet?.catch(() => {});
+      } else {
+        await toSheet;
+      }
       form.reset();
       setStatus(T.formSent, "ok");
     } catch {
