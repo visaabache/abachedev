@@ -19,7 +19,7 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mo
 
 ## Customize
 1. **Email**: set to `contact@abachedev.com` in `CONFIG` in `script.js` (and in `index.html`).
-2. **Receive form messages directly (optional)**: create a free form at [formspree.io](https://formspree.io), then paste its endpoint into `formEndpoint` in `script.js`. If you leave it empty, the form opens the visitor's email app with the message pre-filled.
+2. **Contact form**: submissions go to Formspree (`formEndpoint` in `script.js`, currently `https://formspree.io/f/xyekwdae`), which forwards them to the email address set on that form in your Formspree account. Each message includes the name, email, package, message, the site language and page, with a subject like "Demande de projet de site web — Business". A hidden `_gotcha` field filters spam bots. If you empty `formEndpoint`, the form opens the visitor's email app instead.
 3. **WhatsApp**: `whatsappNumber` in `CONFIG` in `script.js` is set to `212677047171` (+212 677-047171). Use international format, digits only.
 4. **Prices & text**: edit `index.html`, `en/index.html` and `ar/index.html`. Prices are in Moroccan dirhams (about 10 MAD per US dollar): Starter 2 990, Business 6 990, E-commerce 12 990, maintenance from 490/month — shown as "DH" in French, "MAD" (with the approximate US$ price) in English and "درهم" in Arabic. When you change a price, update the price cards, the maintenance line, the first FAQ answer and the `"price"` values in the JSON-LD on all three pages.
 5. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.

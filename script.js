@@ -2,10 +2,10 @@
 const CONFIG = {
   // The email address that receives project inquiries.
   contactEmail: "contact@abachedev.com",
-  // Optional: paste a Formspree endpoint (https://formspree.io/f/xxxx) to receive
-  // form submissions directly in your inbox. Leave empty to open the visitor's
-  // email app with the message pre-filled instead.
-  formEndpoint: "",
+  // Formspree endpoint that receives the contact form. Formspree forwards each
+  // submission to the email address set on the form in your Formspree account.
+  // Leave empty to open the visitor's email app with the message pre-filled instead.
+  formEndpoint: "https://formspree.io/f/xyekwdae",
   // Your WhatsApp number in international format, digits only — no "+", spaces
   // or leading zeros (e.g. "212612345678" for +212 6 12 34 56 78).
   // While empty, the WhatsApp buttons take visitors to the contact form instead.
@@ -19,7 +19,7 @@ const STRINGS = {
     formInvalid: "Please fill in your name, a valid email and a message.",
     formSending: "Sending…",
     formSent: "Thanks! Your message was sent — I'll reply within 24 hours.",
-    formError: (email) => `Something went wrong. Please email me at ${email}.`,
+    formError: (email) => `Something went wrong. Please email me at ${email} or message me on WhatsApp.`,
     mailSubject: (pkg) => `Website project inquiry — ${pkg}`,
     mailBody: (d) => `Name: ${d.name}\nEmail: ${d.email}\nPackage: ${d.package}\n\n${d.message}`,
     mailOpening: "Opening your email app to send the message…",
@@ -36,7 +36,7 @@ const STRINGS = {
     formInvalid: "Veuillez indiquer votre nom, une adresse e-mail valide et un message.",
     formSending: "Envoi en cours…",
     formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
-    formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email}.`,
+    formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email} ou sur WhatsApp.`,
     mailSubject: (pkg) => `Demande de projet de site web — ${pkg}`,
     mailBody: (d) => `Nom : ${d.name}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
     mailOpening: "Ouverture de votre application e-mail…",
@@ -53,7 +53,7 @@ const STRINGS = {
     formInvalid: "يُرجى إدخال اسمك وبريد إلكتروني صالح ورسالتك.",
     formSending: "جارٍ الإرسال…",
     formSent: "شكرًا! تم إرسال رسالتك — سأردّ عليك خلال 24 ساعة.",
-    formError: (email) => `حدث خطأ ما. راسلني على ${email}.`,
+    formError: (email) => `حدث خطأ ما. راسلني على ${email} أو عبر واتساب.`,
     mailSubject: (pkg) => `استفسار عن مشروع موقع إلكتروني — ${pkg}`,
     mailBody: (d) => `الاسم: ${d.name}\nالبريد الإلكتروني: ${d.email}\nالباقة: ${d.package}\n\n${d.message}`,
     mailOpening: "جارٍ فتح تطبيق البريد الإلكتروني لإرسال الرسالة…",
@@ -299,18 +299,27 @@ form.addEventListener("submit", async (e) => {
   const data = Object.fromEntries(new FormData(form));
 
   if (CONFIG.formEndpoint) {
+    const submit = form.querySelector('button[type="submit"]');
+    submit.disabled = true;
     setStatus(T.formSending);
     try {
       const res = await fetch(CONFIG.formEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          language: LANG,
+          page: location.href,
+          _subject: T.mailSubject(data.package),
+        }),
       });
       if (!res.ok) throw new Error(res.statusText);
       form.reset();
       setStatus(T.formSent, "ok");
     } catch {
       setStatus(T.formError(CONFIG.contactEmail), "err");
+    } finally {
+      submit.disabled = false;
     }
     return;
   }
