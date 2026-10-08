@@ -1,0 +1,30 @@
+{
+  "name": "AbacheDev — تصميم مواقع إلكترونية",
+  "short_name": "AbacheDev",
+  "description": "مواقع إلكترونية سريعة ومتجاوبة ومهيّأة لمحركات البحث للشركات الصغيرة والمتاجر الإلكترونية في المغرب.",
+  "start_url": "/ar/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/ar/"
+}

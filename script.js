@@ -35,15 +35,15 @@ const STRINGS = {
     words: ["clients.", "ventes.", "résultats.", "contacts.", "opportunités."],
     formInvalid: "Veuillez indiquer votre nom, une adresse e-mail valide et un message.",
     formSending: "Envoi en cours…",
-    formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
+    formSent: "Merci ! Votre message a bien été envoyé — je vous réponds sous 24 heures.",
     formError: (email) => `Une erreur est survenue. Écrivez-moi à ${email}.`,
     mailSubject: (pkg) => `Demande de projet de site web — ${pkg}`,
-    mailBody: (d) => `Nom : ${d.name}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
+    mailBody: (d) => `Nom : ${d.name}\nE-mail : ${d.email}\nFormule : ${d.package}\n\n${d.message}`,
     mailOpening: "Ouverture de votre application e-mail…",
-    waDefault: "Bonjour AbacheDev ! Je suis intéressé(e) par la création d'un site web.",
+    waDefault: "Bonjour AbacheDev ! Je suis intéressé(e) par la création d'un site web.",
     waOpen: "Discuter sur WhatsApp",
     waClose: "Fermer la discussion WhatsApp",
-    styleRequest: (style) => `Bonjour ! J'aimerais un site web dans le style de votre design « ${style} ».`,
+    styleRequest: (style) => `Bonjour ! J'aimerais un site web dans le style de votre design « ${style} ».`,
     suggest: "Ce site existe aussi en français.",
     suggestCta: "Voir en français",
     suggestClose: "Fermer",
@@ -411,12 +411,15 @@ form.addEventListener("submit", async (e) => {
     box.hidden = false;
     scroller.scrollTop = 0;
     document.body.classList.add("no-scroll");
+    // keep keyboard focus inside the dialog
+    [...document.body.children].forEach((el) => { if (el !== box) el.inert = true; });
     document.getElementById("lightbox-close").focus();
   }
 
   function close() {
     box.hidden = true;
     document.body.classList.remove("no-scroll");
+    [...document.body.children].forEach((el) => { el.inert = false; });
     if (lastTrigger) lastTrigger.focus();
   }
 
@@ -428,7 +431,15 @@ form.addEventListener("submit", async (e) => {
     if (e.target === box) close();
   });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !box.hidden) close();
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    // loop Tab / Shift+Tab inside the dialog
+    if (e.key === "Tab") {
+      const items = [...box.querySelectorAll("button, a[href], [tabindex]:not([tabindex='-1'])")];
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
   document.getElementById("lightbox-cta").addEventListener("click", () => {
     const style = title.textContent.split(" — ")[1] || "this";
@@ -464,9 +475,12 @@ form.addEventListener("submit", async (e) => {
   if (!target) return;
 
   const t = STRINGS[preferred];
-  bar.lang = preferred;
-  bar.dir = preferred === "ar" ? "rtl" : "ltr";
-  bar.innerHTML = "";
+  // The fixed box keeps the page's direction (so it always sits opposite the
+  // WhatsApp button); only its content takes the suggested language's direction.
+  const inner = document.createElement("div");
+  inner.className = "lang-suggest-inner";
+  inner.lang = preferred;
+  inner.dir = preferred === "ar" ? "rtl" : "ltr";
   const text = document.createElement("span");
   text.textContent = t.suggest;
   const cta = document.createElement("a");
@@ -485,6 +499,7 @@ form.addEventListener("submit", async (e) => {
     bar.hidden = true;
     try { localStorage.setItem("lang-suggest-dismissed", "1"); } catch {}
   });
-  bar.append(text, cta, close);
+  inner.append(text, cta, close);
+  bar.replaceChildren(inner);
   bar.hidden = false;
 })();

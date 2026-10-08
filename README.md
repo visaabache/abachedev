@@ -47,7 +47,7 @@ python3 -m http.server 8000
 | Language | File | URL | Share image |
 | --- | --- | --- | --- |
 | French (main, `x-default`) | `index.html` | `/` | `assets/og-image-fr.png` |
-| English | `en/index.html` | `/en/` | `assets/og-image.png` |
+| English | `en/index.html` | `/en/` | `assets/og-image-en.png` |
 | Arabic (right-to-left) | `ar/index.html` | `/ar/` | `assets/og-image-ar.png` |
 
 - The FR · EN · عربي switch sits in the menu. If a visitor's browser prefers another language the site offers, a small banner suggests that version (in that language). Picking a language with the switch, or closing the banner, is remembered. There is no automatic redirect, so Google can crawl every version.
@@ -59,8 +59,8 @@ python3 -m http.server 8000
 ## SEO
 - Keyword-focused title, meta description, H1 and section headings ("web design", "website development", "website pricing"…)
 - Structured data (JSON-LD): `ProfessionalService` with contact details, service area and priced offers, plus `WebSite`, `WebPage` and `FAQPage` (generated from the visible FAQ — keep them in sync if you edit questions)
-- Open Graph and Twitter cards with a 1200×630 share image (`assets/og-image.png`)
-- `robots.txt`, `sitemap.xml`, `site.webmanifest`, `favicon.ico`, Apple touch icon, canonical URL and a branded `404.html` (marked `noindex`)
+- Open Graph and Twitter cards with a 1200×630 share image per language (`assets/og-image-fr.png`, `og-image-en.png`, `og-image-ar.png`)
+- `robots.txt`, `sitemap.xml`, a web app manifest per language (`site.webmanifest`, `en/site.webmanifest`, `ar/site.webmanifest`), `favicon.ico`, Apple touch icon, canonical URL and a branded `404.html` (marked `noindex`)
 - Performance: non-blocking web fonts, deferred script, no layout shift; Lighthouse scores 100 for SEO, Accessibility and Best Practices, and 92–100 for Performance
 - `_headers` sets security headers and cache rules on Cloudflare
 
