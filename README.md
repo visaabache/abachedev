@@ -63,7 +63,7 @@ python3 -m http.server 8000
 - Open Graph and Twitter cards with a 1200×630 share image per language (`assets/og-image-fr.png`, `og-image-en.png`, `og-image-ar.png`)
 - `robots.txt`, `sitemap.xml`, a web app manifest per language (`site.webmanifest`, `en/site.webmanifest`, `ar/site.webmanifest`), `favicon.ico`, Apple touch icon, canonical URL and a branded `404.html` (marked `noindex`)
 - Performance: non-blocking web fonts, deferred script, no layout shift; Lighthouse scores 100 for SEO, Accessibility and Best Practices, and 92–100 for Performance
-- `_headers` sets security headers and cache rules on Cloudflare; `styles.css` and `script.js` are linked with a `?v=` version so visitors get updates right away — bump it (e.g. `?v=20261009`) on all four HTML files when you change either file
+- `_headers` sets security headers and cache rules on Cloudflare; `styles.css` and `script.js` are linked with a `?v=` version so visitors get updates right away — bump it (e.g. `?v=2026100901`) on all four HTML files when you change either file
 
 **After launch:** add the site to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters), submit `https://abachedev.com/sitemap.xml`, and create a Google Business Profile. When you edit the page, update `<lastmod>` in `sitemap.xml`.
 

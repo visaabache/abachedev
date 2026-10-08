@@ -8,7 +8,7 @@ const CONFIG = {
   formEndpoint: "https://formspree.io/f/xyekwdae",
   // Optional: Google Apps Script web app URL (https://script.google.com/macros/s/…/exec)
   // that saves every submission as a row in a Google Sheet — see integrations/contact-to-sheet.gs.
-  sheetEndpoint: "",
+  sheetEndpoint: "https://script.google.com/macros/s/AKfycbwNgGnXH9_7eXSGDIY35IgiGlYEIaQ4x9vQSfA_0F3GH9uyJBtjsiUNG-A3dHUPNYDc7Q/exec",
   // Your WhatsApp number in international format, digits only — no "+", spaces
   // or leading zeros (e.g. "212612345678" for +212 6 12 34 56 78).
   // While empty, the WhatsApp buttons take visitors to the contact form instead.
