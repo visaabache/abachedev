@@ -34,9 +34,26 @@ The `<A>` mark: an HTML anchor tag built around the "A" of Abache, with a blinki
 | --- | --- |
 | `assets/logo-mark.svg` | Icon (scales to any size) |
 | `assets/logo.svg` | Icon + wordmark |
-| `assets/logo-512.png` | Social media profile picture, app icon |
+| `assets/logo-512.png` | App icon (for social media, use the kit below) |
 | `assets/logo-wide.png` | Email signatures, documents, banners (transparent background) |
 | `assets/favicon.svg` | Browser tab icon |
+
+### Social media kit (`assets/social/`)
+Ready to upload, at each platform's recommended size. Text, logos and the URL sit inside the area every platform shows, clear of the spot the profile photo covers.
+
+| File | Size | Use |
+| --- | --- | --- |
+| `profile-gradient.png` | 1080×1080 | **Main profile picture**: Instagram, Facebook, TikTok, X, YouTube, LinkedIn, WhatsApp Business (built for the circle crop) |
+| `profile-dark.png` | 1080×1080 | Alternative profile picture (dark) |
+| `profile-light.png` | 1080×1080 | Alternative profile picture (light) |
+| `facebook-cover.png` | 1640×624 | Facebook page cover |
+| `linkedin-company-cover.png` | 1128×191 | LinkedIn company page cover |
+| `linkedin-personal-cover.png` | 1584×396 | LinkedIn personal profile background |
+| `x-header.png` | 1500×500 | X (Twitter) header |
+| `youtube-banner.png` | 2560×1440 | YouTube channel banner |
+| `ig-highlight-*.jpg` | 1080×1920 | Instagram story highlight covers: Services, Réalisations, Tarifs, Avis, FAQ, Contact. Post one as a story, add it to a highlight, then pick it as the highlight cover |
+
+Use the same profile picture everywhere so people recognize you.
 
 ## Preview locally
 Open `index.html` in your browser, or run:
