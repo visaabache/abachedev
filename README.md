@@ -47,13 +47,13 @@ Ready to upload, at each platform's recommended size. Text, logos and the URL si
 | `profile-dark.png` | 1080×1080 | Alternative profile picture (dark) |
 | `profile-light.png` | 1080×1080 | Alternative profile picture (light) |
 | `facebook-cover.png` | 1640×624 | Facebook page cover |
-| `linkedin-company-cover.png` | 1128×191 | LinkedIn company page cover |
+| `linkedin-company-cover.png` | 4200×700 | LinkedIn company page cover |
 | `linkedin-personal-cover.png` | 1584×396 | LinkedIn personal profile background |
 | `x-header.png` | 1500×500 | X (Twitter) header |
 | `youtube-banner.png` | 2560×1440 | YouTube channel banner |
-| `ig-highlight-*.jpg` | 1080×1920 | Instagram story highlight covers: Services, Réalisations, Tarifs, Avis, FAQ, Contact. Post one as a story, add it to a highlight, then pick it as the highlight cover |
+| `ig-highlight-*.jpg` | 1080×1920 | Instagram story highlight covers: Services, Réalisations, Méthode, Tarifs, FAQ, Contact, plus Avis for when you have client reviews to share. Post one as a story, add it to a highlight, then pick it as the highlight cover |
 
-Use the same profile picture everywhere so people recognize you.
+Use the same profile picture everywhere so people recognize you, and put your WhatsApp number and abachedev.com in each profile's bio or contact button (people can tap those; they can't tap a number in a cover image).
 
 ## Preview locally
 Open `index.html` in your browser, or run:
