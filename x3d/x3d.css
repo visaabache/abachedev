@@ -270,11 +270,12 @@ html.x-lite .x-hero { cursor: auto; }
 html.x-reduce .x-disc-text, html.x-reduce .x-ring-item > img { animation: none; }
 html.x-reduce .s-gallery { overflow-x: auto; scrollbar-width: thin; }
 html.x-reduce .s-head { transform: none; }
-.x-fade { opacity: 0; transition: opacity .9s ease; }
-.x-fade.is-in { opacity: 1; }
+/* only hide when the script is running (x-full / x-lite are set by app.js) */
+html.x-full .x-fade, html.x-lite .x-fade { opacity: 0; transition: opacity .9s ease; }
+html .x-fade.is-in { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .x-disc-text, .x-ring-item > img, .x-page-enter .s-line, .x-page-enter .s-cap, .x-page-enter .x-h1, .x-page-enter .x-kicker { animation: none !important; }
-  .x-fade { opacity: 1; transition: none; }
+  html .x-fade { opacity: 1; transition: none; }
   .x-disc, .x-ring-item, .x-canvas { transition: none; }
 }
 
