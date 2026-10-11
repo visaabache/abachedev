@@ -1,0 +1,18 @@
+<!doctype html>
+<!-- Renders the six 3D service objects to PNG (used for assets/3d/*.webp, the lightweight version and "Autres services").
+     Serve the site locally, open /tools/render-objects.html, and right-click → save each image. -->
+<html lang="fr"><head><meta charset="utf-8"><title>Rendus des objets 3D</title>
+<style>body{margin:0;padding:24px;font:14px system-ui;background:#f4f3ef;color:#4f46e5;display:flex;flex-wrap:wrap;gap:16px}figure{margin:0}img{width:300px;height:300px;background:#ecebe5;display:block}</style>
+</head><body>
+<script type="module">
+  import { renderStills } from '/x3d/scene.js';
+  import { SERVICES } from '/x3d/services.js';
+  const stills = renderStills(SERVICES, 900);
+  for (const s of SERVICES) {
+    const f = document.createElement('figure');
+    f.innerHTML = `<img src="${stills[s.slug]}" alt="${s.name}" data-slug="${s.slug}"><figcaption>${s.slug}.png</figcaption>`;
+    document.body.append(f);
+  }
+  window.__stills = stills;
+</script>
+</body></html>

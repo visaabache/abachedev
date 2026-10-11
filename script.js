@@ -80,32 +80,37 @@ const LANG = typeof STRINGS[PAGE_LANG] === "object" ? PAGE_LANG : "fr";
 const T = STRINGS[LANG];
 
 // Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Contact email link
 const emailLink = document.getElementById("contact-email-link");
-emailLink.textContent = CONFIG.contactEmail;
-emailLink.href = `mailto:${CONFIG.contactEmail}`;
+if (emailLink) {
+  emailLink.textContent = CONFIG.contactEmail;
+  emailLink.href = `mailto:${CONFIG.contactEmail}`;
+}
 
 // Mobile navigation
 const toggle = document.querySelector(".nav-toggle");
 const nav = document.getElementById("nav");
-toggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", String(open));
-});
-nav.querySelectorAll("a").forEach((link) =>
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    toggle.setAttribute("aria-expanded", "false");
-  })
-);
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  nav.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    })
+  );
+}
 
 // Pricing buttons pre-select the package in the contact form
 const packageSelect = document.getElementById("package");
 document.querySelectorAll("[data-package]").forEach((btn) =>
   btn.addEventListener("click", () => {
-    packageSelect.value = btn.dataset.package;
+    if (packageSelect) packageSelect.value = btn.dataset.package;
   })
 );
 
@@ -117,8 +122,8 @@ const header = document.querySelector(".site-header");
 let scrollTicking = false;
 function onScroll() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
-  header.classList.toggle("scrolled", window.scrollY > 10);
+  if (progress) progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+  if (header) header.classList.toggle("scrolled", window.scrollY > 10);
   scrollTicking = false;
 }
 window.addEventListener("scroll", () => {
@@ -133,7 +138,7 @@ onScroll();
 const rotatorWord = document.getElementById("rotator-word");
 const words = T.words;
 let wordIndex = 0;
-if (!reduceMotion) {
+if (rotatorWord && !reduceMotion) {
   setInterval(() => {
     rotatorWord.classList.add("out");
     setTimeout(() => {
@@ -151,7 +156,7 @@ if (!reduceMotion) {
 const hero = document.querySelector(".hero");
 const tilt = document.getElementById("tilt");
 const finePointer = window.matchMedia("(pointer: fine)").matches;
-if (finePointer && !reduceMotion) {
+if (hero && tilt && finePointer && !reduceMotion) {
   hero.addEventListener("pointermove", (e) => {
     const r = hero.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;
@@ -168,6 +173,7 @@ if (finePointer && !reduceMotion) {
 // Hero: animated particle network background
 (function particles() {
   const canvas = document.getElementById("hero-canvas");
+  if (!canvas || !hero) return;
   const ctx = canvas.getContext("2d");
   const mouse = { x: -9999, y: -9999 };
   let w, h, dpr, dots = [], running = false, visible = true;
@@ -286,6 +292,7 @@ const form = document.getElementById("contact-form");
 const statusEl = document.getElementById("form-status");
 
 function setStatus(msg, type) {
+  if (!statusEl) return;
   statusEl.textContent = msg;
   statusEl.className = `form-status ${type || ""}`;
 }
@@ -311,7 +318,7 @@ function waNumber(raw) {
 // Same rule as isEmail() in integrations/contact-to-sheet.gs (requires a domain ending like .com)
 const EMAIL_RE = /^[^\s@<>()"',;:]+@[^\s@<>()"',;:]+\.[A-Za-z]{2,}$/;
 
-form.addEventListener("submit", async (e) => {
+if (form) form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // Name and message are required, plus at least one way to reply: WhatsApp/phone or email
@@ -391,6 +398,7 @@ form.addEventListener("submit", async (e) => {
 // WhatsApp chat widget
 (function whatsapp() {
   const wa = document.getElementById("wa");
+  if (!wa) return;
   const toggleBtn = document.getElementById("wa-toggle");
   const panel = document.getElementById("wa-panel");
   const input = document.getElementById("wa-text");
@@ -465,6 +473,7 @@ form.addEventListener("submit", async (e) => {
 // Portfolio design lightbox
 (function lightbox() {
   const box = document.getElementById("lightbox");
+  if (!box) return;
   const img = document.getElementById("lightbox-img");
   const title = document.getElementById("lightbox-title");
   const scroller = box.querySelector(".lightbox-scroll");
