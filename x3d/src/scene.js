@@ -62,6 +62,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   // ---- layout ---------------------------------------------------------------
   let W = 1, H = 1, dpr = Math.min(window.devicePixelRatio || 1, 2);
   let discEl = null;
+  let uiEl = null;
+  let copyEl = null;
   const L = { ringX: 0, ringY: 0, R: 0, lift: 0, size: 0, svcSize: 0, disc: null };
   const wpp = (d) => (2 * d * TAN) / H; // world units per CSS pixel at distance d
   const toWorld = (sx, sy, d, out) => out.set((sx - W / 2) * wpp(d), (H / 2 - sy) * wpp(d), -d);
@@ -79,11 +81,39 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
     L.lift = H * 0.05;
     L.size = Math.min(H * 0.3, W * 0.2);
     L.svcSize = Math.min(H * 0.58, W * 0.4);
+    // on short screens the back of the ring would reach the headline: let it fade sooner
+    L.backFrom = H < 780 ? -0.62 : -0.98;
+    L.backTo = H < 780 ? -0.15 : -0.55;
     if (discEl) {
       const r = discEl.getBoundingClientRect();
-      L.disc = { x: r.left + r.width / 2, y: r.top + r.height / 2 + pageY, r: r.width / 2 };
+      if (r.width > 0) L.disc = { x: r.left + r.width / 2, y: r.top + r.height / 2 + pageY, r: r.width / 2 };
+    }
+    // keep the front object clear of the HTML label under it (short laptop screens)
+    // keep the front object between the headline and the HTML label under it (short laptop screens)
+    const ui = uiEl?.getBoundingClientRect();
+    if (ui && ui.height > 0 && frontBottom() > ui.top + pageY - 14) {
+      const lo = ui.top + pageY - 14;
+      const cp = copyEl?.getBoundingClientRect();
+      const hi = cp && cp.height > 0 ? cp.bottom + pageY + 12 : H * 0.3;
+      const k = wpp(D_RING);
+      const R = L.R * k;
+      const dist = D_RING - R * Math.cos(TILT);
+      const boost = D_RING / dist;
+      L.size = Math.min(L.size, Math.max(80, lo - hi) / boost);
+      const cy = (lo + hi) / 2;
+      L.ringY = H / 2 - (H / 2 - cy + (R * Math.sin(TILT)) / wpp(dist)) / boost;
     }
     placeOccluder();
+  }
+
+  // screen y (page coordinates) of the bottom of the front object at rest
+  function frontBottom() {
+    const k = wpp(D_RING);
+    const R = L.R * k;
+    const dist = D_RING - R * Math.cos(TILT);
+    const yWorld = (H / 2 - L.ringY) * k - R * Math.sin(TILT);
+    const cy = H / 2 - yWorld / wpp(dist);
+    return cy + 0.5 * L.size * (D_RING / dist);
   }
 
   function placeOccluder() {
@@ -106,6 +136,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   let svcP = 0; // service scroll progress 0..1 (while pinned)
   let svcExit = 0; // px scrolled after the pin
   let active = true;
+  let autoOn = true;
   let time = 0;
 
   const v = new THREE.Vector3();
@@ -129,7 +160,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
     const drift = 1 - f * 0.75;
     it.tPos.y += Math.sin(t * 0.9 + it.i * 2.1) * 0.035 * L.size * k * drift;
     const grow = 0.3 + 0.7 * smooth(-0.6, 1, c);
-    const fadeBack = smooth(-0.98, -0.55, c);
+    const fadeBack = smooth(L.backFrom, L.backTo, c);
     it.tScale = L.size * k * grow * fadeBack * (1 + it.hover * 0.06);
     e.set(
       0.06 + Math.sin(t * 0.7 + it.i) * 0.05 * drift,
@@ -165,7 +196,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
       } else {
         angle += velocity * dt;
         velocity *= Math.exp(-3.2 * dt);
-        if (active && Math.abs(velocity) < 0.02 && !hoverFront && now > holdUntil) angle += AUTO_SPEED * dt;
+        if (active && autoOn && Math.abs(velocity) < 0.02 && !hoverFront && now > holdUntil) angle += AUTO_SPEED * dt;
       }
       camera.position.y = -pageY * wpp(D_RING);
     } else {
@@ -245,7 +276,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   function bindPointer(el) {
     unbindPointer();
     const down = (ev) => {
-      if (mode !== 'home' || ev.button !== 0 || ev.target.closest('a, button')) return;
+      if (mode !== 'home' || ev.button !== 0 || ev.target.closest('a, button, .x-hero-copy')) return;
+      ev.preventDefault(); // no text selection while dragging
       dragging = { id: ev.pointerId, x: ev.clientX, lastX: ev.clientX, lastT: performance.now(), moved: 0 };
       velocity = 0;
       snapTo = null;
@@ -379,6 +411,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
     ringPrev: () => ringTo((front - 1 + N) % N),
     holdAuto: (ms) => { holdUntil = performance.now() + ms; },
     setDisc(el) { discEl = el; layout(); kick(); },
+    setUi(el, copy) { uiEl = el; copyEl = copy || null; },
+    setAuto(on) { autoOn = on; kick(); },
     setScroll(y) { pageY = y; if (mode === 'home') kick(); },
     setServiceProgress(p, exitPx = 0) {
       svcP = p;

@@ -1,9 +1,9 @@
 // AbacheDev 3D experience (French pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath } from './services.js?v=2026101101';
+import { SERVICES, servicePath } from './services.js?v=2026101201';
 
-const VERSION = '2026101101';
+const VERSION = '2026101201';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
@@ -80,6 +80,9 @@ function initLangMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); }
   });
+  btn.parentElement.addEventListener('focusout', (e) => {
+    if (!menu.hidden && !btn.parentElement.contains(e.relatedTarget)) set(false);
+  });
 }
 
 function initMenu() {
@@ -129,24 +132,29 @@ function initRing(hero) {
   const link = ui.querySelector('.x-ring-link');
   const num = ui.querySelector('.x-ring-num');
   const name = ui.querySelector('.x-ring-name');
+  const status = ui.querySelector('[data-ring-status]');
+  const pauseBtn = ui.querySelector('[data-ring-pause]');
   let index = 0;
   let timer = 0;
-  let paused = false;
+  let hover = false;
+  let stopped = REDUCE; // auto-rotation off for good (pause button, keyboard use, reduced motion)
   let swapT = 0;
+  const counter = (i) => `${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
 
-  function label(i) {
+  function label(i, announce = false) {
     const s = SERVICES[i];
     link.href = servicePath(s.slug);
     link.setAttribute('aria-label', `${s.name} — découvrir ce service`);
+    if (announce && status) status.textContent = `${counter(i)} : ${s.name}`;
     clearTimeout(swapT);
     if (REDUCE) {
-      num.textContent = `${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
+      num.textContent = counter(i);
       name.textContent = s.name;
       return;
     }
     ui.classList.add('is-swapping');
     swapT = setTimeout(() => {
-      num.textContent = `${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
+      num.textContent = counter(i);
       name.textContent = s.name;
       ui.classList.remove('is-swapping');
     }, 200);
@@ -158,10 +166,26 @@ function initRing(hero) {
       el.dataset.slot = String(d);
     });
   }
-  function go(i) {
+  function startTimer() {
+    clearInterval(timer);
+    if (stopped || scene) return;
+    timer = setInterval(() => {
+      if (!hover && !document.hidden && window.scrollY < window.innerHeight) go(index + 1);
+    }, 5200);
+  }
+  function stop() {
+    if (stopped) return;
+    stopped = true;
+    clearInterval(timer);
+    scene?.setAuto(false);
+    hero.classList.add('is-paused');
+    pauseBtn?.setAttribute('aria-pressed', 'true');
+  }
+  function go(i, { user = false } = {}) {
     index = (i + N) % N;
-    if (scene) { scene.ringTo(index); return; }
-    label(index);
+    if (user) startTimer(); // a manual step restarts the countdown (light version)
+    if (scene) { scene.ringTo(index); if (user) label(index, true); return; }
+    label(index, user);
     if (REDUCE) { slots(index); return; }
     ringEl.classList.add('is-fading');
     setTimeout(() => {
@@ -169,33 +193,37 @@ function initRing(hero) {
       ringEl.classList.remove('is-fading');
     }, 320);
   }
-  ui.querySelector('[data-ring-prev]').addEventListener('click', () => go(index - 1));
-  ui.querySelector('[data-ring-next]').addEventListener('click', () => go(index + 1));
-  // keep the label steady while someone is reading or tabbing through it
-  ui.addEventListener('pointerenter', () => { paused = true; scene?.holdAuto(60000); });
-  ui.addEventListener('pointerleave', () => { paused = false; scene?.holdAuto(1500); });
-  ui.addEventListener('focusin', () => { paused = true; scene?.holdAuto(60000); });
-  ui.addEventListener('focusout', () => { paused = false; scene?.holdAuto(1500); });
+  ui.querySelector('[data-ring-prev]').addEventListener('click', (e) => { if (e.detail === 0) stop(); go(index - 1, { user: true }); });
+  ui.querySelector('[data-ring-next]').addEventListener('click', (e) => { if (e.detail === 0) stop(); go(index + 1, { user: true }); });
+  pauseBtn?.addEventListener('click', () => {
+    if (!stopped) { stop(); return; }
+    stopped = false;
+    hero.classList.remove('is-paused');
+    pauseBtn.setAttribute('aria-pressed', 'false');
+    scene?.setAuto(true);
+    startTimer();
+  });
+  // keep the label steady while someone points at it; keyboard focus stops the motion for good
+  ui.addEventListener('pointerenter', () => { hover = true; scene?.holdAuto(60000); });
+  ui.addEventListener('pointerleave', () => { hover = false; scene?.holdAuto(1500); });
+  link.addEventListener('focus', () => { if (link.matches(':focus-visible')) stop(); });
 
-  // light version: slow auto-advance and swipe
-  if (!REDUCE) {
-    timer = setInterval(() => {
-      if (!scene && !paused && !document.hidden && window.scrollY < window.innerHeight) go(index + 1);
-    }, 5200);
-  }
   let sx = null;
-  hero.addEventListener('pointerdown', (e) => { if (!scene && !e.target.closest('a, button')) sx = e.clientX; });
+  hero.addEventListener('pointerdown', (e) => { if (!scene && !e.target.closest('a, button, .x-hero-copy')) sx = e.clientX; });
   hero.addEventListener('pointerup', (e) => {
     if (scene || sx === null) return;
     const dx = e.clientX - sx;
     sx = null;
-    if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1), { user: true });
   });
 
   slots(0);
+  if (REDUCE) { hero.classList.add('is-paused'); pauseBtn?.setAttribute('aria-pressed', 'true'); }
+  startTimer();
   return {
     get index() { return index; },
-    attachScene() { clearInterval(timer); },
+    get stopped() { return stopped; },
+    attachScene() { clearInterval(timer); scene.setAuto(!stopped); },
     frontChanged(i) { index = i; label(i); },
   };
 }
@@ -223,6 +251,7 @@ function watchActive(el) {
 async function initHomePage() {
   fades(homeEl);
   if (scene) {
+    scene.setUi(heroEl.querySelector('.x-ring-ui'), heroEl.querySelector('.x-hero-copy'));
     scene.setDisc(heroEl.querySelector('.x-disc-body'));
     scene.setScroll(window.scrollY);
     watchActive(heroEl);
@@ -259,6 +288,8 @@ async function initServicePage(el) {
     watchActive(hero);
   }
   if (strip && gallery) {
+    gallery.classList.add('is-scrub');
+    pageCleanup.push(() => gallery.classList.remove('is-scrub'));
     const tw = gsap.fromTo(strip, { x: 0 }, {
       x: () => Math.min(0, window.innerWidth - strip.scrollWidth),
       ease: 'none',
@@ -337,32 +368,59 @@ function scrollToY(y) {
   window.scrollTo(0, y);
 }
 
+// After swapping pages, make ScrollTrigger forget positions from the old page
+// (otherwise its refresh restores a stale scroll offset).
+function resetScroll() {
+  const ST = window.ScrollTrigger;
+  ST?.clearScrollMemory?.();
+  scrollToY(0);
+  ST?.refresh();
+  scrollToY(0);
+  lenis?.resize();
+}
+
 function scrollToHash(hash) {
-  const target = hash && document.querySelector(hash);
+  let target = null;
+  try { target = hash && document.querySelector(hash); } catch {}
   if (!target) return;
-  if (lenis) lenis.scrollTo(target, { offset: -72 });
-  else target.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' });
-  target.setAttribute('tabindex', '-1');
-  target.focus({ preventScroll: true });
+  const y = target === document.body ? 0 : Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
+  if (lenis) lenis.scrollTo(y, { force: true });
+  else window.scrollTo({ top: y, behavior: REDUCE ? 'auto' : 'smooth' });
+  if (target !== document.body) {
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  }
+}
+
+function scrollTopAndFocus(el) {
+  if (lenis) lenis.scrollTo(0, { force: true });
+  else window.scrollTo({ top: 0, behavior: REDUCE ? 'auto' : 'smooth' });
+  focusHeading(el);
 }
 
 async function goService(path, slug, push) {
-  if (busy || (current.type === 'service' && current.slug === slug)) return;
+  if (busy) return;
+  if (current.type === 'service' && current.slug === slug) { scrollTopAndFocus(current.el); return; }
   busy = true;
   const data = loadPage(path);
   const from = current;
   if (push) history.pushState({ x3d: 1 }, '', path);
   if (from.type === 'home') {
     if (window.scrollY > 4) {
+      // Coming from further down the page: the ring isn't on screen, so fade everything
+      // and bring the chosen object straight to its spot.
+      root.classList.add('x-canvas-off');
       from.el.style.transition = 'opacity .3s';
       from.el.style.opacity = '0';
-      await wait(300);
+      await wait(320);
       scrollToY(0);
       scene.setScroll(0);
+      scene.setMode('service', { slug, instant: true });
+    } else {
+      heroEl.classList.add('is-leaving');
+      scene.setMode('service', { slug });
+      await wait(700);
     }
-    heroEl.classList.add('is-leaving');
-    scene.setMode('service', { slug });
-    await wait(700);
   } else {
     scene.setMode('service', { slug });
     from.el.style.transition = 'opacity .35s';
@@ -382,11 +440,13 @@ async function goService(path, slug, push) {
   const el = d.page.cloneNode(true);
   el.classList.add('x-page-enter');
   main.append(el);
-  scrollToY(0);
+  resetScroll();
   applyMeta(d);
   current = { type: 'service', el, slug };
   setTimeout(() => el.classList.remove('x-page-enter'), 1500);
   await initServicePage(el);
+  scrollToY(0);
+  root.classList.remove('x-canvas-off');
   focusHeading(el);
   busy = false;
 }
@@ -406,35 +466,46 @@ async function goHome(hash, push) {
   setTimeout(() => homeEl.classList.remove('x-page-enter'), 1500);
   applyMeta(homeMeta);
   current = { type: 'home', el: homeEl };
-  scrollToY(0);
+  resetScroll();
+  scene.setScroll(0);
   scene.setMode('home');
   await initHomePage();
-  window.gsap && window.ScrollTrigger?.refresh();
   if (hash) { await wait(450); scrollToHash(hash); } else focusHeading(homeEl);
   busy = false;
 }
 
 function initRouter() {
   history.replaceState({ x3d: 1 }, '');
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   document.addEventListener('click', (e) => {
     if (!routerReady || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest('a[href]');
     if (!a || a.target || a.hasAttribute('download')) return;
     const url = new URL(a.href, location.href);
     if (url.origin !== location.origin) return;
+    // links within the page that is showing (skip link, "Haut de page", #contact on the home page)
+    if (url.hash && url.pathname === location.pathname && url.search === location.search) {
+      e.preventDefault();
+      history.pushState({ x3d: 1 }, '', url.hash);
+      scrollToHash(url.hash);
+      return;
+    }
     const m = url.pathname.match(SVC_RE);
     if (m) { e.preventDefault(); goService(`/services/${m[1]}/`, m[1], true); return; }
     if (url.pathname === '/' && homeEl) {
-      if (current.type === 'service') { e.preventDefault(); goHome(url.hash, true); }
-      else if (url.hash) { e.preventDefault(); history.pushState({ x3d: 1 }, '', url.hash); scrollToHash(url.hash); }
-      else { e.preventDefault(); lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      e.preventDefault();
+      if (current.type === 'service') goHome(url.hash, true);
+      else if (url.hash) { history.pushState({ x3d: 1 }, '', url.hash); scrollToHash(url.hash); }
+      else scrollTopAndFocus(homeEl);
     }
   });
   window.addEventListener('popstate', () => {
     if (!routerReady) return;
     const m = location.pathname.match(SVC_RE);
-    if (m) goService(`/services/${m[1]}/`, m[1], false);
-    else if (location.pathname === '/' && homeEl) {
+    if (m) {
+      if (current.type === 'service' && current.slug === m[1]) { if (location.hash) scrollToHash(location.hash); }
+      else goService(`/services/${m[1]}/`, m[1], false);
+    } else if (location.pathname === '/' && homeEl) {
       if (current.type === 'service') goHome(location.hash, false);
       else if (location.hash) scrollToHash(location.hash);
     } else location.reload();
