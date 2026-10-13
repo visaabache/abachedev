@@ -1,9 +1,9 @@
-// AbacheDev 3D experience (French and Arabic pages): carousel, page transitions, scroll effects.
+// AbacheDev 3D experience (French, English and Arabic pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101403';
+import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101501';
 
-const VERSION = '2026101403';
+const VERSION = '2026101501';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
@@ -14,13 +14,14 @@ root.classList.add(FULL ? 'x-full' : 'x-lite');
 if (REDUCE) root.classList.add('x-reduce');
 
 const N = SERVICES.length;
-// French pages live at /, Arabic ones at /ar/
-const LANG = root.lang === 'ar' ? 'ar' : 'fr';
-const BASE = LANG === 'ar' ? '/ar' : '';
+// French pages live at /, English ones at /en/, Arabic ones at /ar/
+const LANG = ['en', 'ar'].includes(root.lang) ? root.lang : 'fr';
+const BASE = LANG === 'fr' ? '' : `/${LANG}`;
 const RTL = root.dir === 'rtl';
 const HOME = `${BASE}/`;
 const TXT = {
   fr: { discover: 'découvrir ce service', colon: ' : ' },
+  en: { discover: 'discover this service', colon: ': ' },
   ar: { discover: 'اكتشف هذه الخدمة', colon: ': ' },
 }[LANG];
 const servicePath = (slug) => svcPath(slug, BASE);

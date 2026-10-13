@@ -24,7 +24,7 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies. Supports dark mo
    - **Automatic thank-you email:** the Apps Script (`integrations/contact-to-sheet.gs`) emails visitors who left an email address a short thank-you in their language (FR/EN/AR) from your Gmail as "AbacheDev", with a WhatsApp button. It never repeats the visitor's message, sends at most one email per mailbox every 6 hours (Gmail "+tags" and dots count as the same mailbox) and at most 20 a day (`AUTO_REPLY_DAILY_LIMIT`); if an email fails the lead is still saved and the error shows in the Auto-reply column; set `AUTO_REPLY = false` to turn it off. The Sheet's "Auto-reply" column shows what happened for each lead.
    - **Google Sheet copy (optional):** every submission can also be saved as a row in the "AbacheDev — Leads" Google Sheet. In the Sheet, open Extensions → Apps Script, paste `integrations/contact-to-sheet.gs`, run `setup` once to grant access, then Deploy → New deployment → Web app (Execute as: Me, Who has access: Anyone) and copy the `/exec` URL into `sheetEndpoint` in `script.js`. With both set, the email goes through Formspree and a copy lands in the Sheet; with only `sheetEndpoint`, the Sheet alone receives them.
 3. **WhatsApp**: `whatsappNumber` in `CONFIG` in `script.js` is set to `212677047171` (+212 677-047171). Use international format, digits only.
-4. **Prices & text**: edit `index.html`, `en/index.html` and `ar/index.html`. Prices are in Moroccan dirhams (about 10 MAD per US dollar): Starter 2 990, Business 6 990, E-commerce 12 990, maintenance from 490/month — shown as "DH" in French, "MAD" (with the approximate US$ price) in English and "درهم" in Arabic. When you change a price, update the price cards, the maintenance line, the first FAQ answer and the `"price"` values in the JSON-LD on all three pages.
+4. **Prices & text**: edit `index.html`, `en/index.html` and `ar/index.html`. Prices are in Moroccan dirhams (about 10 MAD per US dollar): Starter 2 990, Business 6 990, E-commerce 12 990, maintenance from 490/month — shown as "DH" in French, "MAD" (with the approximate US$ price) in English and "درهم" in Arabic. When you change a price, update the price cards, the maintenance line, the first FAQ answer and the `"price"` values in the JSON-LD on all three pages, plus the price lines on the service pages (`services/`, `en/services/`, `ar/services/`).
 5. **Colors**: change `--primary` and `--accent` at the top of `styles.css`.
 
 ## Logo
@@ -55,14 +55,14 @@ Ready to upload, at each platform's recommended size. Text, logos and the URL si
 
 Ready-to-paste French bios for each platform are in `docs/social-bios-fr.md`. A month of ready-made Instagram/Facebook posts (images, captions, hashtags and schedule) is in `marketing/instagram-facebook/` (see its README); keep that folder out of the Cloudflare upload when you deploy. Use the same profile picture everywhere so people recognize you, and put your WhatsApp number and abachedev.com in each profile's bio or contact button (people can tap those; they can't tap a number in a cover image).
 
-## 3D design (French and Arabic pages)
-The French and Arabic homepages and their six service pages use a scroll-driven 3D design. English keeps the previous design for now.
+## 3D design (all three languages)
+The French, English and Arabic homepages and their six service pages each use a scroll-driven 3D design.
 
 - **Hero:** a dark disc low in the frame with the brand phrase turning around it, and one 3D object per service on a ring (auto-rotates, drag to spin, click the front object or use the arrows and the link under it).
-- **Service pages** (`services/<slug>/index.html` in French, `ar/services/<slug>/index.html` in Arabic): `design-site-web`, `developpement-web`, `boutique-en-ligne`, `referencement-seo`, `refonte-site-web`, `maintenance-site-web`. Clicking an object opens its page without reloading: the same object travels to the bottom of the screen, then rises and tilts in front of the big serif headline as you scroll. Below: a short paragraph, a sideways-scrolling strip of designs, "Ce qui est inclus" (what's included, who it's for, the price), "Autres services" and the footer. The language menu on a service page opens the same service in the other language (English goes to the English homepage).
+- **Service pages** (`services/<slug>/index.html` in French, `en/services/<slug>/index.html` in English, `ar/services/<slug>/index.html` in Arabic): `design-site-web`, `developpement-web`, `boutique-en-ligne`, `referencement-seo`, `refonte-site-web`, `maintenance-site-web`. Clicking an object opens its page without reloading: the same object travels to the bottom of the screen, then rises and tilts in front of the big serif headline as you scroll. Below: a short paragraph, a sideways-scrolling strip of designs, "Ce qui est inclus" (what's included, who it's for, the price), "Autres services" and the footer. The language menu on a service page opens the same service in the other languages.
 - **Existing sections** (services, method, portfolio, prices, FAQ, contact form) stay on the homepage, restyled in the three-colour palette: pale `#f4f3ef`, accent `#4f46e5` for text, deep `#1e1b4b` for large blocks.
 - **Light version:** phones, touch screens and visitors who prefer reduced motion get still images of the same objects (`assets/3d/*.webp`) with simple fades, in the same layout. Every link and button is real HTML, so keyboards and screen readers work without the 3D layer.
-- **Performance:** the 3D scene starts on the visitor's first mouse move, scroll or key press (or after 9 seconds), with its code downloaded in the background after the page loads. It renders at most at 2× pixel density (lower automatically on slow machines) and sleeps when it's off screen, behind the menu or paused. Lighthouse: 100 in all four categories on desktop for the homepage and a service page; on mobile, 97 (homepage) and 100 (service page) for performance and 100 for the rest. The Arabic pages score the same (99 for the service page on mobile).
+- **Performance:** the 3D scene starts on the visitor's first mouse move, scroll or key press (or after 9 seconds), with its code downloaded in the background after the page loads. It renders at most at 2× pixel density (lower automatically on slow machines) and sleeps when it's off screen, behind the menu or paused. Lighthouse: 100 in all four categories on desktop for the homepage and a service page; on mobile, 97 (homepage) and 100 (service page) for performance and 100 for the rest. The Arabic and English pages score the same within a few points (96–100 for performance on mobile).
 - **Carousel controls:** previous/next, a pause button (stops all motion), drag to spin, and an announcement for screen readers after each step.
 - **Arabic:** right to left, with Amiri for the large headlines (Bodoni stays for Latin words such as the "abachedev" wordmark) and Cairo for the text. The carousel buttons keep a left-to-right layout so the arrows match the way the objects turn; everything else mirrors. The Arabic phrase around the disc is an image of pre-shaped letter outlines (`assets/disc-text-ar.svg`), because Safari on iPhone breaks the joins between Arabic letters in curved SVG text. To change the phrase, edit and run `tools/disc-text-ar.py`. Prices use a narrow no-break space ("2 990") so the digits stay together in right-to-left text.
 
@@ -70,7 +70,7 @@ The French and Arabic homepages and their six service pages use a scroll-driven 
 | --- | --- |
 | `x3d/x3d.css` | Styles for the new design |
 | `x3d/app.js` | Carousel, page transitions, scroll effects, light version |
-| `x3d/services.js` | The six services (French and Arabic names, page, 3D model, colours) |
+| `x3d/services.js` | The six services (French, English and Arabic names, page, 3D model, colours) |
 | `x3d/src/scene.js`, `x3d/src/models.js` | 3D scene and device models (source) |
 | `x3d/scene.js` | Built bundle of the scene + three.js (generated) |
 | `vendor/` | GSAP, ScrollTrigger and Lenis (copied by the build) |
@@ -79,7 +79,7 @@ The French and Arabic homepages and their six service pages use a scroll-driven 
 
 After editing anything in `x3d/src/`, rebuild with `npm install && npm run build` (pinned versions: three.js 0.186.1, GSAP 3.15.0, Lenis 1.3.26, esbuild 0.28.1), then re-save the still images from `/tools/render-objects.html` (and `?size=1800` for the `-1800` versions used on phones and tablets) into `assets/3d/` as WebP if the models changed. Bump the `?v=` version in the HTML files and in `x3d/app.js`.
 
-**Still to replace with your real content:** the gallery strips use the six design concepts from `assets/work/`; swap in screenshots of client projects as you complete them. The service page paragraphs are short; you can expand them with your own wording (change the French and Arabic pages together).
+**Still to replace with your real content:** the gallery strips use the six design concepts from `assets/work/`; swap in screenshots of client projects as you complete them. The service page paragraphs are short; you can expand them with your own wording (change all three languages together).
 
 ## Preview locally
 Open `index.html` in your browser, or run:
@@ -100,7 +100,7 @@ python3 -m http.server 8000
 - Every page has `hreflang` links to the other two (`x-default` is French), its own canonical URL, translated structured data and FAQ schema, and all three are listed in `sitemap.xml` with alternates.
 - Text generated by JavaScript (rotating headline words, WhatsApp messages, form messages, the language banner) lives in `STRINGS` at the top of `script.js`, one set per language, picked from `<html lang>`.
 - Arabic: `<html lang="ar" dir="rtl">`, the Cairo font, and CSS logical properties (`inset-inline-*`, `margin-inline-*`) so the layout mirrors automatically. Letter-spacing is disabled for Arabic text (it breaks the joins between letters). Phone numbers and email addresses inside Arabic text are wrapped in `dir="ltr"`.
-- **When you change text, change it on all three pages** (French and Arabic also have the six service pages each). Shared files (`styles.css`, `script.js`, `assets/`) serve every language; the `en/` page references them with `../`, the 3D pages (French and Arabic) with absolute paths (`/styles.css`).
+- **When you change text, change it on all three pages** (each language also has its six service pages). Shared files (`styles.css`, `script.js`, `assets/`) serve every language; the pages reference them with absolute paths (`/styles.css`), because the address changes while the 3D scene stays on screen.
 
 ## SEO
 - Keyword-focused title, meta description, H1 and section headings ("web design", "website development", "website pricing"…)

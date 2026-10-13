@@ -32,11 +32,11 @@
   <meta name="twitter:image" content="https://abachedev.com/assets/og-image-en.png">
 
   <!-- Icons & app -->
-  <meta name="theme-color" content="#4f46e5">
-  <link rel="icon" href="../favicon.ico" sizes="48x48">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#f4f3ef">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/en/site.webmanifest">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -169,86 +169,94 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="../styles.css?v=2026101301">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css?v=2026101501">
+  <link rel="stylesheet" href="/x3d/x3d.css?v=2026101501">
+  <link rel="modulepreload" href="/x3d/app.js?v=2026101501">
 </head>
-<body>
+<body class="x3d" id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
-  <!-- ============ HEADER ============ -->
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a href="#top" class="logo" aria-label="AbacheDev home">
-        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lm-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset=".55" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#lm-h)"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"><path class="lm-l" d="M17 23 L9 32 L17 41" stroke-width="4.5" opacity=".75"/><path class="lm-r" d="M47 23 L55 32 L47 41" stroke-width="4.5" opacity=".75"/><path d="M23 47 L32 17 L41 47" stroke-width="5.5"/></g><rect class="lm-cursor" x="26" y="35" width="12" height="4.5" rx="2.25" fill="#67e8f9"/></svg><span>Abache<span class="accent">Dev</span></span>
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
-        <span></span><span></span><span></span>
-      </button>
-      <nav id="nav" class="nav">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <div class="lang-switch" role="group" aria-label="Language">
-          <a href="../" lang="fr" hreflang="fr" title="Version française">FR</a>
-          <a href="./" lang="en" hreflang="en" aria-current="page">EN</a>
-          <a href="../ar/" lang="ar" hreflang="ar" title="النسخة العربية">عربي</a>
+  <header class="x-header">
+    <a class="x-logo" href="/en/" aria-label="AbacheDev — home"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lm-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset=".55" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#lm-h)"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"><path class="lm-l" d="M17 23 L9 32 L17 41" stroke-width="4.5" opacity=".75"/><path class="lm-r" d="M47 23 L55 32 L47 41" stroke-width="4.5" opacity=".75"/><path d="M23 47 L32 17 L41 47" stroke-width="5.5"/></g><rect class="lm-cursor" x="26" y="35" width="12" height="4.5" rx="2.25" fill="#67e8f9"/></svg><span>Abache<span class="accent">Dev</span></span></a>
+    <div class="x-actions">
+      <a class="x-icon" href="https://wa.me/212677047171" target="_blank" rel="noopener" aria-label="WhatsApp: +212 677-047171 (new tab)"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.53 1.74 6.5L3 29l6.68-1.75A12.95 12.95 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.67c-1.98 0-3.92-.53-5.61-1.54l-.4-.24-3.97 1.04 1.06-3.86-.26-.4A10.62 10.62 0 0 1 5.38 16c0-5.88 4.78-10.66 10.66-10.66 5.87 0 10.63 4.78 10.63 10.66 0 5.88-4.76 10.67-10.63 10.67Zm5.84-7.98c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.5-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.15-.14.32-.37.48-.56.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.43 5.45 4.81.76.33 1.35.52 1.81.67.76.24 1.46.21 2 .13.61-.09 1.89-.77 2.16-1.52.26-.74.26-1.38.18-1.52-.08-.13-.29-.21-.61-.37Z"/></svg></a>
+      <div class="x-lang">
+        <button class="x-icon" type="button" data-lang-toggle aria-expanded="false" aria-controls="lang-menu" aria-label="EN – change language (English)">EN</button>
+        <div class="x-lang-menu lang-switch" id="lang-menu" hidden>
+          <a href="/" lang="fr" hreflang="fr">Français <small>FR</small></a>
+          <a href="/en/" lang="en" hreflang="en" aria-current="page">English <small>EN</small></a>
+          <a href="/ar/" lang="ar" hreflang="ar">العربية <small>AR</small></a>
         </div>
-        <a href="#contact" class="btn btn-small">Get a Quote</a>
-      </nav>
+      </div>
+      <button class="x-icon" type="button" data-menu-open aria-expanded="false" aria-controls="x-menu" aria-label="Open the menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
     </div>
   </header>
 
+  <div class="x-menu" id="x-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden data-lenis-prevent>
+    <div class="x-menu-top">
+      <span class="x-menu-label">Menu</span>
+      <button class="x-icon" type="button" data-menu-close aria-label="Close the menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+    </div>
+    <div class="x-menu-grid">
+      <nav class="x-menu-services" aria-label="Services">
+        <h2>Services</h2>
+        <a href="/en/services/design-site-web/"><span>01</span>Website Design</a>
+        <a href="/en/services/developpement-web/"><span>02</span>Web Development</a>
+        <a href="/en/services/boutique-en-ligne/"><span>03</span>Online Stores</a>
+        <a href="/en/services/referencement-seo/"><span>04</span>SEO Setup</a>
+        <a href="/en/services/refonte-site-web/"><span>05</span>Website Redesign</a>
+        <a href="/en/services/maintenance-site-web/"><span>06</span>Maintenance &amp; Support</a>
+      </nav>
+      <nav class="x-menu-links" aria-label="Pages">
+        <h2>AbacheDev</h2>
+        <a href="/en/">Home</a>
+        <a href="/en/#process">Process</a>
+        <a href="/en/#work">Work</a>
+        <a href="/en/#pricing">Pricing</a>
+        <a href="/en/#faq">FAQ</a>
+        <a href="/en/#contact">Contact &amp; free quote</a>
+      </nav>
+    </div>
+    <div class="x-menu-foot">
+      <a href="mailto:contact@abachedev.com">contact@abachedev.com</a>
+      <a href="https://wa.me/212677047171" target="_blank" rel="noopener">WhatsApp: +212 677-047171</a>
+      <span data-lang-alt><a href="/" lang="fr" hreflang="fr">Français</a> · <a href="/ar/" lang="ar" hreflang="ar">العربية</a></span>
+    </div>
+  </div>
+
   <div class="lang-suggest" id="lang-suggest" hidden></div>
 
-  <main>
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-        <div class="hero-grid-lines"></div>
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-spotlight"></div>
+  <main id="main">
+    <div class="page page-home" data-page="home">
+    <!-- ============ HERO (3D carousel) ============ -->
+    <section class="x-hero" aria-labelledby="hero-title">
+      <div class="x-hero-copy">
+        <p class="x-kicker">Web design in Morocco</p>
+        <h1 class="x-h1" id="hero-title">Websites that win you <em>more&nbsp;customers.</em></h1>
+        <a class="x-hero-cta" href="#contact">Free quote within 24 h</a>
       </div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow intro" style="--d:0"><span class="pulse-dot"></span> Available for new projects</p>
-          <h1 class="intro" style="--d:1">Web design that wins you
-            <span class="rotator"><span class="gradient-text rotator-word" id="rotator-word">customers.</span></span>
-          </h1>
-          <p class="lead intro" style="--d:2">AbacheDev designs and builds fast, mobile-friendly, SEO-ready websites for small businesses, online stores and startups — planned, built and launched for you, start to finish.</p>
-          <div class="hero-actions intro" style="--d:3">
-            <a href="#contact" class="btn btn-shine">Start Your Project <span class="arrow">→</span></a>
-            <a href="#pricing" class="btn btn-ghost">See Pricing</a>
-          </div>
-          <ul class="hero-points intro" style="--d:4">
-            <li>✓ Mobile-first design</li>
-            <li>✓ SEO-ready</li>
-            <li>✓ Launch in 1–3 weeks</li>
-          </ul>
-        </div>
-        <div class="hero-visual intro" style="--d:2" aria-hidden="true">
-          <div class="tilt" id="tilt">
-            <div class="browser">
-              <div class="browser-bar"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
-              <div class="browser-body">
-                <div class="mock-nav"><b></b><em></em><em></em><em></em></div>
-                <div class="mock-hero"><div class="mock-hero-text"><b></b><b class="short"></b><i></i></div></div>
-                <div class="mock-row"><div></div><div></div><div></div></div>
-                <div class="mock-lines"><div></div><div></div><div class="short"></div></div>
-              </div>
-            </div>
-            <div class="floating-card card-a">⚡ 98 PageSpeed</div>
-            <div class="floating-card card-b">📱 Fully responsive</div>
-            <div class="floating-card card-c">🔍 SEO optimized</div>
-          </div>
-        </div>
+      <div class="x-disc" aria-hidden="true">
+        <div class="x-disc-body"></div>
+        <svg class="x-disc-text" viewBox="0 0 1000 1000" focusable="false"><defs><path id="disc-path" d="M 500,500 m -468,0 a 468,468 0 1,1 936,0 a 468,468 0 1,1 -936,0"/></defs><text><textPath href="#disc-path" textLength="2925" lengthAdjust="spacing">ABACHEDEV · WEBSITES THAT WIN YOU MORE CUSTOMERS · ABACHEDEV · WEBSITES THAT WIN YOU MORE CUSTOMERS · </textPath></text></svg>
       </div>
-      <a href="#services" class="scroll-cue" aria-label="Scroll to services"><span></span></a>
+      <div class="x-ring" aria-hidden="true">
+      <div class="x-ring-item" style="--i:0" data-slot="0"><img src="/assets/3d/design-site-web.webp" srcset="/assets/3d/design-site-web.webp 900w, /assets/3d/design-site-web-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async" fetchpriority="high"></div>
+      <div class="x-ring-item" style="--i:1" data-slot="1"><img src="/assets/3d/developpement-web.webp" srcset="/assets/3d/developpement-web.webp 900w, /assets/3d/developpement-web-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async"></div>
+      <div class="x-ring-item" style="--i:2" data-slot="2"><img src="/assets/3d/boutique-en-ligne.webp" srcset="/assets/3d/boutique-en-ligne.webp 900w, /assets/3d/boutique-en-ligne-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async" loading="lazy"></div>
+      <div class="x-ring-item" style="--i:3" data-slot="3"><img src="/assets/3d/referencement-seo.webp" srcset="/assets/3d/referencement-seo.webp 900w, /assets/3d/referencement-seo-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async" loading="lazy"></div>
+      <div class="x-ring-item" style="--i:4" data-slot="-2"><img src="/assets/3d/refonte-site-web.webp" srcset="/assets/3d/refonte-site-web.webp 900w, /assets/3d/refonte-site-web-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async" loading="lazy"></div>
+      <div class="x-ring-item" style="--i:5" data-slot="-1"><img src="/assets/3d/maintenance-site-web.webp" srcset="/assets/3d/maintenance-site-web.webp 900w, /assets/3d/maintenance-site-web-1800.webp 1800w" sizes="(max-width: 820px) 76vw, min(60svh, 40vw)" alt="" width="900" height="900" decoding="async"></div>
+      </div>
+      <div class="x-ring-ui">
+        <button type="button" class="x-ring-btn" data-ring-prev aria-label="Previous service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
+        <a class="x-ring-link" href="/en/services/design-site-web/" aria-label="Website Design — discover this service"><span class="x-ring-num">01 / 06</span><span class="x-ring-name">Website Design</span><span class="x-ring-cta">Discover</span></a>
+        <button type="button" class="x-ring-btn" data-ring-next aria-label="Next service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
+        <button type="button" class="x-ring-btn x-ring-pause" data-ring-pause aria-pressed="false" aria-label="Pause the animations"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg></button>
+        <p class="sr-only" aria-live="polite" data-ring-status></p>
+      </div>
     </section>
 
     <!-- ============ TECH MARQUEE ============ -->
@@ -270,35 +278,41 @@
           <p>Everything you need to get online — from a simple one-page website to a full online store. I handle the design, the code and the launch.</p>
         </div>
         <div class="grid cards-3">
-          <article class="card">
-            <div class="icon">🎨</div>
-            <h3>Website Design</h3>
+          <article class="card svc-card" style="--pastel:#ffe4db">
+            <img class="svc-card-img" src="/assets/3d/design-site-web.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/design-site-web/">Website Design</a></h3>
             <p>Custom, on-brand website design that looks great on phones, tablets and desktops and makes visitors trust your business.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
-          <article class="card">
-            <div class="icon">💻</div>
-            <h3>Website Development</h3>
+          <article class="card svc-card" style="--pastel:#d5f4e7">
+            <img class="svc-card-img" src="/assets/3d/developpement-web.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/developpement-web/">Website Development</a></h3>
             <p>Clean, fast code built to modern web standards, so your pages load quickly and score well on Google’s Core Web Vitals.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
-          <article class="card">
-            <div class="icon">🛒</div>
-            <h3>E-commerce Stores</h3>
+          <article class="card svc-card" style="--pastel:#fff0c4">
+            <img class="svc-card-img" src="/assets/3d/boutique-en-ligne.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/boutique-en-ligne/">E-commerce Stores</a></h3>
             <p>Online stores with secure payments, product pages and easy inventory management, built on Shopify, WooCommerce or custom code.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
-          <article class="card">
-            <div class="icon">🔍</div>
-            <h3>SEO Setup</h3>
+          <article class="card svc-card" style="--pastel:#d7eefb">
+            <img class="svc-card-img" src="/assets/3d/referencement-seo.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/referencement-seo/">SEO Setup</a></h3>
             <p>On-page SEO, structured data, sitemaps, Google Search Console and speed tuning so customers find you on Google.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
-          <article class="card">
-            <div class="icon">🔄</div>
-            <h3>Redesigns</h3>
+          <article class="card svc-card" style="--pastel:#fbdcec">
+            <img class="svc-card-img" src="/assets/3d/refonte-site-web.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/refonte-site-web/">Redesigns</a></h3>
             <p>Give your outdated website a modern refresh that converts more visitors into clients.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
-          <article class="card">
-            <div class="icon">🛠️</div>
-            <h3>Maintenance &amp; Support</h3>
+          <article class="card svc-card" style="--pastel:#e9f6d2">
+            <img class="svc-card-img" src="/assets/3d/maintenance-site-web.webp" alt="" width="900" height="900" loading="lazy" decoding="async">
+            <h3><a href="/en/services/maintenance-site-web/">Maintenance &amp; Support</a></h3>
             <p>Updates, backups, content changes and fixes — so you can focus on running your business.</p>
+            <span class="svc-card-more" aria-hidden="true">Discover →</span>
           </article>
         </div>
       </div>
@@ -364,43 +378,43 @@
         </div>
         <div class="grid cards-3">
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/restaurant.svg" data-title="Olive &amp; Thyme — Restaurant &amp; Café" aria-label="View the Restaurant &amp; Café design full size">
-              <img src="../assets/work/restaurant.svg" alt="Restaurant &amp; Café website design concept: Olive &amp; Thyme" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/restaurant.svg" data-title="Olive &amp; Thyme — Restaurant &amp; Café" aria-label="View the Restaurant &amp; Café design full size">
+              <img src="/assets/work/restaurant.svg" alt="Restaurant &amp; Café website design concept: Olive &amp; Thyme" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Restaurant &amp; Café</h3><p>Menu, gallery, online reservations</p></div>
           </article>
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/shop.svg" data-title="Nordic — Online Shop" aria-label="View the Online Shop design full size">
-              <img src="../assets/work/shop.svg" alt="Online Shop website design concept: Nordic" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/shop.svg" data-title="Nordic — Online Shop" aria-label="View the Online Shop design full size">
+              <img src="/assets/work/shop.svg" alt="Online Shop website design concept: Nordic" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Online Shop</h3><p>Product catalog, cart, secure checkout</p></div>
           </article>
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/portfolio.svg" data-title="Studio Mira — Creative Portfolio" aria-label="View the Creative Portfolio design full size">
-              <img src="../assets/work/portfolio.svg" alt="Creative Portfolio website design concept: Studio Mira" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/portfolio.svg" data-title="Studio Mira — Creative Portfolio" aria-label="View the Creative Portfolio design full size">
+              <img src="/assets/work/portfolio.svg" alt="Creative Portfolio website design concept: Studio Mira" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Creative Portfolio</h3><p>Showcase work, about page, contact</p></div>
           </article>
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/local.svg" data-title="BrightFix — Local Business" aria-label="View the Local Business design full size">
-              <img src="../assets/work/local.svg" alt="Local Business website design concept: BrightFix" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/local.svg" data-title="BrightFix — Local Business" aria-label="View the Local Business design full size">
+              <img src="/assets/work/local.svg" alt="Local Business website design concept: BrightFix" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Local Business</h3><p>Services, reviews, booking, maps</p></div>
           </article>
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/startup.svg" data-title="Flowly — Startup Landing Page" aria-label="View the Startup Landing Page design full size">
-              <img src="../assets/work/startup.svg" alt="Startup Landing Page website design concept: Flowly" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/startup.svg" data-title="Flowly — Startup Landing Page" aria-label="View the Startup Landing Page design full size">
+              <img src="/assets/work/startup.svg" alt="Startup Landing Page website design concept: Flowly" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Startup Landing Page</h3><p>Product launch, sign-ups, analytics</p></div>
           </article>
           <article class="work-card">
-            <button type="button" class="work-thumb" data-full="../assets/work/blog.svg" data-title="Wander Notes — Blog &amp; Personal Brand" aria-label="View the Blog &amp; Personal Brand design full size">
-              <img src="../assets/work/blog.svg" alt="Blog &amp; Personal Brand website design concept: Wander Notes" loading="lazy" width="800" height="1200">
+            <button type="button" class="work-thumb" data-full="/assets/work/blog.svg" data-title="Wander Notes — Blog &amp; Personal Brand" aria-label="View the Blog &amp; Personal Brand design full size">
+              <img src="/assets/work/blog.svg" alt="Blog &amp; Personal Brand website design concept: Wander Notes" loading="lazy" width="800" height="1200">
               <span class="work-view">View design</span>
             </button>
             <div class="work-info"><span class="work-tag">Concept</span><h3>Blog &amp; Personal Brand</h3><p>Articles, newsletter, social links</p></div>
@@ -562,44 +576,49 @@
         </form>
       </div>
     </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="logo"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lm-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset=".55" stop-color="#7c3aed"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#lm-f)"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"><path class="lm-l" d="M17 23 L9 32 L17 41" stroke-width="4.5" opacity=".75"/><path class="lm-r" d="M47 23 L55 32 L47 41" stroke-width="4.5" opacity=".75"/><path d="M23 47 L32 17 L41 47" stroke-width="5.5"/></g><rect class="lm-cursor" x="26" y="35" width="12" height="4.5" rx="2.25" fill="#67e8f9"/></svg><span>Abache<span class="accent">Dev</span></span></a>
-        <p class="muted small">Web design and website development for small businesses, online stores and startups in Morocco and worldwide.</p>
+  <footer class="x-footer">
+    <p class="x-wordmark"><span>abachedev</span><i>web design</i></p>
+    <div class="x-footer-cols">
+      <div>
+        <h2>AbacheDev</h2>
+        <p>Fast, mobile-friendly websites built to be found on Google, for small businesses, online stores and startups in Morocco and worldwide.</p>
       </div>
-      <nav class="footer-col" aria-label="Services">
-        <h2 class="footer-title">Services</h2>
-        <a href="#services">Website design</a>
-        <a href="#services">Website development</a>
-        <a href="#services">E-commerce stores</a>
-        <a href="#services">SEO setup</a>
-        <a href="#pricing">Pricing</a>
+      <nav aria-label="Services (footer)">
+        <h2>Services</h2>
+        <a href="/en/services/design-site-web/">Website Design</a>
+        <a href="/en/services/developpement-web/">Web Development</a>
+        <a href="/en/services/boutique-en-ligne/">Online Stores</a>
+        <a href="/en/services/referencement-seo/">SEO Setup</a>
+        <a href="/en/services/refonte-site-web/">Website Redesign</a>
+        <a href="/en/services/maintenance-site-web/">Maintenance &amp; Support</a>
       </nav>
-      <nav class="footer-col" aria-label="Company">
-        <h2 class="footer-title">Company</h2>
-        <a href="#why">Why AbacheDev</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
-        <a href="#faq">FAQ</a>
+      <nav aria-label="Useful links">
+        <h2>Links</h2>
+        <a href="/en/#process">Process</a>
+        <a href="/en/#work">Work</a>
+        <a href="/en/#pricing">Pricing</a>
+        <a href="/en/#faq">FAQ</a>
+        <a href="/en/#contact">Free quote</a>
       </nav>
-      <address class="footer-col">
-        <h2 class="footer-title">Contact</h2>
+      <address>
+        <h2>Contact</h2>
         <a href="mailto:contact@abachedev.com">contact@abachedev.com</a>
         <a href="https://wa.me/212677047171" target="_blank" rel="noopener">WhatsApp: +212 677-047171</a>
-        <a href="https://abachedev.com/en/">abachedev.com</a>
+        <a href="/" lang="fr" hreflang="fr">Version française</a>
+        <a href="/ar/" lang="ar" hreflang="ar">النسخة العربية</a>
       </address>
     </div>
-    <div class="container footer-bottom">
-      <p class="muted small">© <span id="year"></span> AbacheDev. All rights reserved.</p>
-      <a href="#top" class="muted small">Back to top ↑</a>
+    <div class="x-footer-bottom">
+      <p>© <span id="year"></span> AbacheDev. All rights reserved.</p>
+      <a href="#top">Back to top ↑</a>
     </div>
   </footer>
 
   <!-- ============ DESIGN LIGHTBOX ============ -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+  <div class="lightbox" id="lightbox" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
     <div class="lightbox-inner">
       <div class="lightbox-bar">
         <span class="lightbox-dots"><i></i><i></i><i></i></span>
@@ -646,6 +665,7 @@
     <span class="wa-tip" aria-hidden="true">Chat with us</span>
   </div>
 
-  <script src="../script.js?v=2026101301" defer></script>
+  <script src="/script.js?v=2026101501" defer></script>
+  <script type="module" src="/x3d/app.js?v=2026101501"></script>
 </body>
 </html>
