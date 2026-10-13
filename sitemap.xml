@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://abachedev.com/ar/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://abachedev.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/"/>
@@ -31,32 +31,98 @@
   </url>
   <url>
     <loc>https://abachedev.com/services/design-site-web/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/design-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/design-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/design-site-web/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/design-site-web.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://abachedev.com/services/developpement-web/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/developpement-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/developpement-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/developpement-web/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/developpement-web.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://abachedev.com/services/boutique-en-ligne/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/boutique-en-ligne/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/boutique-en-ligne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/boutique-en-ligne/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/boutique-en-ligne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://abachedev.com/services/referencement-seo/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/referencement-seo/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/referencement-seo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/referencement-seo/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/referencement-seo.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://abachedev.com/services/refonte-site-web/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/refonte-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/refonte-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/refonte-site-web/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/refonte-site-web.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://abachedev.com/services/maintenance-site-web/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/maintenance-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/maintenance-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/maintenance-site-web/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/maintenance-site-web.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/design-site-web/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/design-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/design-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/design-site-web/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/design-site-web.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/developpement-web/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/developpement-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/developpement-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/developpement-web/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/developpement-web.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/boutique-en-ligne/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/boutique-en-ligne/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/boutique-en-ligne/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/boutique-en-ligne/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/boutique-en-ligne.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/referencement-seo/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/referencement-seo/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/referencement-seo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/referencement-seo/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/referencement-seo.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/refonte-site-web/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/refonte-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/refonte-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/refonte-site-web/"/>
+    <image:image><image:loc>https://abachedev.com/assets/3d/refonte-site-web.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://abachedev.com/ar/services/maintenance-site-web/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://abachedev.com/services/maintenance-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/services/maintenance-site-web/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/services/maintenance-site-web/"/>
     <image:image><image:loc>https://abachedev.com/assets/3d/maintenance-site-web.webp</image:loc></image:image>
   </url>
 </urlset>

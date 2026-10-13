@@ -1,9 +1,9 @@
-// AbacheDev 3D experience (French pages): carousel, page transitions, scroll effects.
+// AbacheDev 3D experience (French and Arabic pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath } from './services.js?v=2026101301';
+import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101401';
 
-const VERSION = '2026101301';
+const VERSION = '2026101401';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
@@ -14,7 +14,19 @@ root.classList.add(FULL ? 'x-full' : 'x-lite');
 if (REDUCE) root.classList.add('x-reduce');
 
 const N = SERVICES.length;
-const SVC_RE = /^\/services\/([a-z0-9-]+)\/?(?:index\.html)?$/;
+// French pages live at /, Arabic ones at /ar/
+const LANG = root.lang === 'ar' ? 'ar' : 'fr';
+const BASE = LANG === 'ar' ? '/ar' : '';
+const RTL = root.dir === 'rtl';
+const HOME = `${BASE}/`;
+const TXT = {
+  fr: { discover: 'découvrir ce service', colon: ' : ' },
+  ar: { discover: 'اكتشف هذه الخدمة', colon: ': ' },
+}[LANG];
+const servicePath = (slug) => svcPath(slug, BASE);
+const nameOf = (s) => serviceName(s, LANG);
+const SVC_RE = new RegExp(`^${BASE}/services/([a-z0-9-]+)/?(?:index\\.html)?$`);
+const isHome = (path) => path === HOME || path === BASE || path === `${HOME}index.html`;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const main = document.getElementById('main');
 
@@ -141,18 +153,18 @@ function initRing(hero) {
   function label(i, announce = false) {
     const s = SERVICES[i];
     link.href = servicePath(s.slug);
-    link.setAttribute('aria-label', `${s.name} — découvrir ce service`);
-    if (announce && status) status.textContent = `${counter(i)} : ${s.name}`;
+    link.setAttribute('aria-label', `${nameOf(s)} — ${TXT.discover}`);
+    if (announce && status) status.textContent = `${counter(i)}${TXT.colon}${nameOf(s)}`;
     clearTimeout(swapT);
     if (REDUCE) {
       num.textContent = counter(i);
-      name.textContent = s.name;
+      name.textContent = nameOf(s);
       return;
     }
     ui.classList.add('is-swapping');
     swapT = setTimeout(() => {
       num.textContent = counter(i);
-      name.textContent = s.name;
+      name.textContent = nameOf(s);
       ui.classList.remove('is-swapping');
     }, 200);
   }
@@ -291,7 +303,8 @@ async function initServicePage(el) {
     gallery.classList.add('is-scrub');
     pageCleanup.push(() => gallery.classList.remove('is-scrub'));
     const tw = gsap.fromTo(strip, { x: 0 }, {
-      x: () => Math.min(0, window.innerWidth - strip.scrollWidth),
+      // right to left: the strip overflows on the left, so it slides the other way
+      x: () => (RTL ? Math.max(0, strip.scrollWidth - window.innerWidth) : Math.min(0, window.innerWidth - strip.scrollWidth)),
       ease: 'none',
       scrollTrigger: { trigger: gallery, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true },
     });
@@ -332,12 +345,17 @@ function readMeta(doc) {
     title: doc.title,
     desc: doc.querySelector('meta[name="description"]')?.getAttribute('content') || '',
     canonical: doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
+    // the language links point to the same page in each language
+    langs: Object.fromEntries([...doc.querySelectorAll('#lang-menu a[hreflang]')].map((a) => [a.hreflang, a.getAttribute('href')])),
   };
 }
 function applyMeta(m) {
   document.title = m.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content', m.desc);
   document.querySelector('link[rel="canonical"]')?.setAttribute('href', m.canonical);
+  document.querySelectorAll('#lang-menu a[hreflang], [data-lang-alt] a[hreflang]').forEach((a) => {
+    if (m.langs[a.hreflang]) a.setAttribute('href', m.langs[a.hreflang]);
+  });
 }
 
 const pages = new Map();
@@ -470,7 +488,7 @@ async function goHome(hash, doPush, restoreY = 0) {
   if (busy || !homeEl) return;
   busy = true;
   closeMenu?.({ restore: false });
-  if (doPush) push(`/${hash || ''}`);
+  if (doPush) push(`${HOME}${hash || ''}`);
   const from = current;
   from.el.style.transition = 'opacity .3s';
   from.el.style.opacity = '0';
@@ -511,8 +529,8 @@ function initRouter() {
       return;
     }
     const m = url.pathname.match(SVC_RE);
-    if (m) { e.preventDefault(); goService(`/services/${m[1]}/`, m[1], true); return; }
-    if (url.pathname === '/' && homeEl) {
+    if (m) { e.preventDefault(); goService(servicePath(m[1]), m[1], true); return; }
+    if (isHome(url.pathname) && homeEl) {
       e.preventDefault();
       if (current.type === 'service') goHome(url.hash, true);
       else if (url.hash) { push(url.hash); scrollToHash(url.hash); }
@@ -526,9 +544,9 @@ function initRouter() {
   });
   // warm the cache when a service link is about to be used
   document.addEventListener('pointerover', (e) => {
-    const a = e.target.closest?.('a[href^="/services/"]');
+    const a = e.target.closest?.(`a[href^="${BASE}/services/"]`);
     const m = a && new URL(a.href).pathname.match(SVC_RE);
-    if (m && routerReady) loadPage(`/services/${m[1]}/`).catch(() => {});
+    if (m && routerReady) loadPage(servicePath(m[1])).catch(() => {});
   });
   return restoreY;
 }
@@ -539,8 +557,8 @@ function syncToLocation(state) {
   const m = location.pathname.match(SVC_RE);
   if (m) {
     if (current.type === 'service' && current.slug === m[1]) location.hash ? scrollToHash(location.hash) : scrollToY(y);
-    else goService(`/services/${m[1]}/`, m[1], false, y);
-  } else if (location.pathname === '/' && homeEl) {
+    else goService(servicePath(m[1]), m[1], false, y);
+  } else if (isHome(location.pathname) && homeEl) {
     if (current.type === 'service') goHome(location.hash, false, y);
     else location.hash ? scrollToHash(location.hash) : scrollToY(y);
   } else location.reload();

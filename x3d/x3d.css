@@ -1,4 +1,4 @@
-/* AbacheDev — scroll-driven 3D design (French pages). Loaded after styles.css.
+/* AbacheDev — scroll-driven 3D design (French and Arabic pages). Loaded after styles.css.
    Palette: pale neutral background, one vivid accent for text, a deep shade of it for large blocks. */
 
 body.x3d {
@@ -39,7 +39,7 @@ body.x3d .x-menu :focus-visible, body.x3d .x-ring-ui :focus-visible, body.x3d .s
 html:not(.x-full):not(.x-lite) :is([data-menu-open], [data-lang-toggle], .x-ring-btn) { display: none; }
 .x-canvas-off .x-canvas { opacity: 0 !important; transition: opacity .25s; }
 
-.skip-link { position: fixed; top: 10px; left: 10px; z-index: 200; padding: 10px 16px; background: var(--ink); color: var(--pale); border-radius: 999px; font-weight: 600; transform: translateY(-160%); transition: transform .2s; }
+.skip-link { position: fixed; top: 10px; inset-inline-start: 10px; z-index: 200; padding: 10px 16px; background: var(--ink); color: var(--pale); border-radius: 999px; font-weight: 600; transform: translateY(-160%); transition: transform .2s; }
 .skip-link:focus { transform: none; }
 
 /* ---------- Smooth scroll (Lenis) ---------- */
@@ -76,7 +76,7 @@ html.x-3d-on .x-canvas { opacity: 1; }
 .x-icon svg { width: 18px; height: 18px; }
 .x-lang { position: relative; }
 .x-lang-menu {
-  position: absolute; top: calc(100% + 8px); right: 0; min-width: 168px; padding: 6px;
+  position: absolute; top: calc(100% + 8px); inset-inline-end: 0; min-width: 168px; padding: 6px;
   background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
   display: grid; gap: 2px;
 }
@@ -99,7 +99,7 @@ html.x-3d-on .x-canvas { opacity: 1; }
 body.x3d .x-menu h2 { font: 600 .72rem/1 Inter, sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--on-deep); margin-bottom: 18px; opacity: .85; }
 .x-menu-services a { display: flex; align-items: baseline; gap: 16px; padding: 8px 0; font-family: var(--serif); font-size: clamp(1.7rem, 3.6vw, 3rem); line-height: 1.1; color: var(--ink-on-deep); transition: color .2s, transform .3s; }
 .x-menu-services a span { font: 600 .75rem/1 Inter, sans-serif; letter-spacing: .1em; color: var(--on-deep); opacity: .7; min-width: 2ch; }
-.x-menu-services a:hover { color: var(--on-deep); transform: translateX(6px); }
+.x-menu-services a:hover { color: var(--on-deep); transform: translateX(calc(6px * var(--dir, 1))); }
 .x-menu-links a { display: block; padding: 9px 0; font-size: 1.15rem; font-weight: 500; border-bottom: 1px solid rgba(224, 231, 255, .14); }
 .x-menu-links a:hover { color: #fff; }
 .x-menu-foot { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; max-width: 1240px; width: 100%; margin: 0 auto; font-size: .9rem; }
@@ -193,8 +193,8 @@ body.x3d .s-title {
 body.x3d .s-title.is-long { font-size: clamp(2.2rem, 7.4vw, 9rem); }
 .s-line { display: block; }
 .s-cap { position: absolute; top: 50%; transform: translateY(-50%); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; white-space: nowrap; line-height: 1.5; }
-.s-cap-l { left: calc(var(--gutter) - 50vw + 50%); text-align: left; }
-.s-cap-r { right: calc(var(--gutter) - 50vw + 50%); text-align: right; }
+.s-cap-l { inset-inline-start: calc(var(--gutter) - 50vw + 50%); text-align: start; }
+.s-cap-r { inset-inline-end: calc(var(--gutter) - 50vw + 50%); text-align: end; }
 @media (max-width: 1199px) {
   .s-cap { top: auto; bottom: calc(100% + 22px); transform: none; }
 }
@@ -218,8 +218,8 @@ body.x3d .s-details .s-details-sub { font: 600 .7rem/1 Inter, sans-serif; letter
 .s-details p { line-height: 1.7; margin-bottom: 28px; max-width: 46ch; }
 .s-details .s-link { margin-top: 0; }
 .s-list { display: grid; border-top: 1px solid var(--line); }
-.s-list li { position: relative; padding: 14px 0 14px 34px; border-bottom: 1px solid var(--line); line-height: 1.5; }
-.s-list li::before { content: ""; position: absolute; left: 4px; top: 21px; width: 14px; height: 8px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
+.s-list li { position: relative; padding-block: 14px; padding-inline: 34px 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
+.s-list li::before { content: ""; position: absolute; inset-inline-start: 4px; top: 21px; width: 14px; height: 8px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
 .s-others { padding: 0 var(--gutter) clamp(90px, 15svh, 170px); text-align: center; }
 body.x3d .s-others h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.1rem, 4.6vw, 4.2rem); line-height: 1.05; margin: 0; }
 .s-others-grid { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1320px; margin: clamp(36px, 6vw, 64px) auto 0; border-block: 1px solid var(--line); }
@@ -269,7 +269,7 @@ body.x3d .work-view { background: var(--deep); }
 
 /* service cards link to their pages */
 .svc-card { position: relative; display: flex; flex-direction: column; }
-.svc-card-img { width: 120px; height: 120px; margin: -10px 0 8px -12px; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.svc-card-img { width: 120px; height: 120px; margin-block: -10px 8px; margin-inline: -12px 0; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
 .svc-card:hover .svc-card-img { transform: rotate(-8deg) translateY(-4px); }
 .svc-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 .svc-card-more { margin-top: auto; padding-top: 16px; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; }
@@ -333,8 +333,8 @@ html .x-fade.is-in { opacity: 1; }
   body.x3d .s-title { font-size: 12vw; }
   body.x3d .s-title.is-long { font-size: 9.4vw; }
   .s-cap { top: auto; bottom: calc(100% + 18px); transform: none; }
-  .s-cap-l { left: 0; }
-  .s-cap-r { right: 0; }
+  .s-cap-l { inset-inline-start: 0; }
+  .s-cap-r { inset-inline-end: 0; }
   .s-head { transform: translateY(-5svh); }
   .s-obj { width: 112vw; transform: translate(-50%, 34%); }
   .s-others-grid { grid-template-columns: repeat(2, 1fr); }
@@ -351,3 +351,24 @@ html .x-fade.is-in { opacity: 1; }
   .s-cap { white-space: normal; max-width: 46%; }
   .x-ring-pause { left: auto; right: -8px; top: auto; bottom: calc(100% + 10px); translate: none; }
 }
+
+/* ---------- Arabic (right to left) ---------- */
+/* Display type: Bodoni for Latin words, Amiri for Arabic; body text in Cairo. No letter-spacing or capitals in Arabic. */
+html[lang="ar"] body.x3d { --serif: "Bodoni Moda", "Amiri", "Noto Naskh Arabic", serif; font-family: "Cairo", Tahoma, sans-serif; }
+html[lang="ar"] body.x3d :is(.x-icon, .x-menu h2, .x-menu-services a span, .x-disc-text text, .s-details .s-details-sub, .x-footer h2) { font-family: "Cairo", Inter, sans-serif; }
+html[lang="ar"] body.x3d :is(.x-h1, .s-title, .s-details h2, .s-others h2, h2) { line-height: 1.3; }
+html[lang="ar"] body.x3d .s-title { line-height: 1.12; font-weight: 700; font-size: clamp(2.6rem, 7.6vw, 8.5rem); }
+html[lang="ar"] body.x3d .s-title.is-long { font-size: clamp(2.2rem, 6.4vw, 7.2rem); }
+html[lang="ar"] body.x3d .x-h1 { font-weight: 700; max-width: 14ch; }
+html[lang="ar"] body.x3d :is(.x-h1 em, .x-wordmark i) { font-style: normal; }
+html[lang="ar"] body.x3d :is(.x-kicker, .x-hero-cta, .s-cap, .s-link, .s-gallery-head, .x-ring-cta, .svc-card-more, .s-others-cta, .x-menu-label, .eyebrow) { font-size: .86rem; }
+html[lang="ar"] body.x3d :is(.x-menu h2, .x-footer h2, .s-details .s-details-sub) { font-size: .9rem; }
+/* laid out left to right along the circle (right to left would start before the path and vanish); each Arabic run still reads correctly */
+html[lang="ar"] .x-disc-text text { direction: ltr; font-size: 32px; font-weight: 700; }
+html[lang="ar"] .x-wordmark { line-height: .95; }
+html[lang="ar"] .x-wordmark span { letter-spacing: -.035em !important; }
+html[lang="ar"] .x-wordmark i { font-weight: 700; line-height: 1.4; }
+html[lang="ar"] .x-icon[data-lang-toggle] { font-size: 1rem; }
+/* the carousel turns in space: keep prev on the left and next on the right so the arrows match the motion */
+[dir="rtl"] .x-ring-ui { direction: ltr; }
+[dir="rtl"] .x-ring-link { direction: rtl; }
