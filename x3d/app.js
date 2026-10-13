@@ -1,9 +1,9 @@
 // AbacheDev 3D experience (French and Arabic pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101402';
+import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101403';
 
-const VERSION = '2026101402';
+const VERSION = '2026101403';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
@@ -225,6 +225,9 @@ function initRing(hero) {
     sx = null;
     if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1), { user: true });
   });
+  // a vertical swipe becomes a page scroll and ends in pointercancel, not pointerup;
+  // without this the swipe start stayed set and blocked the auto-rotation for good
+  hero.addEventListener('pointercancel', () => { sx = null; });
 
   slots(0);
   if (REDUCE) { hero.classList.add('is-paused'); pauseBtn?.setAttribute('aria-pressed', 'true'); }
