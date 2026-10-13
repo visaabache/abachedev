@@ -167,7 +167,7 @@ function initRing(hero) {
     clearInterval(timer);
     if (stopped || scene) return;
     timer = setInterval(() => {
-      if (!hover && !document.hidden && window.scrollY < window.innerHeight) go(index + 1);
+      if (!hover && sx === null && !document.hidden && window.scrollY < window.innerHeight) go(index + 1);
     }, 5200);
   }
   function stop() {
@@ -595,10 +595,29 @@ else if (current.el) initServicePage(current.el);
 if (FULL) {
   const restoreY = initRouter();
   if (restoreY) gsapReady.then(() => setTimeout(() => scrollToY(restoreY), 300));
-  const start = () => loadScene().catch((err) => {
-    console.warn('3D scene unavailable, using the light version.', err);
-    root.classList.replace('x-full', 'x-lite');
-  });
-  if (document.readyState === 'complete') (window.requestIdleCallback || setTimeout)(start, { timeout: 1200 });
-  else window.addEventListener('load', () => (window.requestIdleCallback || setTimeout)(start, { timeout: 1200 }), { once: true });
+  // The 3D layer starts on the first sign of interest (mouse, scroll, keys), or after a few
+  // seconds; until then the still version in the same layout is shown. Its code is fetched
+  // in the background after load so it is ready by then.
+  const INTENT = ['pointermove', 'pointerdown', 'wheel', 'keydown', 'touchstart', 'scroll'];
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+    INTENT.forEach((ev) => window.removeEventListener(ev, start));
+    loadScene().catch((err) => {
+      console.warn('3D scene unavailable, using the light version.', err);
+      root.classList.replace('x-full', 'x-lite');
+    });
+  };
+  const afterLoad = () => {
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = `/x3d/scene.js?v=${VERSION}`;
+    link.as = 'script';
+    document.head.append(link);
+    INTENT.forEach((ev) => window.addEventListener(ev, start, { passive: true }));
+    setTimeout(start, 9000);
+  };
+  if (document.readyState === 'complete') afterLoad();
+  else window.addEventListener('load', afterLoad, { once: true });
 }

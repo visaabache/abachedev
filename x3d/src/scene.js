@@ -413,7 +413,11 @@ export async function createScene({ canvas, services, onFrontChange = () => {}, 
   // ---- public API --------------------------------------------------------------------
   layout();
   for (const it of items) it.holder.visible = true;
-  try { await renderer.compileAsync(scene, camera); } catch {}
+  // compile the shaders before the first frame, off the main thread where the GPU driver allows it
+  try {
+    if (renderer.extensions.has('KHR_parallel_shader_compile')) await renderer.compileAsync(scene, camera);
+    else renderer.compile(scene, camera);
+  } catch {}
   // first placement (home by default): everything starts at its ring spot
   for (const it of items) ringTarget(it, 0);
   snapAll();

@@ -59,10 +59,11 @@ Ready-to-paste French bios for each platform are in `docs/social-bios-fr.md`. Us
 The French homepage and the six service pages use a scroll-driven 3D design. English and Arabic keep the previous design for now.
 
 - **Hero:** a dark disc low in the frame with the brand phrase turning around it, and one 3D object per service on a ring (auto-rotates, drag to spin, click the front object or use the arrows and the link under it).
-- **Service pages** (`services/<slug>/index.html`): `design-site-web`, `developpement-web`, `boutique-en-ligne`, `referencement-seo`, `refonte-site-web`, `maintenance-site-web`. Clicking an object opens its page without reloading: the same object travels to the bottom of the screen, then rises and tilts in front of the big serif headline as you scroll. Below: a short paragraph, a sideways-scrolling strip of designs, "Autres services" and the footer.
+- **Service pages** (`services/<slug>/index.html`): `design-site-web`, `developpement-web`, `boutique-en-ligne`, `referencement-seo`, `refonte-site-web`, `maintenance-site-web`. Clicking an object opens its page without reloading: the same object travels to the bottom of the screen, then rises and tilts in front of the big serif headline as you scroll. Below: a short paragraph, a sideways-scrolling strip of designs, "Ce qui est inclus" (what's included, who it's for, the price), "Autres services" and the footer.
 - **Existing sections** (services, method, portfolio, prices, FAQ, contact form) stay on the homepage, restyled in the three-colour palette: pale `#f4f3ef`, accent `#4f46e5` for text, deep `#1e1b4b` for large blocks.
 - **Light version:** phones, touch screens and visitors who prefer reduced motion get still images of the same objects (`assets/3d/*.webp`) with simple fades, in the same layout. Every link and button is real HTML, so keyboards and screen readers work without the 3D layer.
-- **Performance:** the 3D scene loads after the page, renders at most at 2× pixel density (lower automatically on slow machines) and pauses when it's off screen.
+- **Performance:** the 3D scene starts on the visitor's first mouse move, scroll or key press (or after 9 seconds), with its code downloaded in the background after the page loads. It renders at most at 2× pixel density (lower automatically on slow machines) and sleeps when it's off screen, behind the menu or paused. Lighthouse: 100 in all four categories on desktop for the homepage and a service page; on mobile, 97 (homepage) and 100 (service page) for performance and 100 for the rest.
+- **Carousel controls:** previous/next, a pause button (stops all motion), drag to spin, and an announcement for screen readers after each step.
 
 | File | What it does |
 | --- | --- |
@@ -74,7 +75,7 @@ The French homepage and the six service pages use a scroll-driven 3D design. Eng
 | `vendor/` | GSAP, ScrollTrigger and Lenis (copied by the build) |
 | `tools/render-objects.html` | Renders the still images of the objects |
 
-After editing anything in `x3d/src/`, rebuild with `npm install && npm run build` (pinned versions: three.js 0.186.1, GSAP 3.15.0, Lenis 1.3.26, esbuild 0.28.1), then re-save the still images from `/tools/render-objects.html` into `assets/3d/` as WebP if the models changed. Bump the `?v=` version in the HTML files and in `x3d/app.js`.
+After editing anything in `x3d/src/`, rebuild with `npm install && npm run build` (pinned versions: three.js 0.186.1, GSAP 3.15.0, Lenis 1.3.26, esbuild 0.28.1), then re-save the still images from `/tools/render-objects.html` (and `?size=1800` for the `-1800` versions used on phones and tablets) into `assets/3d/` as WebP if the models changed. Bump the `?v=` version in the HTML files and in `x3d/app.js`.
 
 **Still to replace with your real content:** the gallery strips use the six design concepts from `assets/work/`; swap in screenshots of client projects as you complete them. The service page paragraphs are short; you can expand them with your own wording.
 
