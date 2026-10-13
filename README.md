@@ -53,7 +53,7 @@ Ready to upload, at each platform's recommended size. Text, logos and the URL si
 | `youtube-banner.png` | 2560×1440 | YouTube channel banner |
 | `ig-highlight-*.jpg` | 1080×1920 | Instagram story highlight covers: Services, Réalisations, Méthode, Tarifs, FAQ, Contact, plus Avis for when you have client reviews to share. Post one as a story, add it to a highlight, then pick it as the highlight cover |
 
-Ready-to-paste French bios for each platform are in `docs/social-bios-fr.md`. Use the same profile picture everywhere so people recognize you, and put your WhatsApp number and abachedev.com in each profile's bio or contact button (people can tap those; they can't tap a number in a cover image).
+Ready-to-paste French bios for each platform are in `docs/social-bios-fr.md`. A month of ready-made Instagram/Facebook posts (images, captions, hashtags and schedule) is in `marketing/instagram-facebook/` (see its README); keep that folder out of the Cloudflare upload when you deploy. Use the same profile picture everywhere so people recognize you, and put your WhatsApp number and abachedev.com in each profile's bio or contact button (people can tap those; they can't tap a number in a cover image).
 
 ## 3D design (French pages)
 The French homepage and the six service pages use a scroll-driven 3D design. English and Arabic keep the previous design for now.
