@@ -411,8 +411,11 @@ if (form) form.addEventListener("submit", async (e) => {
     } else {
       // No number configured yet: fall back to the contact form
       setOpen(false);
-      document.getElementById("message").value = decodeURIComponent(text);
-      document.getElementById("contact").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      const messageEl = document.getElementById("message");
+      const contactEl = document.getElementById("contact");
+      if (!messageEl || !contactEl) { location.href = "/#contact"; return; } // pages without the form
+      messageEl.value = decodeURIComponent(text);
+      contactEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
     }
   }
 

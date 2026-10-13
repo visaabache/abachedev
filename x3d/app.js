@@ -1,14 +1,15 @@
 // AbacheDev 3D experience (French pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath } from './services.js?v=2026101201';
+import { SERVICES, servicePath } from './services.js?v=2026101301';
 
-const VERSION = '2026101201';
+const VERSION = '2026101301';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
 const SMALL = mq('(max-width: 820px)') || mq('(hover: none) and (pointer: coarse)');
-const FULL = !REDUCE && !SMALL && hasWebGL();
+// three.js r186 needs WebGL 2; a failing renderer still falls back through loadScene's catch
+const FULL = !REDUCE && !SMALL && 'WebGL2RenderingContext' in window;
 root.classList.add(FULL ? 'x-full' : 'x-lite');
 if (REDUCE) root.classList.add('x-reduce');
 
@@ -24,6 +25,10 @@ let routerReady = false;
 let busy = false;
 let pageCleanup = [];
 let ring = null;
+let closeMenu = null;
+let pending = false; // a Back/Forward that arrived during a transition
+let svcHero = null; // service hero whose pin is set up (waiting for the scene)
+let svcSync = null;
 
 const homeEl = document.querySelector('.page-home');
 const heroEl = homeEl?.querySelector('.x-hero') || null;
@@ -31,17 +36,6 @@ let current = homeEl
   ? { type: 'home', el: homeEl }
   : { type: 'service', el: document.querySelector('.page-service'), slug: document.querySelector('.page-service')?.dataset.slug };
 const homeMeta = homeEl ? readMeta(document) : null;
-
-function hasWebGL() {
-  try {
-    const c = document.createElement('canvas');
-    const gl = c.getContext('webgl2') || c.getContext('webgl');
-    gl?.getExtension('WEBGL_lose_context')?.loseContext();
-    return !!gl;
-  } catch {
-    return false;
-  }
-}
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
@@ -105,6 +99,7 @@ function initMenu() {
     openBtn.setAttribute('aria-expanded', 'true');
     document.body.classList.add('no-scroll');
     lenis?.stop();
+    scene?.setPaused(true);
     document.addEventListener('keydown', onKey);
     closeBtn.focus();
   }
@@ -114,12 +109,14 @@ function initMenu() {
     openBtn.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('no-scroll');
     lenis?.start();
+    scene?.setPaused(false);
     document.removeEventListener('keydown', onKey);
     if (restore) (lastFocus || openBtn).focus();
   }
   openBtn.addEventListener('click', open);
   closeBtn.addEventListener('click', () => close());
   menu.addEventListener('click', (e) => { if (e.target.closest('a[href]')) close({ restore: false }); });
+  closeMenu = close;
 }
 
 // ---------------------------------------------------------------------------
@@ -270,7 +267,7 @@ async function initServicePage(el) {
   const { gsap, ScrollTrigger } = window;
   const triggers = [];
   // Create triggers top to bottom: the pin's spacing shifts everything below it.
-  if (scene && hero) {
+  if (FULL && hero) {
     // Pinned for one screen: the object rises and tilts in front of the headline, which moves up.
     // After the pin, the object leaves with the page.
     const head = gsap.to(move, { yPercent: -55, ease: 'none', paused: true });
@@ -278,13 +275,16 @@ async function initServicePage(el) {
     const sync = () => {
       if (!pin) return;
       const exit = Math.max(0, window.scrollY - pin.end);
-      scene.setServiceProgress(pin.progress, Math.min(exit, window.innerHeight * 1.5));
+      scene?.setServiceProgress(pin.progress, Math.min(exit, window.innerHeight * 1.5));
     };
     pin = ScrollTrigger.create({ trigger: hero, start: 'top top', end: '+=100%', pin: true, scrub: true, animation: head, onUpdate: sync, onRefresh: sync });
     window.addEventListener('scroll', sync, { passive: true });
     pageCleanup.push(() => window.removeEventListener('scroll', sync));
     triggers.push(pin, head);
     sync();
+    svcHero = hero;
+    svcSync = sync;
+    pageCleanup.push(() => { svcHero = null; svcSync = null; });
     watchActive(hero);
   }
   if (strip && gallery) {
@@ -386,10 +386,24 @@ function scrollToHash(hash) {
   const y = target === document.body ? 0 : Math.max(0, target.getBoundingClientRect().top + window.scrollY - 72);
   if (lenis) lenis.scrollTo(y, { force: true });
   else window.scrollTo({ top: y, behavior: REDUCE ? 'auto' : 'smooth' });
-  if (target !== document.body) {
+  if (target === document.body) focusHeading(current.el);
+  else {
     target.setAttribute('tabindex', '-1');
     target.focus({ preventScroll: true });
   }
+}
+
+// remember where the visitor was, so Back and reload return there
+function saveY() {
+  try { history.replaceState({ ...(history.state || {}), x3d: 1, y: Math.round(window.scrollY) }, ''); } catch {}
+}
+function push(url) {
+  saveY();
+  history.pushState({ x3d: 1 }, '', url);
+}
+function done() {
+  busy = false;
+  if (pending) { pending = false; syncToLocation(history.state); }
 }
 
 function scrollTopAndFocus(el) {
@@ -398,13 +412,14 @@ function scrollTopAndFocus(el) {
   focusHeading(el);
 }
 
-async function goService(path, slug, push) {
+async function goService(path, slug, doPush, restoreY = 0) {
   if (busy) return;
   if (current.type === 'service' && current.slug === slug) { scrollTopAndFocus(current.el); return; }
   busy = true;
+  closeMenu?.({ restore: false });
   const data = loadPage(path);
   const from = current;
-  if (push) history.pushState({ x3d: 1 }, '', path);
+  if (doPush) push(path);
   if (from.type === 'home') {
     if (window.scrollY > 4) {
       // Coming from further down the page: the ring isn't on screen, so fade everything
@@ -445,16 +460,17 @@ async function goService(path, slug, push) {
   current = { type: 'service', el, slug };
   setTimeout(() => el.classList.remove('x-page-enter'), 1500);
   await initServicePage(el);
-  scrollToY(0);
+  scrollToY(restoreY);
   root.classList.remove('x-canvas-off');
   focusHeading(el);
-  busy = false;
+  done();
 }
 
-async function goHome(hash, push) {
+async function goHome(hash, doPush, restoreY = 0) {
   if (busy || !homeEl) return;
   busy = true;
-  if (push) history.pushState({ x3d: 1 }, '', `/${hash || ''}`);
+  closeMenu?.({ restore: false });
+  if (doPush) push(`/${hash || ''}`);
   const from = current;
   from.el.style.transition = 'opacity .3s';
   from.el.style.opacity = '0';
@@ -470,13 +486,17 @@ async function goHome(hash, push) {
   scene.setScroll(0);
   scene.setMode('home');
   await initHomePage();
-  if (hash) { await wait(450); scrollToHash(hash); } else focusHeading(homeEl);
-  busy = false;
+  if (hash) { await wait(450); scrollToHash(hash); }
+  else { if (restoreY) scrollToY(restoreY); focusHeading(homeEl); }
+  done();
 }
 
 function initRouter() {
-  history.replaceState({ x3d: 1 }, '');
+  const nav = performance.getEntriesByType?.('navigation')?.[0];
+  const restoreY = nav && (nav.type === 'reload' || nav.type === 'back_forward') ? history.state?.y || 0 : 0;
+  history.replaceState({ ...(history.state || {}), x3d: 1 }, '');
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pagehide', saveY);
   document.addEventListener('click', (e) => {
     if (!routerReady || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest('a[href]');
@@ -486,7 +506,7 @@ function initRouter() {
     // links within the page that is showing (skip link, "Haut de page", #contact on the home page)
     if (url.hash && url.pathname === location.pathname && url.search === location.search) {
       e.preventDefault();
-      history.pushState({ x3d: 1 }, '', url.hash);
+      push(url.hash);
       scrollToHash(url.hash);
       return;
     }
@@ -495,20 +515,14 @@ function initRouter() {
     if (url.pathname === '/' && homeEl) {
       e.preventDefault();
       if (current.type === 'service') goHome(url.hash, true);
-      else if (url.hash) { history.pushState({ x3d: 1 }, '', url.hash); scrollToHash(url.hash); }
+      else if (url.hash) { push(url.hash); scrollToHash(url.hash); }
       else scrollTopAndFocus(homeEl);
     }
   });
-  window.addEventListener('popstate', () => {
+  window.addEventListener('popstate', (e) => {
     if (!routerReady) return;
-    const m = location.pathname.match(SVC_RE);
-    if (m) {
-      if (current.type === 'service' && current.slug === m[1]) { if (location.hash) scrollToHash(location.hash); }
-      else goService(`/services/${m[1]}/`, m[1], false);
-    } else if (location.pathname === '/' && homeEl) {
-      if (current.type === 'service') goHome(location.hash, false);
-      else if (location.hash) scrollToHash(location.hash);
-    } else location.reload();
+    if (busy) { pending = true; return; }
+    syncToLocation(e.state);
   });
   // warm the cache when a service link is about to be used
   document.addEventListener('pointerover', (e) => {
@@ -516,6 +530,20 @@ function initRouter() {
     const m = a && new URL(a.href).pathname.match(SVC_RE);
     if (m && routerReady) loadPage(`/services/${m[1]}/`).catch(() => {});
   });
+  return restoreY;
+}
+
+// Show whatever the address bar says (Back/Forward, or one that arrived mid-transition).
+function syncToLocation(state) {
+  const y = state?.y || 0;
+  const m = location.pathname.match(SVC_RE);
+  if (m) {
+    if (current.type === 'service' && current.slug === m[1]) location.hash ? scrollToHash(location.hash) : scrollToY(y);
+    else goService(`/services/${m[1]}/`, m[1], false, y);
+  } else if (location.pathname === '/' && homeEl) {
+    if (current.type === 'service') goHome(location.hash, false, y);
+    else location.hash ? scrollToHash(location.hash) : scrollToY(y);
+  } else location.reload();
 }
 
 // ---------------------------------------------------------------------------
@@ -527,7 +555,7 @@ async function loadScene() {
   canvas.className = 'x-canvas';
   canvas.setAttribute('aria-hidden', 'true');
   document.body.append(canvas);
-  scene = createScene({
+  scene = await createScene({
     canvas,
     services: SERVICES,
     onFrontChange: (i) => ring?.frontChanged(i),
@@ -540,9 +568,12 @@ async function loadScene() {
     await initHomePage();
   } else {
     scene.setMode('service', { slug: current.slug, instant: true });
-    runCleanup();
-    await initServicePage(current.el);
+    // the pin was already set up without the scene: just connect it
+    if (svcHero) { svcSync?.(); watchActive(svcHero); }
   }
+  // If the GPU drops the context, show the still images until it comes back.
+  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); root.classList.remove('x-3d-on'); });
+  canvas.addEventListener('webglcontextrestored', () => { scene.restore(); root.classList.add('x-3d-on'); });
   requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('x-3d-on')));
   routerReady = true;
 }
@@ -553,12 +584,17 @@ async function loadScene() {
 initLangMenu();
 initMenu();
 if (heroEl) ring = initRing(heroEl);
-gsapReady = loadGsap();
+// the light homepage has no scroll effects, so it skips GSAP entirely
+gsapReady = FULL || current.type === 'service' ? loadGsap() : Promise.resolve(false);
+// the portfolio lightbox scrolls on its own: hold the smooth page scroll while it is open
+const lightboxEl = document.getElementById('lightbox');
+if (lightboxEl) new MutationObserver(() => (lightboxEl.hidden ? lenis?.start() : lenis?.stop())).observe(lightboxEl, { attributes: true, attributeFilter: ['hidden'] });
 if (current.type === 'home') initHomePage();
 else if (current.el) initServicePage(current.el);
 
 if (FULL) {
-  initRouter();
+  const restoreY = initRouter();
+  if (restoreY) gsapReady.then(() => setTimeout(() => scrollToY(restoreY), 300));
   const start = () => loadScene().catch((err) => {
     console.warn('3D scene unavailable, using the light version.', err);
     root.classList.replace('x-full', 'x-lite');

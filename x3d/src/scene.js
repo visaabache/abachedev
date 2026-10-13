@@ -19,23 +19,32 @@ const smooth = (a, b, x) => {
   return t * t * (3 - 2 * t);
 };
 
+function makeEnvironment(renderer, scene) {
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment?.dispose();
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  pmrem.dispose();
+}
+
 function makeStage(renderer, scene) {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.05;
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  pmrem.dispose();
+  makeEnvironment(renderer, scene);
   scene.add(new THREE.HemisphereLight(0xffffff, 0xcfcbe8, 0.55));
   const key = new THREE.DirectionalLight(0xffffff, 1.35);
   key.position.set(4, 6, 8);
   scene.add(key);
 }
 
-export function createScene({ canvas, services, onFrontChange = () => {}, onSelect = () => {} }) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+export async function createScene({ canvas, services, onFrontChange = () => {}, onSelect = () => {} }) {
+  // MSAA on a 2x screen costs a lot for little gain; keep it below that
+  const dpr0 = Math.min(window.devicePixelRatio || 1, 2);
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: dpr0 < 2, alpha: true, powerPreference: 'high-performance' });
+  renderer.debug.checkShaderErrors = false;
   const scene = new THREE.Scene();
   makeStage(renderer, scene);
+  await new Promise((r) => setTimeout(r, 0)); // let the page breathe between the setup steps
   const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 60);
 
   const aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -60,7 +69,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   scene.add(occluder);
 
   // ---- layout ---------------------------------------------------------------
-  let W = 1, H = 1, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let W = 1, H = 1, dpr = dpr0;
   let discEl = null;
   let uiEl = null;
   let copyEl = null;
@@ -136,6 +145,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   let svcP = 0; // service scroll progress 0..1 (while pinned)
   let svcExit = 0; // px scrolled after the pin
   let active = true;
+  let paused = false; // e.g. behind the full-screen menu
   let autoOn = true;
   let time = 0;
 
@@ -185,7 +195,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
   // ---- update -----------------------------------------------------------------
   function update(dt) {
     // Off-screen, the ring freezes so the loop can settle and stop.
-    if (active) time += dt;
+    if (active && autoOn) time += dt; // the pause button freezes the drifting too
     const now = performance.now();
     if (mode === 'home') {
       if (dragging) {
@@ -217,7 +227,7 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
       it.pos.lerp(it.tPos, a);
       it.quat.slerp(it.tQuat, a);
       it.scale += (it.tScale - it.scale) * a;
-      if (Math.abs(it.tScale - it.scale) > 1e-3 || it.pos.distanceToSquared(it.tPos) > 1e-5) settled = false;
+      if (Math.abs(it.tScale - it.scale) > 1e-3 || it.pos.distanceToSquared(it.tPos) > 1e-5 || it.quat.angleTo(it.tQuat) > 1e-3) settled = false;
       it.holder.visible = it.scale > 1e-3;
       it.holder.position.copy(it.pos);
       it.holder.quaternion.copy(it.quat);
@@ -247,7 +257,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
       if (slow > 45 && dpr > 1) { dpr = Math.max(1, dpr - 0.25); layout(); }
       frames = slow = 0;
     }
-    if (!document.hidden && (active || !settled)) raf = requestAnimationFrame(frame);
+    // keep drawing while something moves on its own; when paused, sleep once everything has settled
+    if (!document.hidden && ((active && !paused && autoOn) || !settled)) raf = requestAnimationFrame(frame);
   }
   function kick() {
     if (!raf && !document.hidden) {
@@ -301,7 +312,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
       }
       if (ev.pointerType !== 'mouse') return;
       const hit = pick(ev.clientX, ev.clientY);
-      hoverFront = !!hit && hit.i === front;
+      const next = !!hit && hit.i === front;
+      if (next !== hoverFront) { hoverFront = next; kick(); }
       el.classList.toggle('is-pointing', !!hit);
     };
     const up = (ev) => {
@@ -374,7 +386,9 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
         toWorld(W / 2, H * 1.7, D_SERVICE, it.pos);
         it.scale = L.svcSize * wpp(D_SERVICE);
         const old = items[prevSel];
-        toWorld(W / 2, H * 1.9, D_SERVICE, old.tPos);
+        const oldY = H - svcP * H * 0.5 - svcExit;
+        if (oldY < -H * 0.3) old.scale = 0; // already off screen: don't let it fall across the new page
+        else toWorld(W / 2, H * 1.9, D_SERVICE, old.tPos);
       }
       if (prev === 'home') ringTo(selected, { instant: true });
     } else {
@@ -398,6 +412,8 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
 
   // ---- public API --------------------------------------------------------------------
   layout();
+  for (const it of items) it.holder.visible = true;
+  try { await renderer.compileAsync(scene, camera); } catch {}
   // first placement (home by default): everything starts at its ring spot
   for (const it of items) ringTarget(it, 0);
   snapAll();
@@ -413,13 +429,21 @@ export function createScene({ canvas, services, onFrontChange = () => {}, onSele
     setDisc(el) { discEl = el; layout(); kick(); },
     setUi(el, copy) { uiEl = el; copyEl = copy || null; },
     setAuto(on) { autoOn = on; kick(); },
-    setScroll(y) { pageY = y; if (mode === 'home') kick(); },
+    setScroll(y) {
+      const was = pageY;
+      pageY = y;
+      // the ring lives in the first screen: further down nothing 3D can be visible
+      if (mode === 'home' && (was < H * 1.25 || y < H * 1.25)) kick();
+    },
     setServiceProgress(p, exitPx = 0) {
+      for (const it of items) if (it.i === selected && it.k < 9) it.k = Math.max(it.k, 9);
+      if (p === svcP && exitPx === svcExit) return; // object gone: stay asleep
       svcP = p;
       svcExit = exitPx;
-      for (const it of items) if (it.i === selected && it.k < 9) it.k = Math.max(it.k, 9);
       kick();
     },
+    setPaused(on) { paused = on; if (!on) kick(); },
+    restore() { makeEnvironment(renderer, scene); layout(); kick(); },
     setActive(on) { active = on; if (on) kick(); },
     bindPointer,
     unbindPointer,
