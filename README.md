@@ -64,7 +64,7 @@ The French and Arabic homepages and their six service pages use a scroll-driven 
 - **Light version:** phones, touch screens and visitors who prefer reduced motion get still images of the same objects (`assets/3d/*.webp`) with simple fades, in the same layout. Every link and button is real HTML, so keyboards and screen readers work without the 3D layer.
 - **Performance:** the 3D scene starts on the visitor's first mouse move, scroll or key press (or after 9 seconds), with its code downloaded in the background after the page loads. It renders at most at 2× pixel density (lower automatically on slow machines) and sleeps when it's off screen, behind the menu or paused. Lighthouse: 100 in all four categories on desktop for the homepage and a service page; on mobile, 97 (homepage) and 100 (service page) for performance and 100 for the rest. The Arabic pages score the same (99 for the service page on mobile).
 - **Carousel controls:** previous/next, a pause button (stops all motion), drag to spin, and an announcement for screen readers after each step.
-- **Arabic:** right to left, with Amiri for the large headlines (Bodoni stays for Latin words such as the "abachedev" wordmark) and Cairo for the text. The phrase around the disc and the carousel buttons keep a left-to-right layout so the arrows match the way the objects turn; everything else mirrors. Prices use a narrow no-break space ("2 990") so the digits stay together in right-to-left text.
+- **Arabic:** right to left, with Amiri for the large headlines (Bodoni stays for Latin words such as the "abachedev" wordmark) and Cairo for the text. The carousel buttons keep a left-to-right layout so the arrows match the way the objects turn; everything else mirrors. The Arabic phrase around the disc is an image of pre-shaped letter outlines (`assets/disc-text-ar.svg`), because Safari on iPhone breaks the joins between Arabic letters in curved SVG text. To change the phrase, edit and run `tools/disc-text-ar.py`. Prices use a narrow no-break space ("2 990") so the digits stay together in right-to-left text.
 
 | File | What it does |
 | --- | --- |
@@ -75,6 +75,7 @@ The French and Arabic homepages and their six service pages use a scroll-driven 
 | `x3d/scene.js` | Built bundle of the scene + three.js (generated) |
 | `vendor/` | GSAP, ScrollTrigger and Lenis (copied by the build) |
 | `tools/render-objects.html` | Renders the still images of the objects |
+| `tools/disc-text-ar.py` | Builds the Arabic phrase around the disc (`assets/disc-text-ar.svg`) |
 
 After editing anything in `x3d/src/`, rebuild with `npm install && npm run build` (pinned versions: three.js 0.186.1, GSAP 3.15.0, Lenis 1.3.26, esbuild 0.28.1), then re-save the still images from `/tools/render-objects.html` (and `?size=1800` for the `-1800` versions used on phones and tablets) into `assets/3d/` as WebP if the models changed. Bump the `?v=` version in the HTML files and in `x3d/app.js`.
 

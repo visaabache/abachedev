@@ -1,9 +1,9 @@
 // AbacheDev 3D experience (French and Arabic pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101401';
+import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101402';
 
-const VERSION = '2026101401';
+const VERSION = '2026101402';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
