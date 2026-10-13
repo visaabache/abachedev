@@ -4,28 +4,30 @@
 
 ## Calendrier
 
-| Quand | Publication | Format | Objectif |
+Du mardi 13 octobre au samedi 7 novembre 2026 : 3 publications par semaine, le mardi, le jeudi et le samedi.
+
+| Date | Publication | Format | Objectif |
 | --- | --- | --- | --- |
-| Semaine 1 — lundi | [p01-lancement](#p01-lancement) | Carrousel (5) | Confiance |
-| Semaine 1 — mercredi | [p02-instagram-et-site](#p02-instagram-et-site) | Carrousel (5) | Notoriété |
-| Semaine 1 — vendredi | [p03-test-du-telephone](#p03-test-du-telephone) | Carrousel (5) | Conseil |
-| Semaine 2 — lundi | [p04-contact-en-un-clic](#p04-contact-en-un-clic) | Image (1) | Conseil |
-| Semaine 2 — mercredi | [p05-vendre-en-ligne](#p05-vendre-en-ligne) | Carrousel (6) | Conseil |
-| Semaine 2 — vendredi | [p06-trouve-sur-google](#p06-trouve-sur-google) | Carrousel (5) | Conseil |
-| Semaine 3 — lundi | [p07-site-cafe-restaurant](#p07-site-cafe-restaurant) | Carrousel (5) | Confiance |
-| Semaine 3 — mercredi | [p08-processus-4-etapes](#p08-processus-4-etapes) | Carrousel (6) | Confiance |
-| Semaine 3 — vendredi | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) | Carrousel (7) | Confiance |
-| Semaine 4 — lundi | [p10-tarifs-clairs](#p10-tarifs-clairs) | Carrousel (6) | Demandes |
-| Semaine 4 — mercredi | [p11-pas-le-temps](#p11-pas-le-temps) | Image (1) | Demandes |
-| Semaine 4 — vendredi | [p12-consultation-gratuite](#p12-consultation-gratuite) | Image (1) | Demandes |
-| Semaine 1 — vendredi | [s01-story-test-mobile](#s01-story-test-mobile) | Story (1) | Notoriété |
-| Semaine 3 — vendredi | [s02-story-une-question](#s02-story-une-question) | Story (1) | Demandes |
-| Semaine 4 — mardi | [s03-story-starter](#s03-story-starter) | Story (1) | Demandes |
+| mardi 13 octobre (aujourd’hui) | [p01-lancement](#p01-lancement) | Carrousel (5) | Confiance |
+| jeudi 15 octobre | [p02-instagram-et-site](#p02-instagram-et-site) | Carrousel (5) | Notoriété |
+| samedi 17 octobre | [p03-test-du-telephone](#p03-test-du-telephone) | Carrousel (5) | Conseil |
+| samedi 17 octobre | [s01-story-test-mobile](#s01-story-test-mobile) | Story (1) | Notoriété |
+| mardi 20 octobre | [p04-contact-en-un-clic](#p04-contact-en-un-clic) | Image (1) | Conseil |
+| jeudi 22 octobre | [p05-vendre-en-ligne](#p05-vendre-en-ligne) | Carrousel (6) | Conseil |
+| samedi 24 octobre | [p06-trouve-sur-google](#p06-trouve-sur-google) | Carrousel (5) | Conseil |
+| mardi 27 octobre | [p07-site-cafe-restaurant](#p07-site-cafe-restaurant) | Carrousel (5) | Confiance |
+| jeudi 29 octobre | [p08-processus-4-etapes](#p08-processus-4-etapes) | Carrousel (6) | Confiance |
+| samedi 31 octobre | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) | Carrousel (7) | Confiance |
+| samedi 31 octobre | [s02-story-une-question](#s02-story-une-question) | Story (1) | Demandes |
+| mardi 3 novembre | [p10-tarifs-clairs](#p10-tarifs-clairs) | Carrousel (6) | Demandes |
+| mercredi 4 novembre | [s03-story-starter](#s03-story-starter) | Story (1) | Demandes |
+| jeudi 5 novembre | [p11-pas-le-temps](#p11-pas-le-temps) | Image (1) | Demandes |
+| samedi 7 novembre | [p12-consultation-gratuite](#p12-consultation-gratuite) | Image (1) | Demandes |
 
 **Conseils de publication**
 
-- 3 publications par semaine (lundi, mercredi, vendredi), dans l’ordre p01 → p12. Partagez aussi chaque publication en story le jour même.
-- Horaires pour commencer : 11 h–13 h ou 20 h–22 h. Après 3 ou 4 semaines, choisissez vos meilleurs créneaux dans les statistiques Instagram.
+- 3 publications par semaine (mardi, jeudi, samedi), dans l’ordre p01 → p12, en commençant aujourd’hui avec p01. Partagez aussi chaque publication en story le jour même.
+- Horaires pour commencer : 11 h–13 h ou 20 h–22 h (le samedi, plutôt en fin de matinée). Après 3 ou 4 semaines, choisissez vos meilleurs créneaux dans les statistiques Instagram.
 - Épinglez p01 (qui je suis), p10 (tarifs) et p09 (questions fréquentes) en haut du profil.
 - Chaque légende demande d’écrire un mot-clé sur WhatsApp (DIRECT, INSTA, TEST…) : notez le mot-clé de chaque message reçu pour savoir quelles publications vous apportent des demandes.
 - **Facebook** : mêmes images et mêmes légendes ; remplacez « abachedev.com (lien en bio) » par le lien cliquable https://abachedev.com, gardez 3 à 5 hashtags seulement, et ajoutez un autocollant lien vers abachedev.com sur les stories.
@@ -33,7 +35,7 @@
 
 ## p01-lancement
 
-**Semaine 1 — lundi** · Carrousel · Confiance · images : [`01.jpg`](p01-lancement/01.jpg), [`02.jpg`](p01-lancement/02.jpg), [`03.jpg`](p01-lancement/03.jpg), [`04.jpg`](p01-lancement/04.jpg), [`05.jpg`](p01-lancement/05.jpg)
+**mardi 13 octobre** · Carrousel · Confiance · images : [`01.jpg`](p01-lancement/01.jpg), [`02.jpg`](p01-lancement/02.jpg), [`03.jpg`](p01-lancement/03.jpg), [`04.jpg`](p01-lancement/04.jpg), [`05.jpg`](p01-lancement/05.jpg)
 
 Légende :
 
@@ -58,7 +60,7 @@ Un projet de site ? Écrivez « DIRECT » sur WhatsApp au +212 677-047171 ou 
 
 ## p02-instagram-et-site
 
-**Semaine 1 — mercredi** · Carrousel · Notoriété · images : [`01.jpg`](p02-instagram-et-site/01.jpg), [`02.jpg`](p02-instagram-et-site/02.jpg), [`03.jpg`](p02-instagram-et-site/03.jpg), [`04.jpg`](p02-instagram-et-site/04.jpg), [`05.jpg`](p02-instagram-et-site/05.jpg)
+**jeudi 15 octobre** · Carrousel · Notoriété · images : [`01.jpg`](p02-instagram-et-site/01.jpg), [`02.jpg`](p02-instagram-et-site/02.jpg), [`03.jpg`](p02-instagram-et-site/03.jpg), [`04.jpg`](p02-instagram-et-site/04.jpg), [`05.jpg`](p02-instagram-et-site/05.jpg)
 
 Légende :
 
@@ -83,7 +85,7 @@ Vos réseaux attirent l’attention, votre site aide à la transformer en demand
 
 ## p03-test-du-telephone
 
-**Semaine 1 — vendredi** · Carrousel · Conseil · images : [`01.jpg`](p03-test-du-telephone/01.jpg), [`02.jpg`](p03-test-du-telephone/02.jpg), [`03.jpg`](p03-test-du-telephone/03.jpg), [`04.jpg`](p03-test-du-telephone/04.jpg), [`05.jpg`](p03-test-du-telephone/05.jpg)
+**samedi 17 octobre** · Carrousel · Conseil · images : [`01.jpg`](p03-test-du-telephone/01.jpg), [`02.jpg`](p03-test-du-telephone/02.jpg), [`03.jpg`](p03-test-du-telephone/03.jpg), [`04.jpg`](p03-test-du-telephone/04.jpg), [`05.jpg`](p03-test-du-telephone/05.jpg)
 
 Légende :
 
@@ -110,7 +112,7 @@ Refonte ou nouveau site : écrivez « TEST » sur WhatsApp au +212 677-047171
 
 ## p04-contact-en-un-clic
 
-**Semaine 2 — lundi** · Image · Conseil · images : [`01.jpg`](p04-contact-en-un-clic/01.jpg)
+**mardi 20 octobre** · Image · Conseil · images : [`01.jpg`](p04-contact-en-un-clic/01.jpg)
 
 Légende :
 
@@ -134,7 +136,7 @@ Votre site a-t-il un bouton WhatsApp ? Écrivez « BOUTON » sur WhatsApp au 
 
 ## p05-vendre-en-ligne
 
-**Semaine 2 — mercredi** · Carrousel · Conseil · images : [`01.jpg`](p05-vendre-en-ligne/01.jpg), [`02.jpg`](p05-vendre-en-ligne/02.jpg), [`03.jpg`](p05-vendre-en-ligne/03.jpg), [`04.jpg`](p05-vendre-en-ligne/04.jpg), [`05.jpg`](p05-vendre-en-ligne/05.jpg), [`06.jpg`](p05-vendre-en-ligne/06.jpg)
+**jeudi 22 octobre** · Carrousel · Conseil · images : [`01.jpg`](p05-vendre-en-ligne/01.jpg), [`02.jpg`](p05-vendre-en-ligne/02.jpg), [`03.jpg`](p05-vendre-en-ligne/03.jpg), [`04.jpg`](p05-vendre-en-ligne/04.jpg), [`05.jpg`](p05-vendre-en-ligne/05.jpg), [`06.jpg`](p05-vendre-en-ligne/06.jpg)
 
 Légende :
 
@@ -161,7 +163,7 @@ Prêt à vendre en ligne ? Écrivez « BOUTIQUE » sur WhatsApp au +212 677-0
 
 ## p06-trouve-sur-google
 
-**Semaine 2 — vendredi** · Carrousel · Conseil · images : [`01.jpg`](p06-trouve-sur-google/01.jpg), [`02.jpg`](p06-trouve-sur-google/02.jpg), [`03.jpg`](p06-trouve-sur-google/03.jpg), [`04.jpg`](p06-trouve-sur-google/04.jpg), [`05.jpg`](p06-trouve-sur-google/05.jpg)
+**samedi 24 octobre** · Carrousel · Conseil · images : [`01.jpg`](p06-trouve-sur-google/01.jpg), [`02.jpg`](p06-trouve-sur-google/02.jpg), [`03.jpg`](p06-trouve-sur-google/03.jpg), [`04.jpg`](p06-trouve-sur-google/04.jpg), [`05.jpg`](p06-trouve-sur-google/05.jpg)
 
 Légende :
 
@@ -188,7 +190,7 @@ Votre site est-il visible sur Google ? Écrivez « GOOGLE » sur WhatsApp au 
 
 ## p07-site-cafe-restaurant
 
-**Semaine 3 — lundi** · Carrousel · Confiance · images : [`01.jpg`](p07-site-cafe-restaurant/01.jpg), [`02.jpg`](p07-site-cafe-restaurant/02.jpg), [`03.jpg`](p07-site-cafe-restaurant/03.jpg), [`04.jpg`](p07-site-cafe-restaurant/04.jpg), [`05.jpg`](p07-site-cafe-restaurant/05.jpg)
+**mardi 27 octobre** · Carrousel · Confiance · images : [`01.jpg`](p07-site-cafe-restaurant/01.jpg), [`02.jpg`](p07-site-cafe-restaurant/02.jpg), [`03.jpg`](p07-site-cafe-restaurant/03.jpg), [`04.jpg`](p07-site-cafe-restaurant/04.jpg), [`05.jpg`](p07-site-cafe-restaurant/05.jpg)
 
 Légende :
 
@@ -214,7 +216,7 @@ Vous avez un restaurant ou un café ? Écrivez « CAFÉ » sur WhatsApp au +2
 
 ## p08-processus-4-etapes
 
-**Semaine 3 — mercredi** · Carrousel · Confiance · images : [`01.jpg`](p08-processus-4-etapes/01.jpg), [`02.jpg`](p08-processus-4-etapes/02.jpg), [`03.jpg`](p08-processus-4-etapes/03.jpg), [`04.jpg`](p08-processus-4-etapes/04.jpg), [`05.jpg`](p08-processus-4-etapes/05.jpg), [`06.jpg`](p08-processus-4-etapes/06.jpg)
+**jeudi 29 octobre** · Carrousel · Confiance · images : [`01.jpg`](p08-processus-4-etapes/01.jpg), [`02.jpg`](p08-processus-4-etapes/02.jpg), [`03.jpg`](p08-processus-4-etapes/03.jpg), [`04.jpg`](p08-processus-4-etapes/04.jpg), [`05.jpg`](p08-processus-4-etapes/05.jpg), [`06.jpg`](p08-processus-4-etapes/06.jpg)
 
 Légende :
 
@@ -236,7 +238,7 @@ Prêt pour l’étape 01 ? Écrivez « ÉTAPE » sur WhatsApp au +212 677-047
 
 ## p09-questions-avant-de-commander
 
-**Semaine 3 — vendredi** · Carrousel · Confiance · images : [`01.jpg`](p09-questions-avant-de-commander/01.jpg), [`02.jpg`](p09-questions-avant-de-commander/02.jpg), [`03.jpg`](p09-questions-avant-de-commander/03.jpg), [`04.jpg`](p09-questions-avant-de-commander/04.jpg), [`05.jpg`](p09-questions-avant-de-commander/05.jpg), [`06.jpg`](p09-questions-avant-de-commander/06.jpg), [`07.jpg`](p09-questions-avant-de-commander/07.jpg)
+**samedi 31 octobre** · Carrousel · Confiance · images : [`01.jpg`](p09-questions-avant-de-commander/01.jpg), [`02.jpg`](p09-questions-avant-de-commander/02.jpg), [`03.jpg`](p09-questions-avant-de-commander/03.jpg), [`04.jpg`](p09-questions-avant-de-commander/04.jpg), [`05.jpg`](p09-questions-avant-de-commander/05.jpg), [`06.jpg`](p09-questions-avant-de-commander/06.jpg), [`07.jpg`](p09-questions-avant-de-commander/07.jpg)
 
 Légende :
 
@@ -257,7 +259,7 @@ Une autre question ? Écrivez « QUESTION » sur WhatsApp au +212 677-047171,
 
 ## p10-tarifs-clairs
 
-**Semaine 4 — lundi** · Carrousel · Demandes · images : [`01.jpg`](p10-tarifs-clairs/01.jpg), [`02.jpg`](p10-tarifs-clairs/02.jpg), [`03.jpg`](p10-tarifs-clairs/03.jpg), [`04.jpg`](p10-tarifs-clairs/04.jpg), [`05.jpg`](p10-tarifs-clairs/05.jpg), [`06.jpg`](p10-tarifs-clairs/06.jpg)
+**mardi 3 novembre** · Carrousel · Demandes · images : [`01.jpg`](p10-tarifs-clairs/01.jpg), [`02.jpg`](p10-tarifs-clairs/02.jpg), [`03.jpg`](p10-tarifs-clairs/03.jpg), [`04.jpg`](p10-tarifs-clairs/04.jpg), [`05.jpg`](p10-tarifs-clairs/05.jpg), [`06.jpg`](p10-tarifs-clairs/06.jpg)
 
 Légende :
 
@@ -279,7 +281,7 @@ Vous hésitez entre deux formules ? Écrivez « PRIX » sur WhatsApp au +212 
 
 ## p11-pas-le-temps
 
-**Semaine 4 — mercredi** · Image · Demandes · images : [`01.jpg`](p11-pas-le-temps/01.jpg)
+**jeudi 5 novembre** · Image · Demandes · images : [`01.jpg`](p11-pas-le-temps/01.jpg)
 
 Légende :
 
@@ -303,7 +305,7 @@ Votre site en ligne en 1 à 3 semaines selon la formule, environ 5 jours pour 
 
 ## p12-consultation-gratuite
 
-**Semaine 4 — vendredi** · Image · Demandes · images : [`01.jpg`](p12-consultation-gratuite/01.jpg)
+**samedi 7 novembre** · Image · Demandes · images : [`01.jpg`](p12-consultation-gratuite/01.jpg)
 
 Légende :
 
@@ -326,19 +328,19 @@ Toutes les formules : abachedev.com (lien en bio)
 
 ## s01-story-test-mobile
 
-**Semaine 1 — vendredi** · Story · Notoriété · images : [`01.jpg`](s01-story-test-mobile/01.jpg)
+**samedi 17 octobre** · Story · Notoriété · images : [`01.jpg`](s01-story-test-mobile/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
 ## s02-story-une-question
 
-**Semaine 3 — vendredi** · Story · Demandes · images : [`01.jpg`](s02-story-une-question/01.jpg)
+**samedi 31 octobre** · Story · Demandes · images : [`01.jpg`](s02-story-une-question/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
 ## s03-story-starter
 
-**Semaine 4 — mardi** · Story · Demandes · images : [`01.jpg`](s03-story-starter/01.jpg)
+**mercredi 4 novembre** · Story · Demandes · images : [`01.jpg`](s03-story-starter/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
