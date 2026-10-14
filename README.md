@@ -113,4 +113,9 @@ python3 -m http.server 8000
 **After launch:** add the site to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters), submit `https://abachedev.com/sitemap.xml`, and create a Google Business Profile. When you edit the page, update `<lastmod>` in `sitemap.xml`.
 
 ## Deploy
-Planned: Cloudflare (Workers static assets) via Wrangler. `_headers` and `404.html` are picked up automatically by Cloudflare.
+Cloudflare Workers static assets, configured in `wrangler.jsonc`. `_headers` (security headers, cache rules) and `404.html` are picked up automatically. `.assetsignore` keeps everything that isn't part of the website out of the upload (`marketing/`, `tools/`, `docs/`, `integrations/`, `node_modules/`, the 3D sources in `x3d/src/`, the README and package files).
+
+- **From GitHub (recommended):** in Cloudflare, Workers & Pages → Create → Import a repository → `visaabache/abachedev`. Leave the build command empty (the 3D bundle and `vendor/` are committed) and keep the deploy command `npx wrangler deploy`. Every push to the production branch then redeploys the site.
+- **From your computer:** `npx wrangler login`, then `npx wrangler deploy`.
+- **Domain:** `abachedev.com` is registered at Namecheap with Cloudflare's nameservers. In the Worker, Settings → Domains & Routes → add `abachedev.com` and `www.abachedev.com`, and a Redirect Rule sends `www` to `abachedev.com`.
+- **Email:** Cloudflare Email Routing forwards `contact@abachedev.com` to your Gmail.

@@ -1,0 +1,12 @@
+// Cloudflare Workers static assets: serves this folder as the website (abachedev.com).
+// Deploy: connect the GitHub repository in the Cloudflare dashboard (Workers & Pages > Create > Import a repository),
+// or run `npx wrangler deploy` locally. Files listed in .assetsignore are not uploaded.
+{
+  "name": "abachedev",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

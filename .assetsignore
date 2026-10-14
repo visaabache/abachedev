@@ -1,0 +1,15 @@
+# Not part of the website: kept out of the Cloudflare upload
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+node_modules
+package.json
+package-lock.json
+README.md
+docs
+integrations
+marketing
+tools
+x3d/src
+.wrangler
