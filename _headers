@@ -1,10 +1,15 @@
 # Cloudflare static asset headers (Workers static assets / Pages)
+# Content-Security-Policy: only this site, Google Fonts, the contact form services (Formspree, Google Apps Script)
+# and Cloudflare Web Analytics. The sha256 hash allows the fonts' onload="this.media='all'".
+# Add any new outside service to it, or the browser will block it.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-hashes' 'sha256-MhtPZXr7+LpJUY5qtMutB+qWfQtMaPccfe7QXtCcEYc=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://script.google.com https://script.googleusercontent.com https://cloudflareinsights.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
 
 /assets/*
   Cache-Control: public, max-age=2592000
