@@ -504,3 +504,14 @@ body.x3d .t-head .t-lead { margin-inline: 0; }
 .b-more { padding: 12px 24px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 600 .95rem/1 inherit; cursor: pointer; }
 .b-more:hover { background: var(--ink); color: var(--pale); }
 .b-more[hidden] { display: none; }
+
+/* ---------- Bold, clear headings ----------
+   Bodoni Moda is loaded from 400 to 800: big titles use 650-700 so the hairlines stay visible
+   at every size; Arabic headings (Amiri) use its bold. */
+body.x3d { --display-weight: 650; }
+body.x3d :is(.x-h1, .s-title, .t-title, .x-wordmark, h2, .s-details h2, .s-others h2, .b-related > h2, .t-body h2, .t-cta h2, .x-menu-services a, .x-ring-name, .s-others-name, .b-card-title, .price, .x-reviews-score, .step-num, .marquee-track span) { font-weight: var(--display-weight); }
+body.x3d :is(.x-h1, .s-title, .t-title) { font-weight: 700; letter-spacing: -.02em; }
+body.x3d .x-h1 em, body.x3d .t-title em { font-weight: 600; }
+body.x3d .x-wordmark { font-weight: 600; }
+body.x3d h3 { font-weight: 700; }
+html[lang="ar"] body.x3d :is(.x-h1, .s-title, .t-title, h2, .t-body h2, .x-menu-services a, .x-ring-name, .s-others-name, .x-wordmark i) { font-weight: 700; }
