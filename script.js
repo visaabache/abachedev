@@ -582,3 +582,20 @@ if (form) form.addEventListener("submit", async (e) => {
   bar.replaceChildren(inner);
   bar.hidden = false;
 })();
+
+// Google Maps on the contact section: the map only loads when the visitor asks for it
+// (it is heavy and Google sets cookies). The "Open in Google Maps" link always works.
+document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
+  const btn = box.querySelector(".x-map-load");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const frame = document.createElement("iframe");
+    frame.src = box.dataset.mapSrc;
+    frame.title = box.dataset.mapTitle || "Google Maps";
+    frame.loading = "lazy";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.allowFullscreen = true;
+    box.replaceChildren(frame);
+    box.classList.add("is-loaded");
+  });
+});
