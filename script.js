@@ -664,3 +664,33 @@ document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
   if (document.readyState === "complete") load();
   else window.addEventListener("load", load, { once: true });
 })();
+
+// Blog: filter by sector and instant search, without reloading (articles stay plain HTML for Google)
+(() => {
+  const grid = document.querySelector(".b-index .b-grid");
+  if (!grid) return;
+  const cards = [...grid.children];
+  const chips = [...document.querySelectorAll(".b-chip")];
+  const search = document.querySelector(".b-search");
+  const empty = document.querySelector(".b-empty");
+  const count = document.querySelector(".b-count");
+  const norm = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  let cat = new URLSearchParams(location.search).get("cat") || "all";
+  const apply = () => {
+    const q = norm(search.value.trim());
+    let n = 0;
+    cards.forEach((c) => { const ok = (cat === "all" || c.dataset.cat === cat) && (!q || norm(c.dataset.text).includes(q)); c.hidden = !ok; if (ok) n++; });
+    chips.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === cat)));
+    empty.hidden = n > 0;
+    count.textContent = `${n} article${n > 1 ? "s" : ""}`;
+  };
+  chips.forEach((b) => b.addEventListener("click", () => {
+    cat = b.dataset.cat;
+    const u = new URL(location.href);
+    cat === "all" ? u.searchParams.delete("cat") : u.searchParams.set("cat", cat);
+    history.replaceState(null, "", u);
+    apply();
+  }));
+  search.addEventListener("input", apply);
+  apply();
+})();

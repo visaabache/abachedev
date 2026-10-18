@@ -263,4 +263,32 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://abachedev.com/ar/terms/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abachedev.com/conditions/"/>
   </url>
+  <url>
+    <loc>https://abachedev.com/blog/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/prix-site-web-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/site-web-spa-institut-beaute-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/site-web-cabinet-dentaire-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/site-web-expert-comptable-fiduciaire-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/site-web-bureau-traduction-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
+  <url>
+    <loc>https://abachedev.com/blog/site-web-agence-etudes-etranger-maroc/</loc>
+    <lastmod>2026-10-19</lastmod>
+  </url>
 </urlset>
