@@ -99,7 +99,9 @@ Setup (once):
 
 The security policy allows reviewers' profile pictures from `lh3.googleusercontent.com`, and the privacy policy mentions the reviews.
 
-## Blog (French)
+## Blog (French and Arabic)
+The 36 articles exist in French (`/blog/`) and Arabic (`/ar/blog/`, right to left, rewritten in clear Modern Standard Arabic with the searches people type in Arabic). Each article links to its other version (language menu and hreflang), and each blog has its own RSS feed (`/blog/feed.xml`, `/ar/blog/feed.xml`). The English menu links to the French blog.
+
 `/blog/` lists the articles (12 at a time, with a "Voir plus" button), with filters by sector and instant search (no reload; the articles stay plain HTML so Google reads them). Each article (`/blog/<slug>/`) has a table of contents, reading time, a FAQ (marked up so Google can show it in results), a quote and WhatsApp call to action, related articles, and `BlogPosting` structured data. An RSS feed is at `/blog/feed.xml`, and every page is in the sitemap. "Blog" is in the menu and footer.
 
 The blog has 36 articles, 6 per sector, targeting what businesses in Morocco search for: website prices, spas and beauty institutes, dental practices, accountants and fiduciaries, translation offices and study-abroad agencies, with the main cities (Casablanca, Rabat, Marrakech, Tanger, Agadir, Fès). Publishing one new article every week or two is what makes a blog bring clients over time; new articles are added in the page generator (title, description, sector, text, FAQ) and the listing, related articles, feed and sitemap follow.
