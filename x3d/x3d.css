@@ -515,3 +515,20 @@ body.x3d .x-h1 em, body.x3d .t-title em { font-weight: 600; }
 body.x3d .x-wordmark { font-weight: 600; }
 body.x3d h3 { font-weight: 700; }
 html[lang="ar"] body.x3d :is(.x-h1, .s-title, .t-title, h2, .t-body h2, .x-menu-services a, .x-ring-name, .s-others-name, .x-wordmark i) { font-weight: 700; }
+
+/* ---------- Footer wordmark: one line, scrolling slowly from left to right ---------- */
+.x-wm-band { display: block; overflow: hidden; direction: ltr; white-space: nowrap; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.x-wm-track { display: inline-flex; width: max-content; animation: xWordmark 38s linear infinite; }
+.x-wm-track > span { padding-inline: .2em; letter-spacing: -.035em !important; }
+.x-wm-track > span::after { content: "·"; padding-inline-start: .35em; color: var(--on-deep); opacity: .35; }
+/* 6 copies: moving by half the track (3 words) loops seamlessly */
+@keyframes xWordmark { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.x-footer:hover .x-wm-track { animation-play-state: paused; }
+/* reduced motion: a single still word that fits the screen */
+@media (prefers-reduced-motion: reduce) {
+  .x-wm-band { -webkit-mask-image: none; mask-image: none; text-align: center; }
+  .x-wm-track { animation: none; width: auto; font-size: min(1em, 16vw); }
+  .x-wm-track > span:not(:first-child) { display: none; }
+  .x-wm-track > span::after { content: none; }
+}
+.x-wm-band, html[lang="ar"] .x-wm-band { line-height: .85; padding-block: .04em .02em; }
