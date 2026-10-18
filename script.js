@@ -687,7 +687,7 @@ document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
     if (more) more.hidden = !paged || n <= limit;
     chips.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === cat)));
     empty.hidden = n > 0;
-    count.textContent = `${n} article${n > 1 ? "s" : ""}`;
+    count.textContent = n === 1 ? count.dataset.one : count.dataset.many.replace("{n}", n);
   };
   chips.forEach((b) => b.addEventListener("click", () => {
     cat = b.dataset.cat;
