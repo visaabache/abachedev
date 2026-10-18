@@ -1,7 +1,8 @@
 // AbacheDev Worker: serves the static site, plus one small API.
 // GET /api/reviews?lang=fr|en|ar returns the Google rating and up to 5 reviews of the
 // AbacheDev Google Maps listing (Places API, New). The answer is cached at Cloudflare for
-// a few hours, so new reviews appear on their own and Google is only asked a few times a day.
+// 12 hours, so new reviews appear on their own and Google is asked about twice a day per language
+// (about 180 requests a month, far below Google's free monthly allowance).
 //
 // Settings (Cloudflare dashboard > Worker > Settings > Variables and Secrets, or wrangler):
 //   GOOGLE_PLACES_KEY  secret   Google Cloud API key restricted to the Places API (New)
@@ -9,7 +10,7 @@
 // Without them the API answers with an empty list and the reviews section stays hidden.
 
 const LANGS = ['fr', 'en', 'ar'];
-const CACHE_OK = 6 * 3600; // seconds a good answer is kept
+const CACHE_OK = 12 * 3600; // seconds a good answer is kept
 const CACHE_EMPTY = 600; // seconds an empty or failed answer is kept
 const FIELDS = 'rating,userRatingCount,googleMapsUri,reviews';
 
