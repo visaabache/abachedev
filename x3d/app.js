@@ -1,9 +1,9 @@
 // AbacheDev 3D experience (French, English and Arabic pages): carousel, page transitions, scroll effects.
 // Desktop: Three.js scene (lazy-loaded) + GSAP ScrollTrigger + Lenis, one persistent canvas.
 // Phones, touch screens and reduced motion: static object images with simple fades, same layout.
-import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101501';
+import { SERVICES, servicePath as svcPath, serviceName } from './services.js?v=2026101801';
 
-const VERSION = '2026101501';
+const VERSION = '2026101801';
 const root = document.documentElement;
 const mq = (q) => window.matchMedia(q).matches;
 const REDUCE = mq('(prefers-reduced-motion: reduce)');
@@ -45,9 +45,13 @@ let svcSync = null;
 
 const homeEl = document.querySelector('.page-home');
 const heroEl = homeEl?.querySelector('.x-hero') || null;
+// text pages (About, Privacy, Terms) get the header, menu and footer but no 3D scene or page transitions
+const textEl = document.querySelector('.page-text');
 let current = homeEl
   ? { type: 'home', el: homeEl }
-  : { type: 'service', el: document.querySelector('.page-service'), slug: document.querySelector('.page-service')?.dataset.slug };
+  : textEl
+    ? { type: 'text', el: textEl }
+    : { type: 'service', el: document.querySelector('.page-service'), slug: document.querySelector('.page-service')?.dataset.slug };
 const homeMeta = homeEl ? readMeta(document) : null;
 
 function loadScript(src) {
@@ -607,14 +611,15 @@ initLangMenu();
 initMenu();
 if (heroEl) ring = initRing(heroEl);
 // the light homepage has no scroll effects, so it skips GSAP entirely
-gsapReady = FULL || current.type === 'service' ? loadGsap() : Promise.resolve(false);
+gsapReady = (FULL && current.type !== 'text') || current.type === 'service' ? loadGsap() : Promise.resolve(false);
 // the portfolio lightbox scrolls on its own: hold the smooth page scroll while it is open
 const lightboxEl = document.getElementById('lightbox');
 if (lightboxEl) new MutationObserver(() => (lightboxEl.hidden ? lenis?.start() : lenis?.stop())).observe(lightboxEl, { attributes: true, attributeFilter: ['hidden'] });
 if (current.type === 'home') initHomePage();
+else if (current.type === 'text') fades(current.el);
 else if (current.el) initServicePage(current.el);
 
-if (FULL) {
+if (FULL && current.type !== 'text') {
   const restoreY = initRouter();
   if (restoreY) gsapReady.then(() => setTimeout(() => scrollToY(restoreY), 300));
   // The 3D layer starts on the first sign of interest (mouse, scroll, keys), or after a few

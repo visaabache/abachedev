@@ -81,6 +81,19 @@ After editing anything in `x3d/src/`, rebuild with `npm install && npm run build
 
 **Still to replace with your real content:** the gallery strips use the six design concepts from `assets/work/`; swap in screenshots of client projects as you complete them. The service page paragraphs are short; you can expand them with your own wording (change all three languages together).
 
+## About, Privacy and Terms pages
+Each language has an About page, a privacy policy and terms and conditions, in the same design as the rest of the site (no 3D scene). They're linked from the menu (About) and the footer (all three), and the contact form says that sending it means accepting the privacy policy.
+
+| Page | French | English | Arabic |
+| --- | --- | --- | --- |
+| About | `/a-propos/` | `/en/about/` | `/ar/about/` |
+| Privacy policy | `/confidentialite/` | `/en/privacy/` | `/ar/privacy/` |
+| Terms and conditions | `/conditions/` | `/en/terms/` | `/ar/terms/` |
+
+The privacy policy describes what the site actually does: the contact form (Formspree, Google Sheet and the automatic thank-you email), WhatsApp, Cloudflare hosting, Google Fonts, and the language choice stored in the browser. It follows Moroccan Law 09-08 (CNDP) and mentions the GDPR for visitors in the EU. **Update it whenever you add a service that handles visitor data** (analytics, a chat widget, a newsletter, online payment), and change the "last updated" date on all three languages.
+
+The terms cover quotes, prices, the 50/50 payment, timelines, ownership after full payment, support and liability. A few points are standard choices you should confirm or adjust: quotes valid for 30 days, the deposit kept if a project is cancelled after work starts, liability limited to the amount paid, and how long requests are kept (3 years). If you register a legal status (auto-entrepreneur, company) with an ICE number, add it to section 1 of the terms. These pages are a solid starting point, not legal advice: have them checked by a professional if your business grows.
+
 ## Preview locally
 Open `index.html` in your browser, or run:
 
