@@ -84,6 +84,19 @@ After editing anything in `x3d/src/`, rebuild with `npm install && npm run build
 ## Google Maps (contact section)
 The contact section on the three homepages shows the AbacheDev Google Maps listing, with an "Open in Google Maps" link (https://maps.app.goo.gl/QShYikzVJ9CDYdoB6). The map itself only loads when the visitor clicks "Show the map": Google's map is heavy and sets Google cookies, so the page stays fast and nothing is sent to Google before that click. The privacy policy mentions it, the security policy allows it (`frame-src https://www.google.com` in `_headers`) and the homepage structured data links to it (`hasMap`). To change the location, replace the embed address and the link at the top of the page generator, or in the `data-map-src` and `.x-map-open` link of the three homepages.
 
+## Google reviews (homepage)
+A "Client reviews" section between the portfolio and the prices shows the Google rating, the number of reviews and up to 5 reviews from the AbacheDev Google Maps listing, with "See all reviews on Google" and "Leave a review" links. It stays hidden until the listing has reviews.
+
+How it works: `worker/index.js` (the Cloudflare Worker, run only for `/api/*`) asks Google's Places API (New) for the listing and keeps the answer in Cloudflare's cache for 6 hours, so new reviews appear on their own and Google is only asked a few times a day per language. `script.js` loads `/api/reviews?lang=…` after the page and builds the cards (texts are inserted as plain text, never as HTML). Google's API gives at most 5 reviews, the ones it considers most relevant; showing every review would need the Google Business Profile API, which requires Google's approval.
+
+Setup (once):
+1. In Google Cloud Console (console.cloud.google.com), create a project, enable billing and the **Places API (New)**. With the 6-hour cache the site makes about 360 requests a month, within Google's free monthly allowance; set a budget alert anyway.
+2. Create an API key (APIs & Services → Credentials) and restrict it to the **Places API (New)**.
+3. Find the listing's Place ID (starts with `ChIJ`) with Google's Place ID Finder, and put it in `GOOGLE_PLACE_ID` in `wrangler.jsonc`.
+4. Store the key as a secret, never in the code: `npx wrangler secret put GOOGLE_PLACES_KEY`, then `npx wrangler deploy`.
+
+The security policy allows reviewers' profile pictures from `lh3.googleusercontent.com`, and the privacy policy mentions the reviews.
+
 ## About, Privacy and Terms pages
 Each language has an About page, a privacy policy and terms and conditions, in the same design as the rest of the site (no 3D scene). They're linked from the menu (About) and the footer (all three), and the contact form says that sending it means accepting the privacy policy.
 

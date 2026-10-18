@@ -599,3 +599,50 @@ document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
     box.classList.add("is-loaded");
   });
 });
+
+// Google reviews (homepage): filled from /api/reviews, where the Worker caches Google's answer.
+// The section stays hidden until the listing has reviews. Google's texts go in with textContent only.
+(() => {
+  const sec = document.getElementById("reviews");
+  if (!sec || !window.fetch) return;
+  const list = sec.querySelector(".x-reviews-list");
+  const num = (v) => v.toLocaleString(LANG === "ar" ? "ar-MA" : LANG, { maximumFractionDigits: 1 });
+  const stars = (n) => "★".repeat(n) + "☆".repeat(5 - n);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const own = (e) => { e.dir = "auto"; return e; }; // a French review on the Arabic page keeps its own direction
+  const load = () => fetch(`/api/reviews?lang=${LANG}`).then((r) => (r.ok ? r.json() : null)).then((d) => {
+    if (!d || !Array.isArray(d.reviews) || !d.reviews.length) return;
+    if (d.rating) {
+      sec.querySelector(".x-reviews-score").textContent = num(d.rating);
+      sec.querySelector(".x-stars").textContent = stars(Math.round(d.rating));
+      sec.querySelector(".x-reviews-summary").setAttribute("aria-label", sec.dataset.rated.replace("{r}", num(d.rating)));
+    }
+    if (d.count) sec.querySelector(".x-reviews-count").textContent = sec.dataset.count.replace("{n}", num(d.count));
+    if (d.mapsUrl) sec.querySelector("[data-reviews-all]").href = d.mapsUrl;
+    if (d.writeUrl) sec.querySelector("[data-reviews-write]").href = d.writeUrl;
+    d.reviews.forEach((rv) => {
+      const li = el("li", "x-review");
+      const head = el("div", "x-review-head");
+      if (rv.photo) {
+        const img = el("img", "x-review-photo");
+        img.src = rv.photo; img.alt = ""; img.width = 40; img.height = 40; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
+        head.append(img);
+      } else head.append(el("span", "x-review-photo", (rv.author || "?").trim().charAt(0).toUpperCase()));
+      const who = el("div", "x-review-who");
+      if (rv.authorUrl) { const a = own(el("a", "x-review-author", rv.author)); a.href = rv.authorUrl; a.target = "_blank"; a.rel = "noopener"; who.append(a); }
+      else who.append(own(el("span", "x-review-author", rv.author)));
+      who.append(el("span", "x-review-time", rv.time));
+      head.append(who);
+      const st = el("p", "x-stars", stars(rv.rating));
+      st.setAttribute("role", "img");
+      st.setAttribute("aria-label", sec.dataset.rated.replace("{r}", num(rv.rating)));
+      li.append(head, st);
+      if (rv.text) li.append(own(el("p", "x-review-text", rv.text)));
+      list.append(li);
+    });
+    sec.hidden = false;
+    window.dispatchEvent(new Event("resize")); // let the scroll effects measure the page again
+  }).catch(() => {});
+  if (document.readyState === "complete") load();
+  else window.addEventListener("load", load, { once: true });
+})();

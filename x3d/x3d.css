@@ -410,3 +410,22 @@ html[lang="ar"] body.x3d .t-body ol li::before { font-family: "Cairo", Inter, sa
 .x-map-load svg { width: 18px; height: 18px; }
 body.x3d .x-map-note { font-size: .78rem; opacity: .75; max-width: 34ch; margin: 0; }
 .x-map-open { display: inline-block; margin-top: 12px; color: var(--on-deep); text-decoration: underline; text-underline-offset: 3px; font-size: .95rem; }
+
+/* ---------- Google reviews (homepage, filled by script.js) ---------- */
+.x-reviews[hidden] { display: none; }
+.x-reviews-summary { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 6px 12px; margin-top: 14px; }
+.x-reviews-summary:empty, .x-reviews-score:empty, .x-reviews-count:empty { display: none; }
+body.x3d .x-reviews-score { font-family: var(--serif); font-size: 2.4rem; line-height: 1; }
+.x-stars { color: #f5b400; letter-spacing: .12em; font-size: 1.05rem; margin: 0; }
+.x-reviews-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 36px 0 0; padding: 0; list-style: none; }
+.x-review { display: grid; align-content: start; gap: 12px; padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.x-review-head { display: flex; align-items: center; gap: 12px; }
+.x-review-photo { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: var(--ink); color: var(--pale); font-weight: 700; }
+.x-review-who { display: grid; gap: 2px; min-width: 0; }
+.x-review-author { font-weight: 700; overflow-wrap: anywhere; }
+a.x-review-author:hover { text-decoration: underline; }
+.x-review-time { font-size: .8rem; opacity: .75; }
+.x-review-text { margin: 0; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; white-space: pre-line; }
+.x-reviews-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; margin-top: 28px; }
+.x-reviews-source { margin-top: 14px; text-align: center; font-size: .8rem; opacity: .7; }
+html[lang="ar"] .x-stars { letter-spacing: normal !important; }

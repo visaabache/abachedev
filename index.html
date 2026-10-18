@@ -173,9 +173,9 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=2026101802">
-  <link rel="stylesheet" href="/x3d/x3d.css?v=2026101802">
-  <link rel="modulepreload" href="/x3d/app.js?v=2026101802">
+  <link rel="stylesheet" href="/styles.css?v=2026101901">
+  <link rel="stylesheet" href="/x3d/x3d.css?v=2026101901">
+  <link rel="modulepreload" href="/x3d/app.js?v=2026101901">
 </head>
 <body class="x3d" id="top">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -425,6 +425,20 @@
       </div>
     </section>
 
+    <!-- ============ REVIEWS (Google, filled by script.js from /api/reviews) ============ -->
+    <section id="reviews" class="section x-reviews" aria-labelledby="reviews-title" hidden data-count="{n} avis Google" data-rated="Note de {r} sur 5">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Avis clients</p>
+          <h2 id="reviews-title">Ce que disent mes clients</h2>
+          <p class="x-reviews-summary"><span class="x-reviews-score"></span><span class="x-stars" aria-hidden="true"></span><span class="x-reviews-count"></span></p>
+        </div>
+        <ul class="x-reviews-list"></ul>
+        <div class="x-reviews-links"><a class="s-link" data-reviews-all href="https://maps.app.goo.gl/QShYikzVJ9CDYdoB6" target="_blank" rel="noopener">Voir tous les avis sur Google <span aria-hidden="true">↗</span></a><a class="s-link" data-reviews-write href="https://maps.app.goo.gl/QShYikzVJ9CDYdoB6" target="_blank" rel="noopener">Laisser un avis <span aria-hidden="true">↗</span></a></div>
+        <p class="x-reviews-source">Avis publiés sur Google Maps. Les plus pertinents, selon Google, se mettent à jour automatiquement.</p>
+      </div>
+    </section>
+
     <!-- ============ PRICING ============ -->
     <section id="pricing" class="section section-alt">
       <div class="container">
@@ -669,7 +683,7 @@
     <span class="wa-tip" aria-hidden="true">Discutons</span>
   </div>
 
-  <script src="/script.js?v=2026101802" defer></script>
-  <script type="module" src="/x3d/app.js?v=2026101802"></script>
+  <script src="/script.js?v=2026101901" defer></script>
+  <script type="module" src="/x3d/app.js?v=2026101901"></script>
 </body>
 </html>
