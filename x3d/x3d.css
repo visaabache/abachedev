@@ -437,3 +437,33 @@ html[lang="ar"] .x-stars { letter-spacing: normal !important; }
 .x-reviews-list.is-3d .x-review.is-in { opacity: 1; transform: rotateX(var(--rx)) rotateY(var(--ry)); }
 .x-reviews-list.is-3d .x-review.is-in:hover { transition: transform .15s ease-out, box-shadow .3s; box-shadow: 0 24px 50px rgba(30, 27, 75, .16); }
 .x-reviews-list.is-3d .x-review > * { transform: translateZ(26px); }
+
+/* ---------- Typography layer (all pages, all languages) ----------
+   Readable body size and rhythm, short line lengths, balanced headings, larger small labels,
+   proper kerning and numerals; Arabic gets a slightly larger size and taller lines. */
+body.x3d { font-size: clamp(1rem, .96rem + .18vw, 1.0625rem); line-height: 1.65; text-rendering: optimizeLegibility; font-kerning: normal; font-feature-settings: "kern", "liga", "calt"; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body.x3d :is(h1, h2, h3, .x-h1, .s-title, .t-title, .x-ring-name, .s-others-name) { text-wrap: balance; }
+body.x3d :is(p, li, dd, blockquote, .x-review-text) { text-wrap: pretty; overflow-wrap: break-word; }
+body.x3d h3 { line-height: 1.3; letter-spacing: -.01em; }
+/* comfortable line lengths */
+body.x3d :is(.section-head p, .s-intro p, .t-lead, .contact-copy > p) { max-width: 62ch; margin-inline: auto; }
+body.x3d .contact-copy > p { margin-inline: 0; }
+body.x3d :is(.t-body p, .t-body li, .s-details p, .faq-item p, .card p, .step p) { max-width: 68ch; }
+body.x3d :is(.card p, .step p, .why-list p, .faq-item p, .price-card li) { line-height: 1.65; }
+/* small uppercase labels: a little bigger, less spaced, so they stay legible */
+body.x3d :is(.x-kicker, .eyebrow, .s-cap, .s-gallery-head, .x-ring-num, .x-ring-cta, .s-others-cta, .svc-card-more, .s-link, .x-hero-cta, .x-menu-label) { font-size: max(.74rem, 12px); letter-spacing: .14em; }
+body.x3d :is(.x-menu h2, .x-footer h2, .s-details .s-details-sub) { font-size: max(.74rem, 12px); letter-spacing: .16em; }
+/* numbers: lining figures everywhere, aligned figures in prices and counters */
+body.x3d { font-variant-numeric: lining-nums; }
+body.x3d :is(.price, .x-ring-num, .s-cap, .x-reviews-score, .step-num) { font-variant-numeric: lining-nums tabular-nums; }
+/* form fields at 16px so phones don't zoom in, and readable help text */
+body.x3d :is(input, select, textarea) { font-size: max(1rem, 16px); }
+body.x3d :is(.field small, .form-legal, .x-map-note, .x-reviews-source, .t-updated) { font-size: max(.8rem, 13px); line-height: 1.5; }
+/* French and English: hyphenate long words only on narrow screens */
+@media (max-width: 560px) { html:not([lang="ar"]) body.x3d :is(.t-body p, .card p, .faq-item p, .s-intro p) { hyphens: auto; } }
+/* Arabic: Cairo reads best a touch larger with taller lines; no letter-spacing, no hyphens */
+html[lang="ar"] body.x3d { font-size: clamp(1.05rem, 1rem + .2vw, 1.125rem); line-height: 1.85; }
+html[lang="ar"] body.x3d :is(p, li, .x-review-text) { line-height: 1.9; }
+html[lang="ar"] body.x3d :is(.x-kicker, .eyebrow, .s-cap, .s-gallery-head, .x-ring-cta, .s-others-cta, .svc-card-more, .s-link, .x-hero-cta, .x-menu-label, .x-menu h2, .x-footer h2, .s-details .s-details-sub) { font-size: max(.9rem, 14px); letter-spacing: normal; }
+html[lang="ar"] body.x3d :is(h2, h3) { line-height: 1.45; }
+html[lang="ar"] body.x3d .t-body h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.4; }
