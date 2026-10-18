@@ -674,12 +674,17 @@ document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
   const search = document.querySelector(".b-search");
   const empty = document.querySelector(".b-empty");
   const count = document.querySelector(".b-count");
+  const more = document.querySelector(".b-more");
+  const PAGE = 12; // cards shown before "Voir plus" when nothing is filtered
+  let limit = PAGE;
   const norm = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   let cat = new URLSearchParams(location.search).get("cat") || "all";
   const apply = () => {
     const q = norm(search.value.trim());
     let n = 0;
-    cards.forEach((c) => { const ok = (cat === "all" || c.dataset.cat === cat) && (!q || norm(c.dataset.text).includes(q)); c.hidden = !ok; if (ok) n++; });
+    const paged = cat === "all" && !q;
+    cards.forEach((c) => { const ok = (cat === "all" || c.dataset.cat === cat) && (!q || norm(c.dataset.text).includes(q)); if (ok) n++; c.hidden = !ok || (paged && n > limit); });
+    if (more) more.hidden = !paged || n <= limit;
     chips.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === cat)));
     empty.hidden = n > 0;
     count.textContent = `${n} article${n > 1 ? "s" : ""}`;
@@ -692,5 +697,6 @@ document.querySelectorAll(".x-map[data-map-src]").forEach((box) => {
     apply();
   }));
   search.addEventListener("input", apply);
+  more?.addEventListener("click", () => { limit += PAGE; apply(); });
   apply();
 })();

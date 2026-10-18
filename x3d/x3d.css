@@ -500,3 +500,7 @@ body.x3d .b-card-title { font-family: var(--serif); font-weight: 400; font-size:
 .b-related { margin-top: clamp(48px, 8vw, 80px); }
 body.x3d .b-related > h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 18px; }
 body.x3d .t-head .t-lead { margin-inline: 0; }
+.b-more-wrap { text-align: center; margin-top: 28px; }
+.b-more { padding: 12px 24px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 600 .95rem/1 inherit; cursor: pointer; }
+.b-more:hover { background: var(--ink); color: var(--pale); }
+.b-more[hidden] { display: none; }
