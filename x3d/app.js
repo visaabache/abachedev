@@ -267,6 +267,10 @@ function watchActive(el) {
 
 async function initHomePage() {
   fades(homeEl);
+  // every section in 3D (x3d/depth.js): entrances from depth, scroll tilt, card tilt, floating workspace
+  import(`./depth.js?v=${VERSION}`).then((m) => {
+    if (current.type === 'home') pageCleanup.push(m.initDepth(homeEl, { full: FULL, reduce: REDUCE }));
+  }).catch(() => {});
   if (scene) {
     scene.setUi(heroEl.querySelector('.x-ring-ui'), heroEl.querySelector('.x-hero-copy'));
     scene.setDisc(heroEl.querySelector('.x-disc-body'));

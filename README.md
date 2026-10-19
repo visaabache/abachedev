@@ -119,6 +119,17 @@ The privacy policy describes what the site actually does: the contact form (Form
 
 The terms cover quotes, prices, the 50/50 payment, timelines, ownership after full payment, support and liability. A few points are standard choices you should confirm or adjust: quotes valid for 30 days, the deposit kept if a project is cancelled after work starts, liability limited to the amount paid, and how long requests are kept (3 years). If you register a legal status (auto-entrepreneur, company) with an ICE number, add it to section 1 of the terms. These pages are a solid starting point, not legal advice: have them checked by a professional if your business grows.
 
+## Depth: every homepage section in 3D (`x3d/depth.js`)
+
+Loaded by `x3d/app.js` on the homepage (all three languages) and cleaned up when the visitor leaves it:
+
+- **Entrances from depth**: each section's heading and cards fly in as they enter the screen, staggered, in three styles that alternate from section to section (rise and tilt, zoom from far away, swing in from the side; mirrored in Arabic).
+- **Scroll perspective (desktop only)**: each section tilts slightly as it scrolls past (`--d3p`), like pages turning in space.
+- **Card tilt (mouse only)**: service, method, "why", client, work and pricing cards tilt toward the pointer with a soft glare.
+- **Workspace photo** (`assets/workspace.webp`, 1600 px plus an 800 px version) in the "4 étapes" section: it starts angled and straightens with the scroll, with glass labels (Design, Code, SEO, En ligne) floating at different depths; it also follows the pointer on desktop.
+
+Phones get the entrances and the workspace, not the scroll tilt or card tilt. With "reduce motion" turned on, nothing moves.
+
 ## Client websites (homepage)
 
 The "Sites réalisés, en ligne" / "Live websites I built" / "مواقع منجزة ومنشورة" section, just before the design concepts, lists real client sites built by AbacheDev: cabinetabache-sadik.com (law firm, Rabat), waslagoo.com (travel eSIM, Morocco) and fly-abroad.com (study abroad). Each card is a normal followed link (`target="_blank" rel="noopener"`, no `nofollow`), so it also gives the client site a backlink. Thumbnails are in `assets/clients/` (1200x630 WebP, made from each site's own share image). To add a site, append it to `CLIENTS` in the generator and add its thumbnail.
