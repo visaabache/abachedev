@@ -119,6 +119,10 @@ The privacy policy describes what the site actually does: the contact form (Form
 
 The terms cover quotes, prices, the 50/50 payment, timelines, ownership after full payment, support and liability. A few points are standard choices you should confirm or adjust: quotes valid for 30 days, the deposit kept if a project is cancelled after work starts, liability limited to the amount paid, and how long requests are kept (3 years). If you register a legal status (auto-entrepreneur, company) with an ICE number, add it to section 1 of the terms. These pages are a solid starting point, not legal advice: have them checked by a professional if your business grows.
 
+## Client websites (homepage)
+
+The "Sites réalisés, en ligne" / "Live websites I built" / "مواقع منجزة ومنشورة" section, just before the design concepts, lists real client sites built by AbacheDev: cabinetabache-sadik.com (law firm, Rabat), waslagoo.com (travel eSIM, Morocco) and fly-abroad.com (study abroad). Each card is a normal followed link (`target="_blank" rel="noopener"`, no `nofollow`), so it also gives the client site a backlink. Thumbnails are in `assets/clients/` (1200x630 WebP, made from each site's own share image). To add a site, append it to `CLIENTS` in the generator and add its thumbnail.
+
 ## Social links
 
 Instagram (https://www.instagram.com/abachedev/) and Facebook (https://www.facebook.com/share/1FdpScYK4P/) appear as round icons in the footer (under the AbacheDev text) and at the bottom of the menu, on every page in all three languages. The icons are inline SVG, so no third-party script loads and the CSP is unchanged. The homepage JSON-LD lists both profiles in `sameAs`, which helps Google tie them to the business.

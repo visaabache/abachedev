@@ -542,3 +542,23 @@ html[lang="ar"] body.x3d :is(.x-h1, .s-title, .t-title, h2, .t-body h2, .x-menu-
 .x-menu-foot .x-social { margin-top: 0; }
 .x-menu-foot .x-social a { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) { .x-social a:hover { transform: none; } }
+
+/* Client websites (real projects, followed links) */
+.x-clients-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.x-client a { display: flex; flex-direction: column; height: 100%; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(30, 27, 75, .1); color: inherit; text-decoration: none; transition: transform .25s, box-shadow .25s; }
+.x-client a:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(30, 27, 75, .14); }
+.x-client a:focus-visible { outline: 3px solid #4f46e5; outline-offset: 3px; }
+.x-client-img { display: block; aspect-ratio: 1200 / 630; overflow: hidden; background: #e9e7f5; }
+.x-client-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+.x-client a:hover .x-client-img img { transform: scale(1.04); }
+.x-client-info { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; flex: 1; }
+.x-client-tag { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600; color: #047857; }
+.x-client-tag i { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 4px rgba(16, 185, 129, .18); }
+.x-client-info strong { font-family: "Bodoni Moda", Georgia, serif; font-weight: 700; font-size: 1.45rem; line-height: 1.15; color: var(--text); }
+.x-client-info strong[lang="ar"] { font-family: "Amiri", "Cairo", serif; font-size: 1.5rem; }
+html:not([dir="rtl"]) .x-client-info strong[lang="ar"] { text-align: left; }
+.x-client-desc { color: var(--text); opacity: .85; line-height: 1.55; font-size: .97rem; }
+.x-client-link { margin-top: auto; padding-top: 6px; font-weight: 600; color: var(--ink); font-size: .95rem; }
+html[dir="rtl"] .x-client-link { text-align: right; }
+@media (max-width: 900px) { .x-clients-list { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; } }
+@media (prefers-reduced-motion: reduce) { .x-client a, .x-client-img img { transition: none; } .x-client a:hover { transform: none; } .x-client a:hover .x-client-img img { transform: none; } }
