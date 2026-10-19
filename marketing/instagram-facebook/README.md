@@ -4,31 +4,25 @@
 
 ## Calendrier
 
-Du mardi 13 octobre au lundi 9 novembre 2026. Les publications gardent leurs jours (mardi, jeudi, samedi) ; les Reels prennent les autres jours (lundi, mercredi, vendredi), chacun à côté de la publication sur le même sujet : le carrousel explique, le Reel montre. Dimanche : repos.
+p01 à p07 sont publiés (13–19 octobre). La suite reprend le mardi 20 octobre et se termine le mercredi 4 novembre, un contenu par jour du lundi au samedi. Le fil ne contient que des carrousels pour l’instant, on commence donc par les Reels, puis Reels et carrousels alternent, chaque Reel près du carrousel sur le même sujet. Dimanche : repos.
 
 | Date | Contenu | Format | Objectif |
 | --- | --- | --- | --- |
-| mardi 13 octobre | [p01-lancement](#p01-lancement) | Carrousel (5) | Confiance |
-| jeudi 15 octobre | [p02-instagram-et-site](#p02-instagram-et-site) | Carrousel (5) | Notoriété |
-| samedi 17 octobre | [p03-test-du-telephone](#p03-test-du-telephone) + [s01-story-test-mobile](#s01-story-test-mobile) | Carrousel (5) + story | Conseil |
-| mardi 20 octobre | [p04-contact-en-un-clic](#p04-contact-en-un-clic) | Image (1) | Conseil |
-| **mercredi 21 octobre** | [**Reel 01 · Il appelle votre concurrent**](#reel-01) | Reel (21 s) | Demandes (pub) |
-| jeudi 22 octobre | [p05-vendre-en-ligne](#p05-vendre-en-ligne) | Carrousel (6) | Conseil |
-| **vendredi 23 octobre** | [**Reel 10 · Ce que vous obtenez**](#reel-10) | Reel (24 s) | Demandes (pub) |
-| samedi 24 octobre | [p06-trouve-sur-google](#p06-trouve-sur-google) | Carrousel (5) | Conseil |
+| ~~mardi 13 → lundi 19 octobre~~ | ~~p01 à p07~~ | publiés ✓ | |
+| **mardi 20 octobre** | [**Reel 01 · Il appelle votre concurrent**](#reel-01) | Reel (21 s) | Demandes (pub) |
+| mercredi 21 octobre | [p08-processus-4-etapes](#p08-processus-4-etapes) | Carrousel (6) | Confiance |
+| **jeudi 22 octobre** | [**Reel 10 · Ce que vous obtenez**](#reel-10) | Reel (24 s) | Demandes (pub) |
+| **vendredi 23 octobre** | [**Reel 08 · Votre site en 4 étapes**](#reel-08) | Reel (26 s) | Confiance |
+| samedi 24 octobre | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) + [s02-story-une-question](#s02-story-une-question) | Carrousel (7) + story | Confiance |
 | **lundi 26 octobre** | [**Reel 09 · Êtes-vous sur la carte ?**](#reel-09) | Reel (27 s) | Notoriété |
-| mardi 27 octobre | [p07-site-cafe-restaurant](#p07-site-cafe-restaurant) | Carrousel (5) | Confiance |
-| **mercredi 28 octobre** | [**Reel 06 · Le bouton qui rapporte**](#reel-06) | Reel (22 s) | Conseil |
-| jeudi 29 octobre | [p08-processus-4-etapes](#p08-processus-4-etapes) | Carrousel (6) | Confiance |
-| **vendredi 30 octobre** | [**Reel 08 · Votre site en 4 étapes**](#reel-08) | Reel (26 s) | Confiance |
-| samedi 31 octobre | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) + [s02-story-une-question](#s02-story-une-question) | Carrousel (7) + story | Confiance |
-| **lundi 2 novembre** | [**Reel 04 · 3 erreurs**](#reel-04) | Reel (28 s) | Conseil |
-| mardi 3 novembre | [p10-tarifs-clairs](#p10-tarifs-clairs) | Carrousel (6) | Demandes |
-| **mercredi 4 novembre** | [**Reel 03 · Avant / après**](#reel-03) + [s03-story-starter](#s03-story-starter) | Reel (22 s) + story | Confiance |
-| jeudi 5 novembre | [p11-pas-le-temps](#p11-pas-le-temps) | Image (1) | Demandes |
-| **vendredi 6 novembre** | [**Reel 05 · 3 secondes**](#reel-05) | Reel (26 s) | Conseil |
-| samedi 7 novembre | [p12-consultation-gratuite](#p12-consultation-gratuite) | Image (1) | Demandes |
-| **lundi 9 novembre** | [**Reel 02 · Instagram ne suffit pas**](#reel-02) | Reel (28 s) | Notoriété |
+| **mardi 27 octobre** | [**Reel 06 · Le bouton qui rapporte**](#reel-06) | Reel (22 s) | Conseil |
+| mercredi 28 octobre | [p10-tarifs-clairs](#p10-tarifs-clairs) + [s03-story-starter](#s03-story-starter) | Carrousel (6) + story | Demandes |
+| **jeudi 29 octobre** | [**Reel 04 · 3 erreurs**](#reel-04) + [s01-story-test-mobile](#s01-story-test-mobile) | Reel (28 s) + story | Conseil |
+| vendredi 30 octobre | [p11-pas-le-temps](#p11-pas-le-temps) | Image (1) | Demandes |
+| **samedi 31 octobre** | [**Reel 03 · Avant / après**](#reel-03) | Reel (22 s) | Confiance |
+| **lundi 2 novembre** | [**Reel 05 · 3 secondes**](#reel-05) | Reel (26 s) | Conseil |
+| mardi 3 novembre | [p12-consultation-gratuite](#p12-consultation-gratuite) | Image (1) | Demandes |
+| **mercredi 4 novembre** | [**Reel 02 · Instagram ne suffit pas**](#reel-02) | Reel (28 s) | Notoriété |
 
 **Conseils de publication**
 
@@ -37,16 +31,16 @@ Du mardi 13 octobre au lundi 9 novembre 2026. Les publications gardent leurs jou
 - Épinglez p01 (qui je suis), p10 (tarifs) et Reel 10 (ce que vous obtenez) en haut du profil.
 - Chaque légende demande d’écrire un mot-clé sur WhatsApp (DIRECT, INSTA, APPEL, CARTE…) : notez le mot-clé de chaque message reçu pour savoir quelles publications et quels Reels vous apportent des demandes.
 - **Reels** : publiez-les aussi sur Facebook (Reels), TikTok et YouTube Shorts, avec la même légende. Épinglez en premier commentaire la phrase du mot-clé (« Écrivez … sur WhatsApp au +212 677-047171 👇 »). Répondez à chaque commentaire et message dans l’heure.
-- **Publicité (pour des demandes dès le premier mois)** : boostez Reel 01 dès le 21 octobre et Reel 10 dès le 23 octobre, objectif « Messages → WhatsApp », 50 à 70 DH par jour et par Reel pendant 7 jours. Zone : vos villes (Casablanca, Rabat, Marrakech…), 25–55 ans, centres d’intérêt « petites entreprises » et « entrepreneuriat ». Au bout de 3 jours, gardez le Reel dont le coût par conversation est le plus bas.
+- **Publicité (pour des demandes dès le premier mois)** : boostez Reel 01 dès le 20 octobre et Reel 10 dès le 22 octobre, objectif « Messages → WhatsApp », 50 à 70 DH par jour et par Reel pendant 7 jours. Zone : vos villes (Casablanca, Rabat, Marrakech…), 25–55 ans, centres d’intérêt « petites entreprises » et « entrepreneuriat ». Au bout de 3 jours, gardez le Reel dont le coût par conversation est le plus bas.
 - **Facebook** : mêmes images et mêmes légendes ; remplacez « abachedev.com (lien en bio) » par le lien cliquable https://abachedev.com, gardez 3 à 5 hashtags seulement, et ajoutez un autocollant lien vers abachedev.com sur les stories.
-- **Stories** : s01 → ajoutez un sondage (« Oui, tout est OK » / « Pas vraiment ») dans l’espace libre en bas et répondez à chaque vote en message privé. s02 et s03 → ajoutez un autocollant lien vers wa.me/212677047171. Rangez-les dans les Stories à la une (« Test mobile », « FAQ », « Tarifs »).
+- **Stories** : s01 (si elle n’a pas encore été publiée) → ajoutez un sondage (« Oui, tout est OK » / « Pas vraiment ») dans l’espace libre en bas et répondez à chaque vote en message privé. s02 et s03 → ajoutez un autocollant lien vers wa.me/212677047171. Rangez-les dans les Stories à la une (« Test mobile », « FAQ », « Tarifs »).
 
 ## Reels
 
 9 Reels de 21 à 28 secondes, voix off, sous-titres intégrés, fin sur « Devis gratuit · réponse sous 24 h », le WhatsApp et abachedev.com. Les vidéos ne sont pas dans ce dépôt (trop lourdes) : gardez-les dans votre téléphone ou votre Drive sous les noms `abachedev-reel-XX-….mp4`.
 
 <a id="reel-01"></a>
-**Reel 01 · Il appelle votre concurrent** · mercredi 21 octobre · mot-clé APPEL
+**Reel 01 · Il appelle votre concurrent** · mardi 20 octobre · mot-clé APPEL
 
 ```text
 Un client vous cherche sur Google… et tombe sur votre concurrent. 😬
@@ -56,7 +50,7 @@ Avec un site bien référencé, c’est vous qu’on trouve, et c’est vous qu�
 ```
 
 <a id="reel-10"></a>
-**Reel 10 · Ce que vous obtenez** · vendredi 23 octobre · mot-clé SITE
+**Reel 10 · Ce que vous obtenez** · jeudi 22 octobre · mot-clé SITE
 
 ```text
 Pas encore de site web ? Voici ce que vous obtenez :
@@ -64,6 +58,18 @@ Pas encore de site web ? Voici ce que vous obtenez :
 ✅ WhatsApp en un clic ✅ Français, arabe ou anglais ✅ Un vrai interlocuteur
 👉 Envoyez « SITE » sur WhatsApp au +212 677-047171 : devis gratuit sous 24 h.
 #SiteWeb #Maroc #CreationSiteWeb #PME #EntrepreneurMaroc #WebDesign #AbacheDev
+```
+
+<a id="reel-08"></a>
+**Reel 08 · Votre site en 4 étapes** · vendredi 23 octobre · mot-clé PLAN
+
+```text
+1. Vous écrivez sur WhatsApp → devis gratuit sous 24 h
+2. On valide la maquette ensemble
+3. Votre site est développé
+4. Il est en ligne ✅
+Simple, et sans jargon. Écrivez « PLAN » au +212 677-047171
+#CreationSiteWeb #Maroc #Freelance #SiteWeb #EntrepreneurMaroc #AbacheDev
 ```
 
 <a id="reel-09"></a>
@@ -77,7 +83,7 @@ Fiche Google complète + site web = plus d’appels et plus de visites.
 ```
 
 <a id="reel-06"></a>
-**Reel 06 · Le bouton qui rapporte** · mercredi 28 octobre · mot-clé CLIC
+**Reel 06 · Le bouton qui rapporte** · mardi 27 octobre · mot-clé CLIC
 
 ```text
 Un visiteur aime votre site → il touche le bouton WhatsApp → vous recevez son message. 📲
@@ -86,20 +92,8 @@ Pas de formulaire compliqué. C’est inclus dans chaque site AbacheDev.
 #WhatsAppBusiness #SiteWeb #Maroc #Clients #PME #AbacheDev
 ```
 
-<a id="reel-08"></a>
-**Reel 08 · Votre site en 4 étapes** · vendredi 30 octobre · mot-clé PLAN
-
-```text
-1. Vous écrivez sur WhatsApp → devis gratuit sous 24 h
-2. On valide la maquette ensemble
-3. Votre site est développé
-4. Il est en ligne ✅
-Simple, et sans jargon. Écrivez « PLAN » au +212 677-047171
-#CreationSiteWeb #Maroc #Freelance #SiteWeb #EntrepreneurMaroc #AbacheDev
-```
-
 <a id="reel-04"></a>
-**Reel 04 · 3 erreurs** · lundi 2 novembre · mot-clé ERREURS
+**Reel 04 · 3 erreurs** · jeudi 29 octobre · mot-clé ERREURS
 
 ```text
 ❌ Un site trop lent
@@ -110,7 +104,7 @@ Votre site fait-il une de ces erreurs ? Écrivez « ERREURS » au +212 677-04717
 ```
 
 <a id="reel-03"></a>
-**Reel 03 · Avant / après** · mercredi 4 novembre · mot-clé REFONTE
+**Reel 03 · Avant / après** · samedi 31 octobre · mot-clé REFONTE
 
 ```text
 Avant : illisible, sans photo, pas adapté au mobile.
@@ -120,7 +114,7 @@ Votre site a plus de 5 ans ? Écrivez « REFONTE » au +212 677-047171.
 ```
 
 <a id="reel-05"></a>
-**Reel 05 · 3 secondes** · vendredi 6 novembre · mot-clé VITESSE
+**Reel 05 · 3 secondes** · lundi 2 novembre · mot-clé VITESSE
 
 ```text
 Plus de la moitié des visiteurs sur mobile partent si une page met plus de 3 secondes à charger. (Source : Google)
@@ -130,7 +124,7 @@ Un site rapide = plus de clients, et un meilleur classement sur Google. ⚡
 ```
 
 <a id="reel-02"></a>
-**Reel 02 · Instagram ne suffit pas** · lundi 9 novembre · mot-clé RESEAUX
+**Reel 02 · Instagram ne suffit pas** · mercredi 4 novembre · mot-clé RESEAUX
 
 ```text
 Instagram, c’est bien. Mais votre entreprise mérite plus.
@@ -324,7 +318,7 @@ Vous avez un restaurant ou un café ? Écrivez « CAFÉ » sur WhatsApp au +2
 
 ## p08-processus-4-etapes
 
-**jeudi 29 octobre** · Carrousel · Confiance · images : [`01.jpg`](p08-processus-4-etapes/01.jpg), [`02.jpg`](p08-processus-4-etapes/02.jpg), [`03.jpg`](p08-processus-4-etapes/03.jpg), [`04.jpg`](p08-processus-4-etapes/04.jpg), [`05.jpg`](p08-processus-4-etapes/05.jpg), [`06.jpg`](p08-processus-4-etapes/06.jpg)
+**mercredi 21 octobre** · Carrousel · Confiance · images : [`01.jpg`](p08-processus-4-etapes/01.jpg), [`02.jpg`](p08-processus-4-etapes/02.jpg), [`03.jpg`](p08-processus-4-etapes/03.jpg), [`04.jpg`](p08-processus-4-etapes/04.jpg), [`05.jpg`](p08-processus-4-etapes/05.jpg), [`06.jpg`](p08-processus-4-etapes/06.jpg)
 
 Légende :
 
@@ -346,7 +340,7 @@ Prêt pour l’étape 01 ? Écrivez « ÉTAPE » sur WhatsApp au +212 677-047
 
 ## p09-questions-avant-de-commander
 
-**samedi 31 octobre** · Carrousel · Confiance · images : [`01.jpg`](p09-questions-avant-de-commander/01.jpg), [`02.jpg`](p09-questions-avant-de-commander/02.jpg), [`03.jpg`](p09-questions-avant-de-commander/03.jpg), [`04.jpg`](p09-questions-avant-de-commander/04.jpg), [`05.jpg`](p09-questions-avant-de-commander/05.jpg), [`06.jpg`](p09-questions-avant-de-commander/06.jpg), [`07.jpg`](p09-questions-avant-de-commander/07.jpg)
+**samedi 24 octobre** · Carrousel · Confiance · images : [`01.jpg`](p09-questions-avant-de-commander/01.jpg), [`02.jpg`](p09-questions-avant-de-commander/02.jpg), [`03.jpg`](p09-questions-avant-de-commander/03.jpg), [`04.jpg`](p09-questions-avant-de-commander/04.jpg), [`05.jpg`](p09-questions-avant-de-commander/05.jpg), [`06.jpg`](p09-questions-avant-de-commander/06.jpg), [`07.jpg`](p09-questions-avant-de-commander/07.jpg)
 
 Légende :
 
@@ -367,7 +361,7 @@ Une autre question ? Écrivez « QUESTION » sur WhatsApp au +212 677-047171,
 
 ## p10-tarifs-clairs
 
-**mardi 3 novembre** · Carrousel · Demandes · images : [`01.jpg`](p10-tarifs-clairs/01.jpg), [`02.jpg`](p10-tarifs-clairs/02.jpg), [`03.jpg`](p10-tarifs-clairs/03.jpg), [`04.jpg`](p10-tarifs-clairs/04.jpg), [`05.jpg`](p10-tarifs-clairs/05.jpg), [`06.jpg`](p10-tarifs-clairs/06.jpg)
+**mercredi 28 octobre** · Carrousel · Demandes · images : [`01.jpg`](p10-tarifs-clairs/01.jpg), [`02.jpg`](p10-tarifs-clairs/02.jpg), [`03.jpg`](p10-tarifs-clairs/03.jpg), [`04.jpg`](p10-tarifs-clairs/04.jpg), [`05.jpg`](p10-tarifs-clairs/05.jpg), [`06.jpg`](p10-tarifs-clairs/06.jpg)
 
 Légende :
 
@@ -389,7 +383,7 @@ Vous hésitez entre deux formules ? Écrivez « PRIX » sur WhatsApp au +212 
 
 ## p11-pas-le-temps
 
-**jeudi 5 novembre** · Image · Demandes · images : [`01.jpg`](p11-pas-le-temps/01.jpg)
+**vendredi 30 octobre** · Image · Demandes · images : [`01.jpg`](p11-pas-le-temps/01.jpg)
 
 Légende :
 
@@ -413,7 +407,7 @@ Votre site en ligne en 1 à 3 semaines selon la formule, environ 5 jours pour 
 
 ## p12-consultation-gratuite
 
-**samedi 7 novembre** · Image · Demandes · images : [`01.jpg`](p12-consultation-gratuite/01.jpg)
+**mardi 3 novembre** · Image · Demandes · images : [`01.jpg`](p12-consultation-gratuite/01.jpg)
 
 Légende :
 
@@ -436,19 +430,19 @@ Toutes les formules : abachedev.com (lien en bio)
 
 ## s01-story-test-mobile
 
-**samedi 17 octobre** · Story · Notoriété · images : [`01.jpg`](s01-story-test-mobile/01.jpg)
+**jeudi 29 octobre** (si elle n’a pas encore été publiée) · Story · Notoriété · images : [`01.jpg`](s01-story-test-mobile/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
 ## s02-story-une-question
 
-**samedi 31 octobre** · Story · Demandes · images : [`01.jpg`](s02-story-une-question/01.jpg)
+**samedi 24 octobre** · Story · Demandes · images : [`01.jpg`](s02-story-une-question/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
 ## s03-story-starter
 
-**mercredi 4 novembre** · Story · Demandes · images : [`01.jpg`](s03-story-starter/01.jpg)
+**mercredi 28 octobre** · Story · Demandes · images : [`01.jpg`](s03-story-starter/01.jpg)
 
 Story : pas de légende visible, le message est sur l’image (voir les conseils pour les autocollants).
 
