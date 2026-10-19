@@ -1,37 +1,145 @@
 # Publications Instagram & Facebook — 4 semaines
 
-12 publications pour le fil (9 carrousels, 3 images seules) et 3 stories, prêtes à publier. Format 1080×1350 (4:5) pour le fil, valable sur Instagram et Facebook ; 1080×1920 pour les stories. Les légendes n’utilisent que des faits du site (tarifs, délais, méthode) : pas de chiffres inventés ni de faux avis, et les designs montrés sont présentés comme des concepts.
+12 publications pour le fil (9 carrousels, 3 images seules), 3 stories et 9 Reels, prêts à publier. Format 1080×1350 (4:5) pour le fil, valable sur Instagram et Facebook ; 1080×1920 pour les stories et les Reels. Les légendes n’utilisent que des faits du site (tarifs, délais, méthode) : pas de chiffres inventés ni de faux avis, et les designs montrés sont présentés comme des concepts. Les Reels ne citent aucun prix.
 
 ## Calendrier
 
-Du mardi 13 octobre au samedi 7 novembre 2026 : 3 publications par semaine, le mardi, le jeudi et le samedi.
+Du mardi 13 octobre au lundi 9 novembre 2026. Les publications gardent leurs jours (mardi, jeudi, samedi) ; les Reels prennent les autres jours (lundi, mercredi, vendredi), chacun à côté de la publication sur le même sujet : le carrousel explique, le Reel montre. Dimanche : repos.
 
-| Date | Publication | Format | Objectif |
+| Date | Contenu | Format | Objectif |
 | --- | --- | --- | --- |
-| mardi 13 octobre (aujourd’hui) | [p01-lancement](#p01-lancement) | Carrousel (5) | Confiance |
+| mardi 13 octobre | [p01-lancement](#p01-lancement) | Carrousel (5) | Confiance |
 | jeudi 15 octobre | [p02-instagram-et-site](#p02-instagram-et-site) | Carrousel (5) | Notoriété |
-| samedi 17 octobre | [p03-test-du-telephone](#p03-test-du-telephone) | Carrousel (5) | Conseil |
-| samedi 17 octobre | [s01-story-test-mobile](#s01-story-test-mobile) | Story (1) | Notoriété |
+| samedi 17 octobre | [p03-test-du-telephone](#p03-test-du-telephone) + [s01-story-test-mobile](#s01-story-test-mobile) | Carrousel (5) + story | Conseil |
 | mardi 20 octobre | [p04-contact-en-un-clic](#p04-contact-en-un-clic) | Image (1) | Conseil |
+| **mercredi 21 octobre** | [**Reel 01 · Il appelle votre concurrent**](#reel-01) | Reel (21 s) | Demandes (pub) |
 | jeudi 22 octobre | [p05-vendre-en-ligne](#p05-vendre-en-ligne) | Carrousel (6) | Conseil |
+| **vendredi 23 octobre** | [**Reel 10 · Ce que vous obtenez**](#reel-10) | Reel (24 s) | Demandes (pub) |
 | samedi 24 octobre | [p06-trouve-sur-google](#p06-trouve-sur-google) | Carrousel (5) | Conseil |
+| **lundi 26 octobre** | [**Reel 09 · Êtes-vous sur la carte ?**](#reel-09) | Reel (27 s) | Notoriété |
 | mardi 27 octobre | [p07-site-cafe-restaurant](#p07-site-cafe-restaurant) | Carrousel (5) | Confiance |
+| **mercredi 28 octobre** | [**Reel 06 · Le bouton qui rapporte**](#reel-06) | Reel (22 s) | Conseil |
 | jeudi 29 octobre | [p08-processus-4-etapes](#p08-processus-4-etapes) | Carrousel (6) | Confiance |
-| samedi 31 octobre | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) | Carrousel (7) | Confiance |
-| samedi 31 octobre | [s02-story-une-question](#s02-story-une-question) | Story (1) | Demandes |
+| **vendredi 30 octobre** | [**Reel 08 · Votre site en 4 étapes**](#reel-08) | Reel (26 s) | Confiance |
+| samedi 31 octobre | [p09-questions-avant-de-commander](#p09-questions-avant-de-commander) + [s02-story-une-question](#s02-story-une-question) | Carrousel (7) + story | Confiance |
+| **lundi 2 novembre** | [**Reel 04 · 3 erreurs**](#reel-04) | Reel (28 s) | Conseil |
 | mardi 3 novembre | [p10-tarifs-clairs](#p10-tarifs-clairs) | Carrousel (6) | Demandes |
-| mercredi 4 novembre | [s03-story-starter](#s03-story-starter) | Story (1) | Demandes |
+| **mercredi 4 novembre** | [**Reel 03 · Avant / après**](#reel-03) + [s03-story-starter](#s03-story-starter) | Reel (22 s) + story | Confiance |
 | jeudi 5 novembre | [p11-pas-le-temps](#p11-pas-le-temps) | Image (1) | Demandes |
+| **vendredi 6 novembre** | [**Reel 05 · 3 secondes**](#reel-05) | Reel (26 s) | Conseil |
 | samedi 7 novembre | [p12-consultation-gratuite](#p12-consultation-gratuite) | Image (1) | Demandes |
+| **lundi 9 novembre** | [**Reel 02 · Instagram ne suffit pas**](#reel-02) | Reel (28 s) | Notoriété |
 
 **Conseils de publication**
 
-- 3 publications par semaine (mardi, jeudi, samedi), dans l’ordre p01 → p12, en commençant aujourd’hui avec p01. Partagez aussi chaque publication en story le jour même.
+- Publiez dans l’ordre du calendrier. Partagez aussi chaque publication et chaque Reel en story le jour même.
 - Horaires pour commencer : 11 h–13 h ou 20 h–22 h (le samedi, plutôt en fin de matinée). Après 3 ou 4 semaines, choisissez vos meilleurs créneaux dans les statistiques Instagram.
-- Épinglez p01 (qui je suis), p10 (tarifs) et p09 (questions fréquentes) en haut du profil.
-- Chaque légende demande d’écrire un mot-clé sur WhatsApp (DIRECT, INSTA, TEST…) : notez le mot-clé de chaque message reçu pour savoir quelles publications vous apportent des demandes.
+- Épinglez p01 (qui je suis), p10 (tarifs) et Reel 10 (ce que vous obtenez) en haut du profil.
+- Chaque légende demande d’écrire un mot-clé sur WhatsApp (DIRECT, INSTA, APPEL, CARTE…) : notez le mot-clé de chaque message reçu pour savoir quelles publications et quels Reels vous apportent des demandes.
+- **Reels** : publiez-les aussi sur Facebook (Reels), TikTok et YouTube Shorts, avec la même légende. Épinglez en premier commentaire la phrase du mot-clé (« Écrivez … sur WhatsApp au +212 677-047171 👇 »). Répondez à chaque commentaire et message dans l’heure.
+- **Publicité (pour des demandes dès le premier mois)** : boostez Reel 01 dès le 21 octobre et Reel 10 dès le 23 octobre, objectif « Messages → WhatsApp », 50 à 70 DH par jour et par Reel pendant 7 jours. Zone : vos villes (Casablanca, Rabat, Marrakech…), 25–55 ans, centres d’intérêt « petites entreprises » et « entrepreneuriat ». Au bout de 3 jours, gardez le Reel dont le coût par conversation est le plus bas.
 - **Facebook** : mêmes images et mêmes légendes ; remplacez « abachedev.com (lien en bio) » par le lien cliquable https://abachedev.com, gardez 3 à 5 hashtags seulement, et ajoutez un autocollant lien vers abachedev.com sur les stories.
 - **Stories** : s01 → ajoutez un sondage (« Oui, tout est OK » / « Pas vraiment ») dans l’espace libre en bas et répondez à chaque vote en message privé. s02 et s03 → ajoutez un autocollant lien vers wa.me/212677047171. Rangez-les dans les Stories à la une (« Test mobile », « FAQ », « Tarifs »).
+
+## Reels
+
+9 Reels de 21 à 28 secondes, voix off, sous-titres intégrés, fin sur « Devis gratuit · réponse sous 24 h », le WhatsApp et abachedev.com. Les vidéos ne sont pas dans ce dépôt (trop lourdes) : gardez-les dans votre téléphone ou votre Drive sous les noms `abachedev-reel-XX-….mp4`.
+
+<a id="reel-01"></a>
+**Reel 01 · Il appelle votre concurrent** · mercredi 21 octobre · mot-clé APPEL
+
+```text
+Un client vous cherche sur Google… et tombe sur votre concurrent. 😬
+Avec un site bien référencé, c’est vous qu’on trouve, et c’est vous qu’on appelle.
+👉 Devis gratuit sous 24 h : écrivez « APPEL » sur WhatsApp au +212 677-047171
+#SiteWeb #Maroc #Casablanca #Rabat #Marrakech #EntrepreneurMaroc #SEO #AbacheDev
+```
+
+<a id="reel-10"></a>
+**Reel 10 · Ce que vous obtenez** · vendredi 23 octobre · mot-clé SITE
+
+```text
+Pas encore de site web ? Voici ce que vous obtenez :
+✅ Design sur mesure ✅ Rapide et parfait sur mobile ✅ Référencement Google
+✅ WhatsApp en un clic ✅ Français, arabe ou anglais ✅ Un vrai interlocuteur
+👉 Envoyez « SITE » sur WhatsApp au +212 677-047171 : devis gratuit sous 24 h.
+#SiteWeb #Maroc #CreationSiteWeb #PME #EntrepreneurMaroc #WebDesign #AbacheDev
+```
+
+<a id="reel-09"></a>
+**Reel 09 · Êtes-vous sur la carte ?** · lundi 26 octobre · mot-clé CARTE
+
+```text
+Quand on cherche votre métier « près de moi », êtes-vous sur la carte ? 📍
+Fiche Google complète + site web = plus d’appels et plus de visites.
+👉 Écrivez « CARTE » sur WhatsApp au +212 677-047171, devis gratuit sous 24 h.
+#GoogleMaps #ReferencementLocal #SEO #Maroc #Casablanca #Rabat #AbacheDev
+```
+
+<a id="reel-06"></a>
+**Reel 06 · Le bouton qui rapporte** · mercredi 28 octobre · mot-clé CLIC
+
+```text
+Un visiteur aime votre site → il touche le bouton WhatsApp → vous recevez son message. 📲
+Pas de formulaire compliqué. C’est inclus dans chaque site AbacheDev.
+👉 Essayez : écrivez « CLIC » au +212 677-047171
+#WhatsAppBusiness #SiteWeb #Maroc #Clients #PME #AbacheDev
+```
+
+<a id="reel-08"></a>
+**Reel 08 · Votre site en 4 étapes** · vendredi 30 octobre · mot-clé PLAN
+
+```text
+1. Vous écrivez sur WhatsApp → devis gratuit sous 24 h
+2. On valide la maquette ensemble
+3. Votre site est développé
+4. Il est en ligne ✅
+Simple, et sans jargon. Écrivez « PLAN » au +212 677-047171
+#CreationSiteWeb #Maroc #Freelance #SiteWeb #EntrepreneurMaroc #AbacheDev
+```
+
+<a id="reel-04"></a>
+**Reel 04 · 3 erreurs** · lundi 2 novembre · mot-clé ERREURS
+
+```text
+❌ Un site trop lent
+❌ Un site illisible sur téléphone
+❌ Aucun moyen de vous contacter en un clic
+Votre site fait-il une de ces erreurs ? Écrivez « ERREURS » au +212 677-047171 avec le lien de votre site : je vous réponds sous 24 h, gratuitement.
+#SiteWeb #UX #Mobile #Maroc #WebDesign #EntrepreneurMaroc #AbacheDev
+```
+
+<a id="reel-03"></a>
+**Reel 03 · Avant / après** · mercredi 4 novembre · mot-clé REFONTE
+
+```text
+Avant : illisible, sans photo, pas adapté au mobile.
+Après : moderne, rapide, avec WhatsApp en un clic. ✨
+Votre site a plus de 5 ans ? Écrivez « REFONTE » au +212 677-047171.
+#RefonteSiteWeb #AvantApres #WebDesign #Maroc #SiteWeb #AbacheDev
+```
+
+<a id="reel-05"></a>
+**Reel 05 · 3 secondes** · vendredi 6 novembre · mot-clé VITESSE
+
+```text
+Plus de la moitié des visiteurs sur mobile partent si une page met plus de 3 secondes à charger. (Source : Google)
+Un site rapide = plus de clients, et un meilleur classement sur Google. ⚡
+👉 Écrivez « VITESSE » au +212 677-047171 avec le lien de votre site.
+#Vitesse #SEO #SiteWeb #Maroc #Google #Performance #AbacheDev
+```
+
+<a id="reel-02"></a>
+**Reel 02 · Instagram ne suffit pas** · lundi 9 novembre · mot-clé RESEAUX
+
+```text
+Instagram, c’est bien. Mais votre entreprise mérite plus.
+1️⃣ Google ne montre pas votre page Instagram à vos futurs clients
+2️⃣ Un compte peut être bloqué du jour au lendemain
+3️⃣ Un vrai site inspire confiance
+👉 Écrivez « RESEAUX » sur WhatsApp au +212 677-047171
+#InstagramBusiness #SiteWeb #Maroc #PME #Entrepreneur #CreationSiteWeb #AbacheDev
+```
 
 ## p01-lancement
 
