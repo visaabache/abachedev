@@ -130,6 +130,16 @@ Loaded by `x3d/app.js` on the homepage (all three languages) and cleaned up when
 
 Phones get the entrances and the workspace, not the scroll tilt or card tilt. With "reduce motion" turned on, nothing moves.
 
+## Background on every page (`x3d/bg.js`)
+
+One fixed layer behind every page (homepage, services, blog, legal pages; all three languages), created once by `x3d/app.js` and kept across page changes:
+
+- **Aurora**: three soft colour fields in the logo colours (indigo, cyan, magenta) drifting slowly. They stay faint so the indigo text keeps its contrast.
+- **Horizon grid**: a grid floor in perspective at the bottom of the screen that rolls toward the visitor as the page scrolls, with a glowing horizon line.
+- **Constellation** (canvas 2D): points floating at different depths, linked when they come close. They glide with the scroll (near ones faster) and stretch into streaks on a fast scroll. On desktop they reach for the mouse, which also carries a soft light.
+
+Sections are transparent so the layer shows through; the deep blocks (contact, footer, featured price) stay solid. Phones get fewer points at about 30 frames a second. With "reduce motion" turned on, one still frame is drawn and nothing moves. The animation pauses while the tab is hidden.
+
 ## Client websites (homepage)
 
 The "Sites réalisés, en ligne" / "Live websites I built" / "مواقع منجزة ومنشورة" section, just before the design concepts, lists real client sites built by AbacheDev: cabinetabache-sadik.com (law firm, Rabat), waslagoo.com (travel eSIM, Morocco) and fly-abroad.com (study abroad). Each card is a normal followed link (`target="_blank" rel="noopener"`, no `nofollow`), so it also gives the client site a backlink. Thumbnails are in `assets/clients/` (1200x630 WebP, made from each site's own share image). To add a site, append it to `CLIENTS` in the generator and add its thumbnail.

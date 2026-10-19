@@ -613,6 +613,8 @@ async function loadScene() {
 // ---------------------------------------------------------------------------
 initLangMenu();
 initMenu();
+// site-wide background (x3d/bg.js): aurora, rolling horizon grid, constellation; kept across page changes
+import(`./bg.js?v=${VERSION}`).then((m) => m.initBackground({ full: FULL, reduce: REDUCE })).catch(() => {});
 if (heroEl) ring = initRing(heroEl);
 // the light homepage has no scroll effects, so it skips GSAP entirely
 gsapReady = (FULL && current.type !== 'text') || current.type === 'service' ? loadGsap() : Promise.resolve(false);
