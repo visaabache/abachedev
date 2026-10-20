@@ -140,6 +140,15 @@ One fixed layer behind every page (homepage, services, blog, legal pages; all th
 
 Sections are transparent so the layer shows through; the deep blocks (contact, footer, featured price) stay solid. Phones get fewer points at about 30 frames a second. With "reduce motion" turned on, one still frame is drawn and nothing moves. The animation pauses while the tab is hidden.
 
+## Booking a call (Google Calendar)
+
+Visitors book a free call on the AbacheDev Google Calendar appointment page (`BOOK_URL` in the generator, currently https://calendar.app.google/FvTdcwMwyfeJ1rA77). It opens in a new tab:
+
+- a **"Réserver un appel gratuit"** card at the top of the contact section (FR, EN, AR);
+- a link in the menu, the footer, both call-to-action spots of the 6 service pages, and the call-to-action box of the About, Privacy, Terms and blog pages.
+
+The booking page itself (title, hours, duration, Google Meet) is set in Google Calendar → Appointment schedules. To use another booking tool later (for example Cal.com), only `BOOK_URL` changes. It's a plain link, so the Content Security Policy needs no change.
+
 ## Client websites (homepage)
 
 The "Sites réalisés, en ligne" / "Live websites I built" / "مواقع منجزة ومنشورة" section, just before the design concepts, lists real client sites built by AbacheDev: cabinetabache-sadik.com (law firm, Rabat), waslagoo.com (travel eSIM, Morocco) and fly-abroad.com (study abroad). Each card is a normal followed link (`target="_blank" rel="noopener"`, no `nofollow`), so it also gives the client site a backlink. Thumbnails are in `assets/clients/` (1200x630 WebP, made from each site's own share image). To add a site, append it to `CLIENTS` in the generator and add its thumbnail.
