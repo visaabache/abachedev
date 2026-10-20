@@ -135,6 +135,24 @@ Instagram, c’est bien. Mais votre entreprise mérite plus.
 #InstagramBusiness #SiteWeb #Maroc #PME #Entrepreneur #CreationSiteWeb #AbacheDev
 ```
 
+## Couvertures des Stories à la une
+
+9 couvertures dans le style « Depth » (disque 3D indigo, icône blanche en relief) dans [`highlights/`](highlights/) : une version carrée (`01-services.png`, 1080×1080) à choisir comme couverture, et une version story (`01-services-story.png`, 1080×1920) si vous préférez la publier d’abord en story.
+
+| Fichier | Titre de la story à la une | Contenu à y ranger |
+| --- | --- | --- |
+| 01-services | Services | les 6 services, Reels 01 et 10 |
+| 02-projets | Projets | les sites clients, Reel 03 (avant / après) |
+| 03-tarifs | Tarifs | p10, story s03 (Starter) |
+| 04-methode | Méthode | p08, Reel 08 (4 étapes) |
+| 05-faq | FAQ | p09, story s02 |
+| 06-test-mobile | Test mobile | p03, story s01, Reel 04 |
+| 07-avis | Avis | captures des avis Google et messages de clients satisfaits |
+| 08-rdv | RDV | lien de réservation d’un appel (abachedev.com) |
+| 09-contact | Contact | WhatsApp, e-mail, Reel 06 (bouton WhatsApp) |
+
+Pour mettre une couverture : ouvrez la story à la une sur votre profil → ⋯ → Modifier → Modifier la couverture → icône galerie → choisissez l’image carrée, centrez-la et validez.
+
 ## p01-lancement
 
 **mardi 13 octobre** · Carrousel · Confiance · images : [`01.jpg`](p01-lancement/01.jpg), [`02.jpg`](p01-lancement/02.jpg), [`03.jpg`](p01-lancement/03.jpg), [`04.jpg`](p01-lancement/04.jpg), [`05.jpg`](p01-lancement/05.jpg)
