@@ -450,4 +450,4 @@ Story : pas de légende visible, le message est sur l’image (voir les conseils
 
 Idées gardées en réserve : refonte de site, maintenance, « Je ne sais pas quoi mettre sur mon site », Starter en 5 jours, ce qui est inclus dans chaque site, et les autres concepts de design (BrightFix, Flowly, Studio Mira, Wander Notes).
 
-Les images ont été générées à partir des couleurs, de la typographie et des objets 3D du site. Les numéros de téléphone et les prix sont écrits dans les images : si un prix change, il faut refaire les visuels concernés (p05, p10, s03).
+Les images ont été générées à partir des couleurs, de la typographie et des objets 3D du site. p08 à p12 et les trois stories ont été refaites dans la série « Depth », avec le nouveau design du site : halo indigo, cyan et magenta, sol quadrillé en perspective, objets 3D posés sur la grille, étiquettes en verre à différentes profondeurs, chiffres et prix en relief. Les fins de carrousel renvoient aussi vers la réservation d’un appel sur abachedev.com. Les numéros de téléphone et les prix sont écrits dans les images : si un prix change, il faut refaire les visuels concernés (p05, p10, s03).
