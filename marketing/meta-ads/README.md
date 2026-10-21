@@ -5,6 +5,7 @@ Everything runs from **Meta Ads Manager** (not the "Boost" button) so you contro
 
 - **8 static ads**, each in two sizes: `feed.jpg` (1080×1350, 4:5) and `story.jpg` (1080×1920, 9:16, text kept inside the Reels/Stories safe zone). 6 in French, 2 in Arabic. Previews: `apercu-feed.png`, `apercu-story.png`.
 - **4 short ad Reels made for paid ads** (9–10.5 s, 9:16, hook in the first second, WhatsApp end card): `abachedev-pub-reel-r1-concurrent.mp4`, `…-r2-prix.mp4`, `…-r3-5-jours.mp4`, `…-r4-reflexion.mp4`. They are animated versions of A1, A2, A3 and A6 (videos are not stored in this repo: keep them on your phone/Drive).
+- **5 Arabic ad Reels** (Darija hooks, 9.5–11 s): `abachedev-pub-reel-ar1-concurrent.mp4` (المنافس), `…-ar2-prix.mp4` (الأثمنة), `…-ar3-5-jours.mp4` (5 أيام), `…-ar4-reflexion.mp4` (باقي متردد؟) and a new Moroccan concept, `…-ar5-hanout.mp4` (الحانوت: the shop’s metal shutter rolls up on its website, « حانوتك ديما محلول »).
 - **Your Reels as video ads** (files on your phone/Drive): Reel 01 concurrent, Reel 10 offre, Reel 08 4 étapes, Reel 03 avant/après, Pin 1 se code tout seul, Pin 2 mettez pause, Pin 3 pendant que vous dormez.
 - Budget: **about 95 DH/day in week 1, 120–130 DH/day after** → roughly **3 500 DH for the first 4 weeks**. One Business site (6 990 DH) pays for the whole month.
 
@@ -36,7 +37,7 @@ Everything runs from **Meta Ads Manager** (not the "Boost" button) so you contro
 | **C1** | `C1 · Messages WhatsApp · FR` | **Engagement → Messaging apps → WhatsApp**, goal *Maximise conversations* | 70 DH/day (2 ad sets × 35) | Thu 5 Nov | R1, R2, Reel 10, A1, A2, A4 (+ R3/A3 from week 2) |
 | **C2** | `C2 · Vues vidéo · audience chaude` | **Engagement → Video views**, goal *ThruPlay* | 25 DH/day | Thu 5 Nov | Pin 1, Pin 2, Pin 3, Reel 08, Reel 03 |
 | **C3** | `C3 · Retargeting · Messages` | **Engagement → WhatsApp**, *Maximise conversations* | 30–40 DH/day | Thu 12 Nov | R4, A6, A5, R2 |
-| **C4** | `C4 · Messages WhatsApp · AR` (test) | same as C1 | 25 DH/day | Thu 26 Nov | A7, A8 |
+| **C4** | `C4 · Messages WhatsApp · AR` (test) | same as C1 | 25 DH/day | Thu 26 Nov | AR5 (shop), AR1, AR2, A7, A8 (+ AR3, AR4 in retargeting) |
 
 Why this shape: **C1** gets conversations from people who don't know you yet. **C2** costs very little per view and fills the retargeting pool with people who watched your Reels. **C3** goes back to those people with reassurance and offer ads, which is where most quotes usually come from. **C4** tests the Arabic-speaking market without touching what already works.
 
@@ -70,7 +71,8 @@ Common settings (all campaigns):
 - Frequency up to 3–4 per week is fine here: small, warm audience.
 
 ### C4 · Arabic test (from 26 Nov)
-- Same as C1 ad set B, plus **language: Arabic**. Ads **A7, A8**. Compare its cost per conversation with C1 after 7 days.
+- Same as C1 ad set B, plus **language: Arabic**. Ads **AR5 (الحانوت), AR1 (المنافس), AR2 (الأثمنة), A7, A8**. Compare its cost per conversation with C1 after 7 days.
+- If Arabic works, add **AR4 (باقي متردد؟)** and **AR2** to C3 retargeting with an Arabic-language ad set, and **AR3 (5 أيام)** to C4.
 
 ---
 
@@ -130,6 +132,11 @@ Each ad uses the **WhatsApp prefilled message** field to tag where the lead came
 **A7 · المنافس (AR)** · button **Send WhatsApp message**
 - النص: *يبحث زبون عن نشاطك على Google… فيجد منافسك. 😬 مع موقع سريع وظاهر على Google، أنت من يجدونه وأنت من يتصلون به. عرض سعر مجاني وردّ خلال 24 ساعة.*
 - العنوان: **اظهر على Google** · الوصف: *عرض سعر مجاني*
+
+**AR1–AR5 (Arabic ad Reels)** · button **Send WhatsApp message**
+- AR5 · الحانوت: *الحانوت كيتسد فالليل… ولكن الزبناء باقين كيسولو. مع موقع إلكتروني، حانوتك ديما محلول: طلبات، رسائل واتساب وتقييمات 24/24. عرض سعر مجاني فواتساب.* · العنوان: **حانوتك محلول 24/24**
+- AR1 = copy of A7 · AR2 = copy of A8 · AR3: *موقعك أونلاين فـ5 أيام مع الباقة الأساسية، من 2 990 درهم.* · AR4: *باقي متردد؟ ثمن ثابت، الخلاص على جوج دفعات، ودعم مجاني. نهضرو فواتساب.*
+- Prefilled message: *مرحبا! شفت الفيديو ديالكم وبغيت عرض سعر لموقعي.*
 
 **A8 · الأسعار (AR)** · button **Send WhatsApp message**
 - النص: *كم يكلف موقع إلكتروني؟ عندنا الأسعار معلنة: الباقة الأساسية 2 990 درهم، باقة الأعمال 6 990 درهم، المتجر الإلكتروني 12 990 درهم. سعر ثابت، الدفع على دفعتين، بدون تكاليف خفية.*
