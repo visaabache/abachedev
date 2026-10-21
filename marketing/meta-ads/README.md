@@ -4,6 +4,7 @@ Goal: turn the content you posted (Oct 13 → Nov 4) into **WhatsApp conversatio
 Everything runs from **Meta Ads Manager** (not the "Boost" button) so you control audiences, budgets and placements.
 
 - **8 static ads**, each in two sizes: `feed.jpg` (1080×1350, 4:5) and `story.jpg` (1080×1920, 9:16, text kept inside the Reels/Stories safe zone). 6 in French, 2 in Arabic. Previews: `apercu-feed.png`, `apercu-story.png`.
+- **4 short ad Reels made for paid ads** (9–10.5 s, 9:16, hook in the first second, WhatsApp end card): `abachedev-pub-reel-r1-concurrent.mp4`, `…-r2-prix.mp4`, `…-r3-5-jours.mp4`, `…-r4-reflexion.mp4`. They are animated versions of A1, A2, A3 and A6 (videos are not stored in this repo: keep them on your phone/Drive).
 - **Your Reels as video ads** (files on your phone/Drive): Reel 01 concurrent, Reel 10 offre, Reel 08 4 étapes, Reel 03 avant/après, Pin 1 se code tout seul, Pin 2 mettez pause, Pin 3 pendant que vous dormez.
 - Budget: **about 95 DH/day in week 1, 120–130 DH/day after** → roughly **3 500 DH for the first 4 weeks**. One Business site (6 990 DH) pays for the whole month.
 
@@ -32,9 +33,9 @@ Everything runs from **Meta Ads Manager** (not the "Boost" button) so you contro
 
 | # | Campaign | Objective → goal | Budget | Starts | Ads |
 | --- | --- | --- | --- | --- | --- |
-| **C1** | `C1 · Messages WhatsApp · FR` | **Engagement → Messaging apps → WhatsApp**, goal *Maximise conversations* | 70 DH/day (2 ad sets × 35) | Thu 5 Nov | Reel 01, Reel 10, A1, A2, A4 (+ A3 from week 2) |
+| **C1** | `C1 · Messages WhatsApp · FR` | **Engagement → Messaging apps → WhatsApp**, goal *Maximise conversations* | 70 DH/day (2 ad sets × 35) | Thu 5 Nov | R1, R2, Reel 10, A1, A2, A4 (+ R3/A3 from week 2) |
 | **C2** | `C2 · Vues vidéo · audience chaude` | **Engagement → Video views**, goal *ThruPlay* | 25 DH/day | Thu 5 Nov | Pin 1, Pin 2, Pin 3, Reel 08, Reel 03 |
-| **C3** | `C3 · Retargeting · Messages` | **Engagement → WhatsApp**, *Maximise conversations* | 30–40 DH/day | Thu 12 Nov | A6, A5, A2, Reel 10 |
+| **C3** | `C3 · Retargeting · Messages` | **Engagement → WhatsApp**, *Maximise conversations* | 30–40 DH/day | Thu 12 Nov | R4, A6, A5, R2 |
 | **C4** | `C4 · Messages WhatsApp · AR` (test) | same as C1 | 25 DH/day | Thu 26 Nov | A7, A8 |
 
 Why this shape: **C1** gets conversations from people who don't know you yet. **C2** costs very little per view and fills the retargeting pool with people who watched your Reels. **C3** goes back to those people with reassurance and offer ads, which is where most quotes usually come from. **C4** tests the Arabic-speaking market without touching what already works.
@@ -56,7 +57,7 @@ Common settings (all campaigns):
 **Ad set B — `AS-B · Maroc · Advantage+ audience` (35 DH/day)**
 - Location: Morocco. Advantage+ audience with suggestions: age 25–55, interest *Small business owners*. Meta finds the buyers itself.
 
-**Both ad sets**: exclude `Ont écrit WhatsApp 60 j`. Ads: **Reel 01, Reel 10, A1, A2, A4** (5 ads; Meta pushes the winners).
+**Both ad sets**: exclude `Ont écrit WhatsApp 60 j`. Ads: **R1, R2, Reel 10, A1, A2, A4** (6 ads; Meta pushes the winners). Keep Reel 01 (21 s) as a backup if R1 tires.
 
 ### C2 · Vues vidéo · audience chaude
 - One ad set, Morocco, 22–55, Advantage+ placements limited to **Reels + Stories + Feeds**.
@@ -65,7 +66,7 @@ Common settings (all campaigns):
 
 ### C3 · Retargeting (from 12 Nov)
 - Audience: `Vidéo 50 % 30 j` + `IG engagés 90 j` + `FB engagés 90 j`. Exclude `Ont écrit WhatsApp 60 j`.
-- Ads: **A6 (toujours en réflexion), A5 (appel gratuit), A2 (prix), Reel 10**.
+- Ads: **R4 (toujours en réflexion, video), A6 (same, image), A5 (appel gratuit), R2 (prix, video)**.
 - Frequency up to 3–4 per week is fine here: small, warm audience.
 
 ### C4 · Arabic test (from 26 Nov)
@@ -87,7 +88,11 @@ Each ad uses the **WhatsApp prefilled message** field to tag where the lead came
 | A6 · Toujours en réflexion | `creatives/a06-toujours-en-reflexion/` | C3 | Bonjour ! J’ai quelques questions avant de me lancer. |
 | A7 · Concurrent (AR) | `creatives/a07-concurrent-ar/` | C4 | مرحبًا! رأيت إعلان « المنافس » وأريد عرض سعر لموقعي. |
 | A8 · Prix (AR) | `creatives/a08-prix-affiches-ar/` | C4 | مرحبًا! رأيت إعلان « الأسعار ». أي باقة تناسب نشاطي؟ |
-| Reel 01 · concurrent | your phone | C1 | Bonjour ! Je viens de la vidéo « concurrent ». Je voudrais un devis. |
+| R1 · ad Reel concurrent | `abachedev-pub-reel-r1-concurrent.mp4` | C1 | Bonjour ! Je viens de la vidéo « concurrent ». Je voudrais un devis. |
+| R2 · ad Reel prix | `abachedev-pub-reel-r2-prix.mp4` | C1, C3 | Bonjour ! Je viens de la vidéo « prix ». Quelle formule pour mon activité ? |
+| R3 · ad Reel 5 jours | `abachedev-pub-reel-r3-5-jours.mp4` | C1 (week 2) | Bonjour ! Je viens de la vidéo « 5 jours ». La formule Starter m’intéresse. |
+| R4 · ad Reel réflexion | `abachedev-pub-reel-r4-reflexion.mp4` | C3 | Bonjour ! J’ai quelques questions avant de me lancer. |
+| Reel 01 · concurrent | your phone | C1 (backup) | Bonjour ! Je viens de la vidéo « concurrent ». Je voudrais un devis. |
 | Reel 10 · offre | your phone | C1, C3 | Bonjour ! Je viens de la vidéo « offre ». Je voudrais un devis. |
 
 ### Copy — write 2 primary texts per ad (Meta rotates them)
@@ -130,7 +135,9 @@ Each ad uses the **WhatsApp prefilled message** field to tag where the lead came
 - النص: *كم يكلف موقع إلكتروني؟ عندنا الأسعار معلنة: الباقة الأساسية 2 990 درهم، باقة الأعمال 6 990 درهم، المتجر الإلكتروني 12 990 درهم. سعر ثابت، الدفع على دفعتين، بدون تكاليف خفية.*
 - العنوان: **موقع احترافي ابتداءً من 2 990 درهم** · الوصف: *الدفع على دفعتين*
 
-**Video ads (Reels)**: reuse each Reel’s Instagram caption as primary text, headline **Devis gratuit sous 24 h**, button **Send WhatsApp message** (C1/C3). For C2 (views), no button needed.
+**Ad Reels R1–R4**: use the copy of the matching image ad (R1 = A1, R2 = A2, R3 = A3, R4 = A6). Upload them as 9:16 video; Meta crops a 4:5 version for feeds automatically (the key content sits in the centre).
+
+**Organic Reels as ads**: reuse each Reel’s Instagram caption as primary text, headline **Devis gratuit sous 24 h**, button **Send WhatsApp message** (C1/C3). For C2 (views), no button needed.
 
 ---
 
@@ -139,7 +146,7 @@ Each ad uses the **WhatsApp prefilled message** field to tag where the lead came
 | Week | Dates | What you do |
 | --- | --- | --- |
 | **1 · Test** | Thu 5 → Wed 11 Nov | Launch C1 (A + B) and C2. **Don’t touch anything for 3 days** (learning phase). Day 4: pause ads that spent 60 DH with 0 conversations. Answer every message within 15 min (09:00–21:00). |
-| **2 · Focus** | Thu 12 → Wed 18 Nov | Compare ad sets A and B on **cost per conversation**: move the loser’s budget to the winner (or keep both if close). Add A3 to C1. Launch **C3 retargeting** (30 DH/day). |
+| **2 · Focus** | Thu 12 → Wed 18 Nov | Compare ad sets A and B on **cost per conversation**: move the loser’s budget to the winner (or keep both if close). Add R3 and A3 to C1. Launch **C3 retargeting** (30 DH/day). |
 | **3 · Scale** | Thu 19 → Wed 25 Nov | If cost per conversation is stable, raise the winning ad set **+20 % every 3 days**. Replace any ad with frequency > 3 or a CTR down 30 % from its first days. |
 | **4 · Expand** | Thu 26 Nov → Wed 2 Dec | Launch **C4 Arabic test** (25 DH/day). Review the sheet: which ads brought **quotes and clients**, not just messages. Cut the rest, keep the winners for December. |
 
