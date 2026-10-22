@@ -28,10 +28,10 @@ p01 à p07 sont publiés (13–19 octobre). La suite reprend le mardi 20 octobre
 
 - Publiez dans l’ordre du calendrier. Partagez aussi chaque publication et chaque Reel en story le jour même.
 - Horaires pour commencer : 11 h–13 h ou 20 h–22 h (le samedi, plutôt en fin de matinée). Après 3 ou 4 semaines, choisissez vos meilleurs créneaux dans les statistiques Instagram.
-- Épinglez p01 (qui je suis), p10 (tarifs) et Reel 10 (ce que vous obtenez) en haut du profil.
+- Épingles (mise à jour) : les 3 Reels « Pin » (se code tout seul, mettez pause, pendant que vous dormez), épinglés le 24 octobre.
 - Chaque légende demande d’écrire un mot-clé sur WhatsApp (DIRECT, INSTA, APPEL, CARTE…) : notez le mot-clé de chaque message reçu pour savoir quelles publications et quels Reels vous apportent des demandes.
 - **Reels** : publiez-les aussi sur Facebook (Reels), TikTok et YouTube Shorts, avec la même légende. Épinglez en premier commentaire la phrase du mot-clé (« Écrivez … sur WhatsApp au +212 677-047171 👇 »). Répondez à chaque commentaire et message dans l’heure.
-- **Publicité (pour des demandes dès le premier mois)** : boostez Reel 01 dès le 20 octobre et Reel 10 dès le 22 octobre, objectif « Messages → WhatsApp », 50 à 70 DH par jour et par Reel pendant 7 jours. Zone : vos villes (Casablanca, Rabat, Marrakech…), 25–55 ans, centres d’intérêt « petites entreprises » et « entrepreneuriat ». Au bout de 3 jours, gardez le Reel dont le coût par conversation est le plus bas.
+- **Publicité (mise à jour)** : pas de boost pendant le calendrier. La publicité démarre le jeudi 5 novembre avec le plan complet de [`../meta-ads/`](../meta-ads/README.md) (Reel 01 et Reel 10 y sont inclus).
 - **Facebook** : mêmes images et mêmes légendes ; remplacez « abachedev.com (lien en bio) » par le lien cliquable https://abachedev.com, gardez 3 à 5 hashtags seulement, et ajoutez un autocollant lien vers abachedev.com sur les stories.
 - **Stories** : s01 (si elle n’a pas encore été publiée) → ajoutez un sondage (« Oui, tout est OK » / « Pas vraiment ») dans l’espace libre en bas et répondez à chaque vote en message privé. s02 et s03 → ajoutez un autocollant lien vers wa.me/212677047171. Rangez-les dans les Stories à la une (« Test mobile », « FAQ », « Tarifs »).
 
