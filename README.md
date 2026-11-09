@@ -195,3 +195,14 @@ Cloudflare Workers static assets, configured in `wrangler.jsonc`. `_headers` (se
 - **From your computer:** `npx wrangler login`, then `npx wrangler deploy`.
 - **Domain:** `abachedev.com` is registered at Namecheap with Cloudflare's nameservers. In the Worker, Settings → Domains & Routes → add `abachedev.com` and `www.abachedev.com`, and a Redirect Rule sends `www` to `abachedev.com`.
 - **Email:** Cloudflare Email Routing forwards `contact@abachedev.com` to your Gmail.
+
+## Demo shop: Wa9i (`demos/wa9i/`)
+A demonstration phone-case shop for a fictional brand, Wa9i (واقي), to show prospects what an e-commerce site for a Moroccan accessories shop can look like. Open it at `/demos/wa9i/`. It is `noindex` and not in the sitemap.
+
+- **Catalogue by brand → model** (iPhone, Samsung, Xiaomi, Huawei, Oppo, Honor, Google, Infinix, plus accessories), with a mega menu, a mobile drawer, a filter sidebar, model chips, sorting, search and "show more".
+- **Collections** (Zellige & Maroc, Cuir, Transparent MagSafe, Antichoc) and a homepage carousel.
+- **Product page**: colour swatches, model switcher, quantity, and a built-in cash-on-delivery order form (name, phone, city, address) with Moroccan phone validation.
+- **Cart drawer, cart page and checkout**: free delivery from 2 items, the `WA9I2` code, and a progress bar towards free delivery.
+- **French / Arabic** toggle with full RTL, and a dismissible promo bar.
+- No backend: an order shows a thank-you page with a reference number and a button that sends the order as a WhatsApp message. Set `CONFIG.whatsapp` in `demos/wa9i/app.js` to route it to a number.
+- The case pictures are SVG drawings generated in `app.js` (no photos), so you can swap in real product photos for a client.
