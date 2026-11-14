@@ -6,9 +6,28 @@
   const params = new URLSearchParams(location.search);
   const page = document.body.dataset.page;
 
+  const preview = params.get("preview") === "1";
   const catBySlug = Object.fromEntries(D.categories.map((c) => [c.slug, c]));
-  const articles = D.articles.slice().sort((a, b) => b.date.localeCompare(a.date));
+  D.articles.forEach((a) => { a.tags = a.tags || []; if (!catBySlug[a.cat]) catBySlug[a.cat] = { slug: a.cat, name: a.cat, subs: [] }; });
+  const articles = D.articles.filter((a) => (a.status || "publish") === "publish").sort((a, b) => b.date.localeCompare(a.date));
   const byId = Object.fromEntries(articles.map((a) => [a.id, a]));
+  const comments = D.comments || [];
+  const ccount = (id) => comments.filter((c) => c.post === id && c.status === "approved").length;
+
+  // Light formatting written in the admin editor: **bold**, *italic*, [link](url),
+  // "## " headings, "> " quotes and ![caption](image) on their own line.
+  const safeUrl = (u) => (/^(https?:|data:image\/|\/|\.|#|[\w-]+(\/|\.))/i.test(u) && !/^javascript:/i.test(u) ? u : "#");
+  const inline = (t) => esc(t)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/\[(.+?)\]\((.+?)\)/g, (m, txt, u) => `<a href="${safeUrl(u.replace(/&amp;/g, "&"))}" target="_blank" rel="noopener">${txt}</a>`);
+  const block = (p) => {
+    const img = p.match(/^!\[(.*?)\]\((.+?)\)$/);
+    if (img) return `<figure><img src="${esc(safeUrl(src(img[2])))}" alt="${esc(img[1])}" loading="lazy">${img[1] ? `<figcaption>${esc(img[1])}</figcaption>` : ""}</figure>`;
+    if (p.startsWith("## ")) return `<h2>${inline(p.slice(3))}</h2>`;
+    if (p.startsWith("> ")) return `<blockquote>${inline(p.slice(2))}</blockquote>`;
+    return `<p>${inline(p)}</p>`;
+  };
 
   const fmtDate = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }).toUpperCase();
   const url = (a) => `article.html?id=${encodeURIComponent(a.id)}`;
@@ -45,13 +64,14 @@
     </a>`;
 
   // ---------- media ----------
-  const media = (a, cls = "") => `<div class="media ${cls}">${a.image ? `<img src="${esc(a.image)}" alt="${esc(a.title)}" loading="lazy">` : window.coverArt(a)}</div>`;
+  const src = (u) => (u && u.startsWith("media:") ? ((D.media || []).find((m) => m.id === u.slice(6)) || {}).url || "" : u);
+  const media = (a, cls = "") => `<div class="media ${cls}">${a.image && src(a.image) ? `<img src="${esc(src(a.image))}" alt="${esc(a.title)}" loading="lazy">` : window.coverArt(a)}</div>`;
   const tag = (a) => `<a class="tag" href="${catUrl(a.cat)}">${esc(catBySlug[a.cat].name)}</a>`;
   const meta = (a, opts = {}) => `
     <div class="meta">
       ${opts.noAuthor ? "" : `<span class="author">${esc(a.author)}</span>`}
       <span>${icon.clock} ${fmtDate(a.date)}</span>
-      ${opts.noComments ? "" : `<span>${icon.chat} ${a.comments}</span>`}
+      ${opts.noComments ? "" : `<span>${icon.chat} ${ccount(a.id)}</span>`}
     </div>`;
 
   // ---------- header ----------
@@ -68,7 +88,7 @@
         <div class="container topbar-in">
           <a href="#scores" class="tb-live"><span class="dot"></span> Live Scores</a>
           <nav class="tb-links" aria-label="Featured">${D.topLinks.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join("")}</nav>
-          <a href="#" class="tb-login">${icon.user} Login</a>
+          <a href="admin/" class="tb-login">${icon.user} Login</a>
         </div>
       </div>
       <header class="masthead">
@@ -84,7 +104,7 @@
             <button class="icon-btn search-btn" aria-label="Search">${icon.search}</button>
           </div>
         </div>
-        <div class="ticker" id="scores" aria-label="Live scores">
+        <div class="ticker" id="scores" aria-label="Live scores" ${D.scores.length ? "" : "hidden"}>
           <span class="ticker-label">SCORES</span>
           <div class="ticker-track"><div class="ticker-row">${tickerItems()}${tickerItems(true)}</div></div>
         </div>
@@ -179,7 +199,7 @@
   function sidebar(excludeId) {
     const op = articles.filter((a) => a.cat === "opinion" && a.id !== excludeId);
     const [first, ...rest] = op;
-    const popular = articles.filter((a) => a.id !== excludeId).slice().sort((a, b) => b.comments - a.comments).slice(0, 5);
+    const popular = articles.filter((a) => a.id !== excludeId).slice().sort((a, b) => ccount(b.id) - ccount(a.id)).slice(0, 5);
     return `
       ${ad("box")}
       ${first ? `
@@ -247,7 +267,8 @@
   }
 
   function renderArticle() {
-    const a = byId[params.get("id")] || articles[0];
+    const a = byId[params.get("id")] || (preview && D.articles.find((x) => x.id === params.get("id"))) || articles[0];
+    const approved = comments.filter((c) => c.post === a.id && c.status === "approved").sort((x, y) => x.date.localeCompare(y.date));
     const cat = catBySlug[a.cat];
     document.title = `${a.title} | ${D.site.name}`;
     const related = articles.filter((x) => x.id !== a.id && x.cat === a.cat).concat(articles.filter((x) => x.id !== a.id && x.cat !== a.cat)).slice(0, 3);
@@ -266,8 +287,9 @@
             <div><span class="author">By ${esc(a.author)}</span>${meta(a, { noAuthor: true })}</div>
             <span class="read">${readTime(a)} min read</span>
           </div>
-          <figure class="article-media">${media(a)}<figcaption>Illustration · ${esc(cat.name)}</figcaption></figure>
-          <div class="article-body">${(a.body || []).map((p) => `<p>${esc(p)}</p>`).join("")}</div>
+          <figure class="article-media">${media(a)}${a.image && src(a.image) ? "" : `<figcaption>Illustration · ${esc(cat.name)}</figcaption>`}</figure>
+          ${preview && a.status !== "publish" && a.status ? `<p class="preview-note">Preview: this ${esc(a.status === "trash" ? "trashed post" : "draft")} is not visible to visitors.</p>` : ""}
+          <div class="article-body">${(a.body || []).map(block).join("")}</div>
           ${a.tags.length ? `<div class="tag-list">${a.tags.map((t) => `<a href="${catUrl(a.cat, t)}">#${esc(t)}</a>`).join("")}</div>` : ""}
           <div class="share">
             <span>Share</span>
@@ -277,8 +299,16 @@
             <button class="sh-copy" aria-label="Copy link">${icon.link}</button>
           </div>
           <section class="comments-box">
-            <h2 class="sec-title">${a.comments} comments</h2>
-            <form class="comment-form"><textarea placeholder="Join the conversation…" aria-label="Comment" rows="3"></textarea><button class="btn">Post comment</button></form>
+            <h2 class="sec-title">${approved.length} comment${approved.length === 1 ? "" : "s"}</h2>
+            <ol class="comment-list">${approved.map((c) => `
+              <li><span class="avatar">${esc(c.name.trim()[0] || "?")}</span><div><b>${esc(c.name)}</b>${c.admin ? ' <span class="staff">KoraPulse</span>' : ""}<time>${fmtDate(c.date.slice(0, 10))}</time><p>${esc(c.text)}</p></div></li>`).join("")}</ol>
+            <form class="comment-form">
+              <h3>Leave a comment</h3>
+              <textarea name="text" required placeholder="Join the conversation…" aria-label="Comment" rows="4"></textarea>
+              <div class="cf-row"><input name="name" required placeholder="Name *" aria-label="Name"><input name="email" type="email" placeholder="Email (not published)" aria-label="Email"></div>
+              <button class="btn">Post comment</button>
+            </form>
+            <p class="cf-ok" hidden>Thanks! Your comment is awaiting moderation.</p>
           </section>
           <section>
             <h2 class="sec-title">Related</h2>
@@ -410,7 +440,20 @@
       f.hidden = true;
       f.nextElementSibling.hidden = false;
     }));
-    document.querySelectorAll(".comment-form").forEach((f) => f.addEventListener("submit", (e) => e.preventDefault()));
+    // comments go to moderation (Admin → Comments). Without a server they are kept in this browser.
+    document.querySelectorAll(".comment-form").forEach((f) => f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = params.get("id") || (articles[0] && articles[0].id);
+      try {
+        const data = JSON.parse(localStorage.getItem("kp-data") || "null") || JSON.parse(JSON.stringify(D));
+        data.comments = data.comments || [];
+        data.comments.push({ id: "c" + Date.now(), post: id, name: f.name.value.trim(), email: f.email.value.trim(), text: f.text.value.trim(), date: new Date().toISOString().slice(0, 19), status: "pending" });
+        data.updated = new Date().toISOString();
+        localStorage.setItem("kp-data", JSON.stringify(data));
+      } catch (err) {}
+      f.hidden = true;
+      f.nextElementSibling.hidden = false;
+    }));
   }
 
   renderHeader();

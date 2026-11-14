@@ -1,5 +1,7 @@
 /* KoraPulse — site content.
-   Everything the site shows comes from this file: menus, articles, scores, the table.
+   Everything the site shows comes from this file: menus, articles, scores, the table,
+   comments, authors and uploaded images. The admin dashboard (admin/) edits it and
+   exports a new copy of this file with "Settings → Publish & Backup → Download data.js".
    Add an article by copying one object in `articles` and changing its fields.
    `image` is optional: put a photo URL there (e.g. "images/derby.jpg") and it replaces
    the generated illustration. The articles below are sample content for the demo. */
@@ -58,12 +60,40 @@ window.KP = {
     ]
   },
 
+  // Authors shown as bylines. Roles: Administrator, Editor, Author, Contributor.
+  users: [
+    { id: "u1", name: "Nadia Berrada", role: "Editor", bio: "Editor-in-chief. Covers the national teams." },
+    { id: "u2", name: "Omar Lahlou", role: "Author", bio: "Botola Pro correspondent." },
+    { id: "u3", name: "Salma Kettani", role: "Author", bio: "Features and women's football." },
+    { id: "u4", name: "Youssef Amrani", role: "Author", bio: "African football." },
+    { id: "u5", name: "Mehdi Chraibi", role: "Author", bio: "Transfers and the business of football." },
+    { id: "u6", name: "Karim Benjelloun", role: "Contributor", bio: "Columnist." },
+    { id: "u7", name: "Leila Fassi", role: "Author", bio: "European football." }
+  ],
+
+  // Reader comments. status: "approved", "pending", "spam" or "trash".
+  comments: [
+    { id: "c1", post: "atlas-lions-november-squad", name: "Anas", text: "Great to see Botola players getting a chance. Benali deserves it.", date: "2026-11-14T10:12:00", status: "approved" },
+    { id: "c2", post: "atlas-lions-november-squad", name: "Fatima Z.", text: "Which of the newcomers will start the first match?", date: "2026-11-14T11:40:00", status: "approved" },
+    { id: "c3", post: "atlas-lions-november-squad", name: "Rachid", text: "The left-back was excellent in the U-23 camp.", date: "2026-11-14T13:05:00", status: "pending" },
+    { id: "c4", post: "botola-title-race-tightens", name: "Hamid", text: "Fès deserved the point, they pressed for the whole second half.", date: "2026-11-14T09:30:00", status: "approved" },
+    { id: "c5", post: "opinion-var", name: "Sara", text: "Announcing decisions on the speakers would change everything.", date: "2026-11-13T19:22:00", status: "approved" },
+    { id: "c6", post: "opinion-var", name: "Youness", text: "I disagree, the waiting is part of the drama now.", date: "2026-11-13T20:01:00", status: "approved" },
+    { id: "c7", post: "women-league-record-crowd", name: "Imane", text: "I was there! The atmosphere was unbelievable.", date: "2026-11-13T22:15:00", status: "approved" },
+    { id: "c8", post: "women-league-record-crowd", name: "Khalid", text: "More double-headers please.", date: "2026-11-14T08:45:00", status: "pending" },
+    { id: "c9", post: "winter-window-moroccan-targets", name: "Best Odds 4U", text: "Win big with our betting tips, click here!!!", date: "2026-11-14T07:02:00", status: "spam" },
+    { id: "c10", post: "caf-champions-league-groups", name: "Mourad", text: "Long trips but a winnable group. Top two is realistic.", date: "2026-11-13T16:10:00", status: "approved" }
+  ],
+
+  // Images uploaded in the admin (stored inside this file).
+  media: [],
+
   articles: [
     {
       id: "atlas-lions-november-squad",
       cat: "atlas-lions", tags: ["Senior team"], featured: true, motif: "stadium",
       title: "Atlas Lions Call Up Five Uncapped Players for November Double-Header",
-      author: "Nadia Berrada", date: "2026-11-14", comments: 12,
+      author: "Nadia Berrada", date: "2026-11-14",
       excerpt: "The national team's latest squad leans on Botola form and a new wave of European-based youngsters, with five names set for a first taste of senior football.",
       body: [
         "The Atlas Lions technical staff named a 26-man squad on Friday for the November international window, and the headline is a clear one: five players have earned a first senior call-up after strong starts to the season.",
@@ -76,7 +106,7 @@ window.KP = {
       id: "botola-title-race-tightens",
       cat: "botola", tags: ["Results"], motif: "pitch",
       title: "Botola Pro Title Race Tightens as Leaders Drop Points in Fès",
-      author: "Omar Lahlou", date: "2026-11-14", comments: 8,
+      author: "Omar Lahlou", date: "2026-11-14",
       excerpt: "Racing Anfa saw their lead cut to a single point after a stubborn Fès Sporting side held on for a draw in front of a sold-out crowd.",
       body: [
         "Racing Anfa's lead at the top of the Botola Pro is down to a single point after a 1-1 draw away to Fès Sporting, a result that keeps three clubs within three points of first place after ten rounds.",
@@ -89,7 +119,7 @@ window.KP = {
       id: "rabat-stars-academy",
       cat: "botola", tags: ["Clubs"], motif: "pitch",
       title: "Inside Rabat Stars' Academy, the Factory Behind Botola's Youngest Starters",
-      author: "Salma Kettani", date: "2026-11-13", comments: 5,
+      author: "Salma Kettani", date: "2026-11-13",
       excerpt: "Four of the league's ten youngest regular starters came through the same academy. We spent a week with the coaches who built it.",
       body: [
         "The first thing you notice at the Rabat Stars training centre is how quiet it is. Sessions run on a strict timetable, and coaches speak to players in short, specific sentences rather than shouting from the touchline.",
@@ -102,7 +132,7 @@ window.KP = {
       id: "caf-champions-league-groups",
       cat: "africa", tags: ["CAF Champions League"], motif: "trophy",
       title: "CAF Champions League Draw: Moroccan Clubs Learn Group-Stage Opponents",
-      author: "Youssef Amrani", date: "2026-11-13", comments: 21,
+      author: "Youssef Amrani", date: "2026-11-13",
       excerpt: "Two Moroccan sides will face long trips and familiar rivals as the continent's top club competition moves into the group phase.",
       body: [
         "The group-stage draw for the CAF Champions League has handed Moroccan clubs a mix of familiar opponents and long journeys, with the first round of matches due later this month.",
@@ -115,7 +145,7 @@ window.KP = {
       id: "afcon-qualifiers-recap",
       cat: "africa", tags: ["AFCON"], motif: "ball",
       title: "AFCON Qualifiers: Five Things We Learned From the Latest Round",
-      author: "Youssef Amrani", date: "2026-11-12", comments: 9,
+      author: "Youssef Amrani", date: "2026-11-12",
       excerpt: "Surprise results, breakout goalkeepers and a lot of late drama: our takeaways from the latest round of continental qualifiers.",
       body: [
         "The latest round of AFCON qualifiers produced the usual mix of comfortable wins for the favourites and tense evenings for those on the bubble. Here is what stood out.",
@@ -128,7 +158,7 @@ window.KP = {
       id: "winter-window-moroccan-targets",
       cat: "transfers", tags: [], motif: "net",
       title: "Winter Window: Three Botola Stars Attracting European Scouts",
-      author: "Mehdi Chraibi", date: "2026-11-14", comments: 17,
+      author: "Mehdi Chraibi", date: "2026-11-14",
       excerpt: "Scouts from Belgium, France and Portugal have been regular visitors at Botola grounds this autumn. These are the names on their lists.",
       body: [
         "With the January window seven weeks away, the press boxes at Botola Pro grounds have been busier than usual. Clubs from Belgium, France and Portugal have all sent scouts this autumn.",
@@ -141,7 +171,7 @@ window.KP = {
       id: "loan-move-agadir",
       cat: "transfers", tags: [], motif: "net",
       title: "Agadir Sporting Winger Close to Loan Move to Belgium",
-      author: "Mehdi Chraibi", date: "2026-11-11", comments: 6,
+      author: "Mehdi Chraibi", date: "2026-11-11",
       excerpt: "The 22-year-old has scored four times this season and would join a top-half side in the Belgian Pro League on an 18-month deal.",
       body: [
         "Agadir Sporting are close to agreeing an 18-month loan for their 22-year-old winger, with a Belgian Pro League side set to hold an option to make the move permanent.",
@@ -153,7 +183,7 @@ window.KP = {
       id: "women-league-record-crowd",
       cat: "women", tags: [], motif: "stadium",
       title: "Record Crowd Watches Women's League Derby in Casablanca",
-      author: "Salma Kettani", date: "2026-11-13", comments: 14,
+      author: "Salma Kettani", date: "2026-11-13",
       excerpt: "More than 11,000 fans turned out for a 2-2 thriller, the biggest attendance for a women's club match in the country's history.",
       body: [
         "More than 11,000 spectators watched Casablanca Ladies and Rabat Stars draw 2-2 on Wednesday night, the largest crowd ever recorded for a women's club match in Morocco.",
@@ -166,7 +196,7 @@ window.KP = {
       id: "lionesses-u20",
       cat: "women", tags: [], motif: "trophy",
       title: "U-20 Lionesses Book Their Place at the Continental Finals",
-      author: "Nadia Berrada", date: "2026-11-10", comments: 7,
+      author: "Nadia Berrada", date: "2026-11-10",
       excerpt: "A composed 2-0 win on aggregate sends Morocco's U-20 women to next year's finals, the third straight qualification for the age group.",
       body: [
         "Morocco's U-20 women's team have qualified for next year's continental finals after a 2-0 aggregate win, the third consecutive qualification for the age group.",
@@ -178,7 +208,7 @@ window.KP = {
       id: "wc2030-grassroots",
       cat: "world-cup-2030", tags: [], motif: "stadium",
       title: "What Hosting the 2030 World Cup Could Mean for Grassroots Football",
-      author: "Omar Lahlou", date: "2026-11-12", comments: 19,
+      author: "Omar Lahlou", date: "2026-11-12",
       excerpt: "The stadiums get the headlines. The real legacy could be decided on school pitches and neighbourhood fields.",
       body: [
         "Most of the conversation about 2030 focuses on stadiums, airports and train lines. But coaches working with children say the tournament's real legacy will be measured on much smaller pitches.",
@@ -191,7 +221,7 @@ window.KP = {
       id: "wc2030-fan-zones",
       cat: "world-cup-2030", tags: [], motif: "ball",
       title: "Host Cities Begin Planning Fan Zones and Transport for 2030",
-      author: "Mehdi Chraibi", date: "2026-11-09", comments: 4,
+      author: "Mehdi Chraibi", date: "2026-11-09",
       excerpt: "Local planners are already mapping fan-zone sites and match-day transport, drawing lessons from recent tournaments.",
       body: [
         "Planning teams in several host cities have started mapping possible fan-zone sites and match-day transport routes, four years before a ball is kicked.",
@@ -203,7 +233,7 @@ window.KP = {
       id: "opinion-var",
       cat: "opinion", tags: [], motif: "pitch",
       title: "VAR Has Made the League Fairer. It Has Also Made It Slower.",
-      author: "Karim Benjelloun", date: "2026-11-13", comments: 33,
+      author: "Karim Benjelloun", date: "2026-11-13",
       excerpt: "Fewer clear errors is a win. Four-minute reviews in a half-empty stadium are not. There is a better balance to find.",
       body: [
         "Nobody wants to go back to the days of obvious offsides going unpunished. On that count, video review has done its job: the number of clear and obvious errors has fallen sharply.",
@@ -216,7 +246,7 @@ window.KP = {
       id: "opinion-coaches",
       cat: "opinion", tags: [], motif: "net",
       title: "Moroccan Coaches Deserve More Chances at the Top",
-      author: "Karim Benjelloun", date: "2026-11-11", comments: 26,
+      author: "Karim Benjelloun", date: "2026-11-11",
       excerpt: "Our clubs keep hiring from abroad while homegrown coaches build reputations in youth football and the lower leagues.",
       body: [
         "Look at the dugouts of the top division and you will find plenty of experience from abroad. Look one level down and you will find a generation of Moroccan coaches doing remarkable work with small budgets.",
@@ -228,7 +258,7 @@ window.KP = {
       id: "opinion-tickets",
       cat: "opinion", tags: [], motif: "stadium",
       title: "Full Stadiums Start With Fair Ticket Prices",
-      author: "Leila Fassi", date: "2026-11-10", comments: 18,
+      author: "Leila Fassi", date: "2026-11-10",
       excerpt: "The record women's derby crowd was not an accident. Cheap tickets and smart scheduling filled the stands.",
       body: [
         "This week's record crowd for a women's derby should be studied by every club in the country. Free entry for children and a double-header did more than any advertising campaign.",
@@ -240,7 +270,7 @@ window.KP = {
       id: "europe-heritage-players",
       cat: "europe", tags: ["Champions League"], motif: "trophy",
       title: "Moroccan-Heritage Players Leave Their Mark on Champions League Week",
-      author: "Leila Fassi", date: "2026-11-13", comments: 11,
+      author: "Leila Fassi", date: "2026-11-13",
       excerpt: "From starting full-backs to late substitutes, Moroccan-heritage players were involved across the latest round of European matches.",
       body: [
         "This week's round of Champions League matches featured Moroccan-heritage players in almost every corner of the competition, from established starters to teenagers making their debut.",
@@ -252,7 +282,7 @@ window.KP = {
       id: "europe-fixture-pileup",
       cat: "europe", tags: ["Premier League"], motif: "ball",
       title: "Festive Fixture Pile-Up: How Clubs Are Managing Squad Fatigue",
-      author: "Omar Lahlou", date: "2026-11-11", comments: 3,
+      author: "Omar Lahlou", date: "2026-11-11",
       excerpt: "Rotation, GPS data and recovery pods: the methods clubs are using to survive the busiest weeks of the season.",
       body: [
         "December is the busiest month of the English season, with some clubs playing every three days. Sports scientists say the key is planning weeks in advance.",
@@ -264,7 +294,7 @@ window.KP = {
       id: "laliga-north-africa-scouting",
       cat: "europe", tags: ["LaLiga"], motif: "pitch",
       title: "Why Spanish Clubs Keep Scouting North Africa",
-      author: "Youssef Amrani", date: "2026-11-09", comments: 8,
+      author: "Youssef Amrani", date: "2026-11-09",
       excerpt: "Short flights, shared football culture and good value make the region a natural hunting ground for clubs across the Strait.",
       body: [
         "Spanish clubs have long looked south for talent, and the number of scouting trips to North Africa has grown in recent seasons.",
@@ -276,7 +306,7 @@ window.KP = {
       id: "referee-academy",
       cat: "news", tags: [], motif: "pitch",
       title: "New Referee Academy Opens in Rabat to Train the Next Generation of Officials",
-      author: "Nadia Berrada", date: "2026-11-12", comments: 10,
+      author: "Nadia Berrada", date: "2026-11-12",
       excerpt: "Forty trainees, including twelve women, make up the first intake of a two-year programme combining fitness, law and video training.",
       body: [
         "A new referee academy has opened in Rabat with forty trainees in its first intake, twelve of them women.",
@@ -288,7 +318,7 @@ window.KP = {
       id: "u23-friendly",
       cat: "atlas-lions", tags: ["U23"], motif: "ball",
       title: "U-23 Side Confirm Friendly Ahead of Olympic Qualifying Campaign",
-      author: "Mehdi Chraibi", date: "2026-11-10", comments: 2,
+      author: "Mehdi Chraibi", date: "2026-11-10",
       excerpt: "The youngsters will face a European opponent next month in the first of three planned preparation matches.",
       body: [
         "Morocco's U-23 team will play a friendly against a European opponent next month, the first of three preparation matches before Olympic qualifying.",
@@ -300,7 +330,7 @@ window.KP = {
       id: "neighbourhood-pitches",
       cat: "news", tags: [], motif: "net",
       title: "Neighbourhood Pitches Programme Reaches Its 100th Site",
-      author: "Leila Fassi", date: "2026-11-09", comments: 6,
+      author: "Leila Fassi", date: "2026-11-09",
       excerpt: "Small-sided artificial pitches are now open in a hundred neighbourhoods, with free coaching sessions on weekends.",
       body: [
         "A programme building small-sided artificial pitches in urban neighbourhoods has opened its 100th site.",
@@ -312,7 +342,7 @@ window.KP = {
       id: "matchday-11-preview",
       cat: "botola", tags: ["Previews"], motif: "stadium",
       title: "Matchday 11 Preview: Tanger Host the Leaders in a Northern Showdown",
-      author: "Omar Lahlou", date: "2026-11-14", comments: 4,
+      author: "Omar Lahlou", date: "2026-11-14",
       excerpt: "Étoile de Tanger have not lost at home since March. Racing Anfa have not lost anywhere since September. Something has to give.",
       body: [
         "The pick of this weekend's Botola Pro fixtures takes the league leaders north to face an Étoile de Tanger side unbeaten at home since March.",
@@ -324,7 +354,7 @@ window.KP = {
       id: "goalkeeper-interview",
       cat: "atlas-lions", tags: ["Interviews"], motif: "net",
       title: "“The Shirt Weighs More Than Any Trophy”: Meet the Atlas Lions' Third Goalkeeper",
-      author: "Salma Kettani", date: "2026-11-11", comments: 15,
+      author: "Salma Kettani", date: "2026-11-11",
       excerpt: "He has not played a minute for the national team yet. He still calls every camp the best week of his year.",
       body: [
         "Third-choice goalkeepers rarely give interviews. Hamza El Idrissi, 24, says that is exactly why he wanted to talk.",
